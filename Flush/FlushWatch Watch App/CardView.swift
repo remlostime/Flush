@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-enum Kind {
-    case spade // 􀊾
+enum Kind: Int, CaseIterable {
     case heart // 􀊼
+    case spade // 􀊾
     case diamond // 􀊿
     case club // 􀊽
 
@@ -34,6 +34,14 @@ enum Kind {
             return .red
         }
     }
+
+    var next: Kind {
+        let index = self.rawValue
+        let allCases = Kind.allCases
+        let nextIndex = (index + 1) % allCases.count
+
+        return allCases[nextIndex]
+    }
 }
 
 extension Int {
@@ -53,7 +61,7 @@ extension Int {
     }
 }
 
-struct Card {
+struct Card: Equatable {
     let kind: Kind
     let number: Int
 
@@ -71,17 +79,24 @@ extension Card {
     static let spadeK = Card(kind: .spade, number: 13)
     static let dimond3 = Card(kind: .diamond, number: 3)
     static let clubQ = Card(kind: .club, number: 12)
+    static let initialCard = heartA
 }
 
 struct CardView: View {
     let card: Card
 
     var body: some View {
-        VStack {
-            Text(card.number.cardNumber)
-            Image(systemName: card.kind.imageName)
+        ZStack {
+            VStack {
+                Text(card.number.cardNumber)
+                Image(systemName: card.kind.imageName)
+            }
+            .foregroundStyle(card.kind.color)
+
+            RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
+                             style: .circular)
+            .strokeBorder(.primary, lineWidth: 1)
         }
-        .foregroundStyle(card.kind.color)
     }
 
     init(card: Card) {
