@@ -11,85 +11,85 @@ import SwiftUI
 
 @Observable
 class MainViewModel {
-  var cards: [Card?] = [nil, nil]
+    var cards: [Card?] = [nil, nil]
 
-  var firstCard: Card? {
-    cards[0]
-  }
-
-  var secondCard: Card? {
-    cards[1]
-  }
-
-  var winRate: Double {
-    guard let firstCard = firstCard, let secondCard = secondCard else {
-      return 0.0
+    var firstCard: Card? {
+        cards[0]
     }
 
-    return Double(firstCard.number + secondCard.number + firstCard.kind.rawValue + secondCard.kind.rawValue)
-  }
-
-  var winRatePercent: String {
-    let rate = Int(winRate * 100.0)
-    return "\(rate)%"
-  }
-
-  func didTapCard(_ cardIndex: Int) {
-    guard let card = cards[cardIndex] else {
-      return
+    var secondCard: Card? {
+        cards[1]
     }
 
-    let newCard = Card(kind: card.kind.next, number: card.number)
-    cards[cardIndex] = newCard
-  }
+    var winRate: Double {
+        guard let firstCard = firstCard, let secondCard = secondCard else {
+            return 0.0
+        }
 
-  func didTapPlaceholderView(placeholderIndex: Int) {
-    cards[placeholderIndex] = Card.initialCard
-  }
+        return Double(firstCard.number + secondCard.number + firstCard.kind.rawValue + secondCard.kind.rawValue)
+    }
+
+    var winRatePercent: String {
+        let rate = Int(winRate * 100.0)
+        return "\(rate)%"
+    }
+
+    func didTapCard(_ cardIndex: Int) {
+        guard let card = cards[cardIndex] else {
+            return
+        }
+
+        let newCard = Card(kind: card.kind.next, number: card.number)
+        cards[cardIndex] = newCard
+    }
+
+    func didTapPlaceholderView(placeholderIndex: Int) {
+        cards[placeholderIndex] = Card.initialCard
+    }
 }
 
 // MARK: - ContentView
 
 struct ContentView: View {
-  let viewModel = MainViewModel()
+    let viewModel = MainViewModel()
 
-  var body: some View {
-    VStack {
-      HStack {
-        if let card = viewModel.firstCard {
-          CardView(card: card)
-            .onTapGesture {
-              viewModel.didTapCard(0)
+    var body: some View {
+        VStack {
+            HStack {
+                if let card = viewModel.firstCard {
+                    CardView(card: card)
+                        .onTapGesture {
+                            viewModel.didTapCard(0)
+                        }
+                } else {
+                    PlaceholderView()
+                        .onTapGesture {
+                            viewModel.didTapPlaceholderView(placeholderIndex: 0)
+                        }
+                }
+
+                if let card = viewModel.secondCard {
+                    CardView(card: card)
+                        .onTapGesture {
+                            viewModel.didTapCard(1)
+                        }
+                } else {
+                    PlaceholderView()
+                        .onTapGesture {
+                            viewModel.didTapPlaceholderView(placeholderIndex: 1)
+                        }
+                }
             }
-        } else {
-          PlaceholderView()
-            .onTapGesture {
-              viewModel.didTapPlaceholderView(placeholderIndex: 0)
-            }
+
+            Spacer()
+                .frame(maxHeight: 32)
+
+            Text(viewModel.winRatePercent)
         }
-
-        if let card = viewModel.secondCard {
-          CardView(card: card)
-            .onTapGesture {
-              viewModel.didTapCard(1)
-            }
-        } else {
-          PlaceholderView()
-            .onTapGesture {
-              viewModel.didTapPlaceholderView(placeholderIndex: 1)
-            }
-        }
-      }
-
-      Spacer()
-        .frame(maxHeight: 32)
-
-      Text(viewModel.winRatePercent)
+        .padding()
     }
-    .padding()
-  }
 }
 
 #Preview {
-  ContentView()
+    ContentView()
 }
