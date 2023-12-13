@@ -22,6 +22,8 @@
 		470806E12B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */; };
 		470806E32B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */; };
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		47A0FCC02B2927F500F00760 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCBF2B2927F500F00760 /* CardView.swift */; };
+		47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCC12B29351700F00760 /* PlaceholderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlushWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		47A0FCBF2B2927F500F00760 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		47A0FCC12B29351700F00760 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,8 @@
 			children = (
 				470806C52B290944006F37E2 /* FlushWatchApp.swift */,
 				470806C72B290944006F37E2 /* ContentView.swift */,
+				47A0FCBF2B2927F500F00760 /* CardView.swift */,
+				47A0FCC12B29351700F00760 /* PlaceholderView.swift */,
 				470806C92B290945006F37E2 /* Assets.xcassets */,
 				470806CB2B290945006F37E2 /* Preview Content */,
 			);
@@ -500,6 +506,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				470806C82B290944006F37E2 /* ContentView.swift in Sources */,
+				47A0FCC02B2927F500F00760 /* CardView.swift in Sources */,
+				47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */,
 				470806C62B290944006F37E2 /* FlushWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
