@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PrivateCardsView.swift
 //  Flush
 //
 //  Created by Kai Chen on 12/12/23.

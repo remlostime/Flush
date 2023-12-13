@@ -97,11 +97,14 @@ extension Card {
 struct CardView: View {
     // MARK: Lifecycle
 
-    init(card: Card) {
+    init(card: Card, isSelected: Bool) {
         self.card = card
+        self.isSelected = isSelected
     }
 
     // MARK: Internal
+
+    let isSelected: Bool
 
     let card: Card
 
@@ -115,23 +118,23 @@ struct CardView: View {
 
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
                              style: .circular)
-                .strokeBorder(.primary, lineWidth: 1)
+            .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
         }
     }
 }
 
 #Preview("Heart-A") {
-    CardView(card: .heartA)
+    CardView(card: .heartA, isSelected: false)
 }
 
 #Preview("Spade-K") {
-    CardView(card: .spadeK)
+    CardView(card: .spadeK, isSelected: true)
 }
 
 #Preview("Dimond-3") {
-    CardView(card: .dimond3)
+    CardView(card: .dimond3, isSelected: false)
 }
 
 #Preview("Club-Q") {
-    CardView(card: .clubQ)
+    CardView(card: .clubQ, isSelected: false)
 }

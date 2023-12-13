@@ -15,13 +15,14 @@
 		470806B02B290821006F37E2 /* FlushUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806AF2B290821006F37E2 /* FlushUITests.swift */; };
 		470806B22B290821006F37E2 /* FlushUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806B12B290821006F37E2 /* FlushUITestsLaunchTests.swift */; };
 		470806C62B290944006F37E2 /* FlushWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806C52B290944006F37E2 /* FlushWatchApp.swift */; };
-		470806C82B290944006F37E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806C72B290944006F37E2 /* ContentView.swift */; };
+		470806C82B290944006F37E2 /* PrivateCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806C72B290944006F37E2 /* PrivateCardsView.swift */; };
 		470806CA2B290945006F37E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 470806C92B290945006F37E2 /* Assets.xcassets */; };
 		470806CD2B290945006F37E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 470806CC2B290945006F37E2 /* Preview Assets.xcassets */; };
 		470806D72B290945006F37E2 /* FlushWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806D62B290945006F37E2 /* FlushWatch_Watch_AppTests.swift */; };
 		470806E12B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */; };
 		470806E32B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */; };
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		477F73772B298C020055DFF8 /* PrivateCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */; };
 		47A0FCC02B2927F500F00760 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCBF2B2927F500F00760 /* CardView.swift */; };
 		47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCC12B29351700F00760 /* PlaceholderView.swift */; };
 /* End PBXBuildFile section */
@@ -91,7 +92,7 @@
 		470806B12B290821006F37E2 /* FlushUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		470806C32B290944006F37E2 /* FlushWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlushWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470806C52B290944006F37E2 /* FlushWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatchApp.swift; sourceTree = "<group>"; };
-		470806C72B290944006F37E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		470806C72B290944006F37E2 /* PrivateCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCardsView.swift; sourceTree = "<group>"; };
 		470806C92B290945006F37E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		470806CC2B290945006F37E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		470806D22B290945006F37E2 /* FlushWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlushWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +100,7 @@
 		470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlushWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCardsViewModel.swift; sourceTree = "<group>"; };
 		47A0FCBF2B2927F500F00760 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		47A0FCC12B29351700F00760 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,8 +224,9 @@
 		470806C42B290944006F37E2 /* FlushWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */,
 				470806C52B290944006F37E2 /* FlushWatchApp.swift */,
-				470806C72B290944006F37E2 /* ContentView.swift */,
+				470806C72B290944006F37E2 /* PrivateCardsView.swift */,
 				47A0FCBF2B2927F500F00760 /* CardView.swift */,
 				47A0FCC12B29351700F00760 /* PlaceholderView.swift */,
 				470806C92B290945006F37E2 /* Assets.xcassets */,
@@ -509,7 +512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				470806C82B290944006F37E2 /* ContentView.swift in Sources */,
+				470806C82B290944006F37E2 /* PrivateCardsView.swift in Sources */,
+				477F73772B298C020055DFF8 /* PrivateCardsViewModel.swift in Sources */,
 				47A0FCC02B2927F500F00760 /* CardView.swift in Sources */,
 				47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */,
 				470806C62B290944006F37E2 /* FlushWatchApp.swift in Sources */,
