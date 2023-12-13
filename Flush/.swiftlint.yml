@@ -62,7 +62,7 @@ excluded: # paths to ignore during linting.
 colon:
   apply_to_dictionaries: false
 
-indentation: 2
+indentation: 4
 
 line_length: 180
 
