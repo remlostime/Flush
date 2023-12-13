@@ -118,7 +118,7 @@ struct CardView: View {
 
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
                              style: .circular)
-            .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
+                .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
         }
     }
 }
