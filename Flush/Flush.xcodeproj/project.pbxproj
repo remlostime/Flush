@@ -328,6 +328,8 @@
 			dependencies = (
 			);
 			name = "FlushWatch Watch App";
+			packageProductDependencies = (
+			);
 			productName = "FlushWatch Watch App";
 			productReference = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -411,6 +413,8 @@
 				Base,
 			);
 			mainGroup = 470806882B290820006F37E2;
+			packageReferences = (
+			);
 			productRefGroup = 470806922B290820006F37E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
