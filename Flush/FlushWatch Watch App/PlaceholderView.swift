@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct PlaceholderView: View {
+    let isSelected: Bool
+
     var body: some View {
         ZStack {
             Text("?")
 
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
                              style: .circular)
-                .strokeBorder(.primary, lineWidth: 1)
+                .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
         }
     }
 }
 
 #Preview {
-    PlaceholderView()
+    PlaceholderView(isSelected: true)
+}
+
+#Preview {
+    PlaceholderView(isSelected: false)
 }
