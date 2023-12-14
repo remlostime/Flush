@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct PlaceholderView: View {
+    // MARK: Lifecycle
+
+    init(isSelected: Bool, iconSize: CGFloat = 32.0) {
+        self.isSelected = isSelected
+        self.iconSize = iconSize
+    }
+
+    // MARK: Internal
+
     let isSelected: Bool
+    let iconSize: CGFloat
 
     var body: some View {
         ZStack {
-            Text("?")
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(isSelected ? .cyan : .primary)
+                .font(.system(size: iconSize, weight: .bold, design: .rounded))
 
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
                              style: .circular)

@@ -11,7 +11,19 @@ import SwiftUI
 struct FlushWatch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            PrivateCardsView()
+            TabView {
+                TabView {
+                    PrivateCardsView()
+                    PrivateCardsDetailsView(viewModel: .empty)
+                }
+                .tabViewStyle(.carousel)
+
+                TabView {
+                    PublicCardsView()
+                    PublicCardsDetailsView(viewModel: .empty)
+                }
+                .tabViewStyle(.carousel)
+            }
         }
     }
 }
