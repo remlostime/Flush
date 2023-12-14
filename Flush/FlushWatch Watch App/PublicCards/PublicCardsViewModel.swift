@@ -12,19 +12,54 @@ class PublicCardsViewModel {
     // MARK: Lifecycle
 
     init(privateCards: [Card?] = [nil, nil],
-         publicCards: [ListCard?] = [nil, nil, nil, nil, nil],
-         isPublicCardSelected: [Bool] = [false, false, false, false, false])
+         publicCards: [ListCard?] = [nil, nil, nil, nil, nil])
     {
         self.privateCards = privateCards
-        self.publicCards = publicCards
-        self.isPublicCardSelected = isPublicCardSelected
+        publicListCards = publicCards
+    }
+
+    convenience init(board: Board) {
+        let publicCards: [ListCard?] = board.publicCards.map { card in
+            if let card = card {
+                return ListCard(card: card, id: UUID(), isSelected: false)
+            } else {
+                return nil
+            }
+        }
+
+        self.init(privateCards: board.privateCards,
+                  publicCards: publicCards)
     }
 
     // MARK: Internal
 
     var privateCards: [Card?]
-    var publicCards: [ListCard?]
-    var isPublicCardSelected: [Bool]
+    var publicListCards: [ListCard?]
+
+    var publicCards: [Card?] {
+        publicListCards.map { listCard in
+            if let listCard = listCard {
+                return listCard.card
+            } else {
+                return nil
+            }
+        }
+    }
+
+    var cardValues: [Double] = [1, 1, 1, 1, 1] {
+        didSet {
+            publicListCards = publicListCards.map { listCard in
+                guard let listCard = listCard,
+                      let index = publicListCards.firstIndex(of: listCard)
+                else {
+                    return nil
+                }
+
+                let card = Card(kind: listCard.card.kind, number: Int(cardValues[index]))
+                return ListCard(card: card, id: listCard.id, isSelected: listCard.isSelected)
+            }
+        }
+    }
 
     var winRate: Double {
         0.30
@@ -36,31 +71,34 @@ class PublicCardsViewModel {
     }
 
     func resetCardSelected(forValue newValue: Bool) {
-        isPublicCardSelected = isPublicCardSelected.map { _ in newValue }
+        for index in 0 ..< publicListCards.count {
+            publicListCards[index]?.isSelected = newValue
+        }
     }
 
     func didTapCard(_ cardIndex: Int) {
-        guard let publicCard = publicCards[cardIndex] else {
+        guard var publicCard = publicListCards[cardIndex] else {
             return
         }
 
         let card = publicCard.card
 
         // if `selected` then we update the `kind`
-        if isPublicCardSelected[cardIndex] {
+        if publicCard.isSelected {
             let newCard = Card(kind: card.kind.next, number: card.number)
-            publicCards[cardIndex] = ListCard(card: newCard,
-                                              id: publicCard.id,
-                                              isSelected: publicCard.isSelected)
+            publicListCards[cardIndex] = ListCard(card: newCard,
+                                                  id: publicCard.id,
+                                                  isSelected: publicCard.isSelected)
         } else {
             resetCardSelected(forValue: false)
-            isPublicCardSelected[cardIndex] = true
+            publicCard.isSelected = true
+            publicListCards[cardIndex] = publicCard
         }
     }
 
     func didTapPlaceholderView(placeholderIndex: Int) {
-        publicCards[placeholderIndex] = ListCard.initial
+        publicListCards[placeholderIndex] = ListCard.initial
         resetCardSelected(forValue: false)
-        isPublicCardSelected[placeholderIndex] = true
+        publicListCards[placeholderIndex]?.isSelected = true
     }
 }

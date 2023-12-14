@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct PrivateCardsDetailsView: View {
+    // MARK: Lifecycle
+
+    init(board: Binding<Board>) {
+        _board = board
+        viewModel = PrivateCardsDetailsViewModel(cards: board.privateCards.wrappedValue)
+    }
+
+    // MARK: Internal
+
     @Bindable var viewModel: PrivateCardsDetailsViewModel
+    @Binding var board: Board
 
     var body: some View {
         HStack {
@@ -59,15 +69,18 @@ struct PrivateCardsDetailsView: View {
                 Text(viewModel.winRatePercent)
             }
 
-            List(Rank.allCases) { rank in
-                RankRateView(rank: rank, rate: 0.12)
+            List(viewModel.rankRate) { rankRate in
+                RankRateView(rank: rankRate.rank, rate: rankRate.rate)
                     .font(.system(size: 12, weight: .bold, design: .rounded))
             }
         }
         .padding()
+        .onDisappear {
+            board = Board(privateCards: viewModel.cards, publicCards: board.publicCards)
+        }
     }
 }
 
 #Preview {
-    PrivateCardsDetailsView(viewModel: .empty)
+    PrivateCardsDetailsView(board: Binding<Board>.constant(.initial))
 }

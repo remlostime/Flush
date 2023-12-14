@@ -23,7 +23,7 @@ struct ListCard: Identifiable, Hashable {
 
     let card: Card
     let id: UUID
-    let isSelected: Bool
+    var isSelected: Bool
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

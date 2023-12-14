@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct PublicCardsView: View {
-    @Bindable var viewModel = PublicCardsViewModel()
+    // MARK: Lifecycle
+
+    init(board: Binding<Board>) {
+        _board = board
+        viewModel = PublicCardsViewModel(board: board.wrappedValue)
+    }
+
+    // MARK: Internal
+
+    @Bindable var viewModel: PublicCardsViewModel
+    @Binding var board: Board
 
     var body: some View {
         VStack {
@@ -28,11 +38,24 @@ struct PublicCardsView: View {
 
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(viewModel.publicCards, id: \.self) { publicCard in
-                        if let publicCard = publicCard {
+                    ForEach(0 ..< viewModel.publicListCards.count, id: \.self) { index in
+                        if let publicCard = viewModel.publicListCards[index] {
                             CardView(card: publicCard.card, isSelected: publicCard.isSelected)
+                                .onTapGesture {
+                                    viewModel.didTapCard(index)
+                                }
+                                .focusable()
+                                .digitalCrownRotation($viewModel.cardValues[index],
+                                                      from: 1,
+                                                      through: 14,
+                                                      by: 1,
+                                                      sensitivity: .low,
+                                                      isContinuous: true)
                         } else {
                             PlaceholderView(isSelected: false, iconSize: 16.0)
+                                .onTapGesture {
+                                    viewModel.didTapPlaceholderView(placeholderIndex: index)
+                                }
                         }
                     }
                 }
@@ -44,9 +67,12 @@ struct PublicCardsView: View {
             Text(viewModel.winRatePercent)
         }
         .padding()
+        .onDisappear {
+            board = Board(privateCards: viewModel.privateCards, publicCards: viewModel.publicCards)
+        }
     }
 }
 
 #Preview {
-    PublicCardsView()
+    PublicCardsView(board: Binding<Board>.constant(.initial))
 }

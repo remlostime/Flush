@@ -26,6 +26,8 @@ class PrivateCardsDetailsViewModel {
 
     // MARK: Internal
 
+    var rankManager: RankManager?
+
     var cards: [Card?]
     var isCardSelected: [Bool]
 
@@ -98,6 +100,10 @@ class PrivateCardsDetailsViewModel {
         return "\(rate)%"
     }
 
+    var rankRate: [RankRate] {
+        rankManager?.calculateRankRate() ?? []
+    }
+
     func resetCardSelected(forValue newValue: Bool) {
         isCardSelected = isCardSelected.map { _ in newValue }
     }
@@ -125,5 +131,12 @@ class PrivateCardsDetailsViewModel {
 }
 
 extension PrivateCardsDetailsViewModel {
-    static let empty = PrivateCardsDetailsViewModel()
+    static var empty: PrivateCardsDetailsViewModel {
+        let viewModel = PrivateCardsDetailsViewModel()
+        let publicCards: [Card?] = (0 ..< 5).map { _ in nil }
+        let rankManager = DefaultRankManager(privateCards: viewModel.cards, publicCards: publicCards)
+        viewModel.rankManager = rankManager
+
+        return viewModel
+    }
 }
