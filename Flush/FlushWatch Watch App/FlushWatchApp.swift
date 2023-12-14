@@ -7,20 +7,31 @@
 
 import SwiftUI
 
+struct Board {
+    var privateCards: [Card?]
+    var publicCards: [Card?]
+}
+
+extension Board {
+    static let initial = Board(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil])
+}
+
 @main
 struct FlushWatch_Watch_AppApp: App {
+    @State var board = Board.initial
+
     var body: some Scene {
         WindowGroup {
             TabView {
                 TabView {
-                    PrivateCardsView()
-                    PrivateCardsDetailsView(viewModel: .empty)
+                    PrivateCardsView(board: $board)
+                    PrivateCardsDetailsView(board: $board)
                 }
                 .tabViewStyle(.carousel)
 
                 TabView {
-                    PublicCardsView()
-                    PublicCardsDetailsView(viewModel: .empty)
+                    PublicCardsView(board: $board)
+                    PublicCardsDetailsView(board: $board)
                 }
                 .tabViewStyle(.carousel)
             }

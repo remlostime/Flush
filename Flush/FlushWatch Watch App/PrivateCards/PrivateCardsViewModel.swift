@@ -6,13 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - PrivateCardsViewModel
 
 @Observable
 class PrivateCardsViewModel {
-    var cards: [Card?] = [nil, nil]
+    var cards: [Card?]
     var isCardSelected: [Bool] = [false, false]
+
+    init(cards: [Card?] = [nil, nil]) {
+        self.cards = cards
+    }
 
     var firstCardValue: Double = 1 {
         didSet {

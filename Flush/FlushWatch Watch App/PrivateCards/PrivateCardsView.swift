@@ -10,7 +10,14 @@ import SwiftUI
 // MARK: - ContentView
 
 struct PrivateCardsView: View {
-    @Bindable var viewModel = PrivateCardsViewModel()
+    @Bindable var viewModel: PrivateCardsViewModel
+
+    @Binding var board: Board
+
+    init(board: Binding<Board>) {
+        _board = board
+        viewModel = PrivateCardsViewModel(cards: board.privateCards.wrappedValue)
+    }
 
     var body: some View {
         VStack {
@@ -60,9 +67,12 @@ struct PrivateCardsView: View {
             Text(viewModel.winRatePercent)
         }
         .padding()
+        .onDisappear {
+            board = Board(privateCards: viewModel.cards, publicCards: board.publicCards)
+        }
     }
 }
 
 #Preview {
-    PrivateCardsView()
+    PrivateCardsView(board: Binding<Board>.constant(.initial))
 }

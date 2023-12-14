@@ -9,6 +9,12 @@ import SwiftUI
 
 struct PublicCardsDetailsView: View {
     @Bindable var viewModel: PublicCardsDetailsViewModel
+    @Binding var board: Board
+
+    init(board: Binding<Board>) {
+        _board = board
+        viewModel = PublicCardsDetailsViewModel(board: board.wrappedValue)
+    }
 
     var body: some View {
         HStack {
@@ -29,7 +35,7 @@ struct PublicCardsDetailsView: View {
 
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(viewModel.publicCards, id: \.self) { publicCard in
+                        ForEach(viewModel.publicListCards, id: \.self) { publicCard in
                             if let publicCard = publicCard {
                                 CardView(card: publicCard.card, isSelected: publicCard.isSelected)
                             } else {
@@ -51,9 +57,12 @@ struct PublicCardsDetailsView: View {
             }
         }
         .padding()
+        .onDisappear {
+            board = Board(privateCards: viewModel.privateCards, publicCards: viewModel.publicCards)
+        }
     }
 }
 
 #Preview {
-    PublicCardsDetailsView(viewModel: .empty)
+    PublicCardsDetailsView(board: Binding<Board>.constant(.initial))
 }
