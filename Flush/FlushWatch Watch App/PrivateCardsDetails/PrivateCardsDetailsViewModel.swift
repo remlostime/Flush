@@ -7,10 +7,11 @@
 
 import Foundation
 
+// MARK: - PrivateCardsDetailsViewModel
+
 @Observable
 class PrivateCardsDetailsViewModel {
-    var cards: [Card?]
-    var isCardSelected: [Bool]
+    // MARK: Lifecycle
 
     init(cards: [Card?] = [nil, nil],
          isCardSelected: [Bool] = [false, false],
@@ -22,6 +23,11 @@ class PrivateCardsDetailsViewModel {
         self.firstCardValue = firstCardValue
         self.secondCardValue = secondCardValue
     }
+
+    // MARK: Internal
+
+    var cards: [Card?]
+    var isCardSelected: [Bool]
 
     var firstCardValue: Double {
         didSet {

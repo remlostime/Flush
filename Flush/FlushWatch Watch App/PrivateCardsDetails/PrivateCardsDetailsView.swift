@@ -56,7 +56,7 @@ struct PrivateCardsDetailsView: View {
                 Spacer()
                     .frame(maxHeight: 32)
 
-                Text (viewModel.winRatePercent)
+                Text(viewModel.winRatePercent)
             }
 
             List(Rank.allCases) { rank in

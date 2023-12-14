@@ -7,11 +7,11 @@
 
 import Foundation
 
+// MARK: - PublicCardsDetailsViewModel
+
 @Observable
 class PublicCardsDetailsViewModel {
-    var privateCards: [Card?]
-    var publicCards: [ListCard?]
-    var isPublicCardSelected: [Bool]
+    // MARK: Lifecycle
 
     init(privateCards: [Card?] = [nil, nil],
          publicCards: [ListCard?] = [nil, nil, nil, nil, nil],
@@ -21,6 +21,12 @@ class PublicCardsDetailsViewModel {
         self.publicCards = publicCards
         self.isPublicCardSelected = isPublicCardSelected
     }
+
+    // MARK: Internal
+
+    var privateCards: [Card?]
+    var publicCards: [ListCard?]
+    var isPublicCardSelected: [Bool]
 
     var winRate: Double {
         0.30

@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct PlaceholderView: View {
-    let isSelected: Bool
-    let iconSize: CGFloat
+    // MARK: Lifecycle
 
     init(isSelected: Bool, iconSize: CGFloat = 32.0) {
         self.isSelected = isSelected
         self.iconSize = iconSize
     }
+
+    // MARK: Internal
+
+    let isSelected: Bool
+    let iconSize: CGFloat
 
     var body: some View {
         ZStack {

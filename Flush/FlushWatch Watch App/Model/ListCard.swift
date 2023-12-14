@@ -9,9 +9,7 @@ import Foundation
 
 // wrapper for `Card` which can be used in List
 struct ListCard: Identifiable, Hashable {
-    let card: Card
-    let id: UUID
-    let isSelected: Bool
+    // MARK: Lifecycle
 
     init(card: Card, id: UUID, isSelected: Bool) {
         self.card = card
@@ -19,9 +17,15 @@ struct ListCard: Identifiable, Hashable {
         self.isSelected = isSelected
     }
 
+    // MARK: Internal
+
+    static let initial = ListCard(card: .initialCard, id: UUID(), isSelected: false)
+
+    let card: Card
+    let id: UUID
+    let isSelected: Bool
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-
-    static let initial = ListCard(card: .initialCard, id: UUID(), isSelected: false)
 }

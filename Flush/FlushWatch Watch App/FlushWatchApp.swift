@@ -24,7 +24,6 @@ struct FlushWatch_Watch_AppApp: App {
                 }
                 .tabViewStyle(.carousel)
             }
-
         }
     }
 }
