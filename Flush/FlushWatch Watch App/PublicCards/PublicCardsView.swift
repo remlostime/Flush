@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct PublicCardsView: View {
-    @Bindable var viewModel: PublicCardsViewModel
-    @Binding var board: Board
+    // MARK: Lifecycle
 
     init(board: Binding<Board>) {
         _board = board
         viewModel = PublicCardsViewModel(board: board.wrappedValue)
     }
+
+    // MARK: Internal
+
+    @Bindable var viewModel: PublicCardsViewModel
+    @Binding var board: Board
 
     var body: some View {
         VStack {
@@ -34,7 +38,7 @@ struct PublicCardsView: View {
 
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(0..<viewModel.publicListCards.count, id: \.self) { index in
+                    ForEach(0 ..< viewModel.publicListCards.count, id: \.self) { index in
                         if let publicCard = viewModel.publicListCards[index] {
                             CardView(card: publicCard.card, isSelected: publicCard.isSelected)
                                 .onTapGesture {

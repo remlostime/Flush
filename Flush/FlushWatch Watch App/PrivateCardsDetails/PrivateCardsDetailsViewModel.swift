@@ -133,7 +133,7 @@ class PrivateCardsDetailsViewModel {
 extension PrivateCardsDetailsViewModel {
     static var empty: PrivateCardsDetailsViewModel {
         let viewModel = PrivateCardsDetailsViewModel()
-        let publicCards: [Card?] = (0..<5).map { _ in nil }
+        let publicCards: [Card?] = (0 ..< 5).map { _ in nil }
         let rankManager = DefaultRankManager(privateCards: viewModel.cards, publicCards: publicCards)
         viewModel.rankManager = rankManager
 

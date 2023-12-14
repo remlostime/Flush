@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Board
+
 struct Board {
     var privateCards: [Card?]
     var publicCards: [Card?]
@@ -15,6 +17,8 @@ struct Board {
 extension Board {
     static let initial = Board(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil])
 }
+
+// MARK: - FlushWatch_Watch_AppApp
 
 @main
 struct FlushWatch_Watch_AppApp: App {

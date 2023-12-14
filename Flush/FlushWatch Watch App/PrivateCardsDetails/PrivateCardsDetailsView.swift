@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct PrivateCardsDetailsView: View {
-    @Bindable var viewModel: PrivateCardsDetailsViewModel
-    @Binding var board: Board
+    // MARK: Lifecycle
 
     init(board: Binding<Board>) {
         _board = board
         viewModel = PrivateCardsDetailsViewModel(cards: board.privateCards.wrappedValue)
     }
+
+    // MARK: Internal
+
+    @Bindable var viewModel: PrivateCardsDetailsViewModel
+    @Binding var board: Board
 
     var body: some View {
         HStack {

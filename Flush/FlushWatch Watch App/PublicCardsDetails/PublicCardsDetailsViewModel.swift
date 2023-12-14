@@ -58,7 +58,7 @@ class PublicCardsDetailsViewModel {
     }
 
     func resetCardSelected(forValue newValue: Bool) {
-        for index in 0..<publicListCards.count {
+        for index in 0 ..< publicListCards.count {
             publicListCards[index]?.isSelected = newValue
         }
     }
@@ -74,8 +74,8 @@ class PublicCardsDetailsViewModel {
         if publicCard.isSelected {
             let newCard = Card(kind: card.kind.next, number: card.number)
             publicListCards[cardIndex] = ListCard(card: newCard,
-                                              id: publicCard.id,
-                                              isSelected: publicCard.isSelected)
+                                                  id: publicCard.id,
+                                                  isSelected: publicCard.isSelected)
         } else {
             resetCardSelected(forValue: false)
             publicCard.isSelected = true

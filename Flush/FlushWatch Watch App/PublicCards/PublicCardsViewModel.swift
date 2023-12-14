@@ -15,7 +15,7 @@ class PublicCardsViewModel {
          publicCards: [ListCard?] = [nil, nil, nil, nil, nil])
     {
         self.privateCards = privateCards
-        self.publicListCards = publicCards
+        publicListCards = publicCards
     }
 
     convenience init(board: Board) {
@@ -50,8 +50,8 @@ class PublicCardsViewModel {
         didSet {
             publicListCards = publicListCards.map { listCard in
                 guard let listCard = listCard,
-                        let index = publicListCards.firstIndex(of: listCard) else
-                {
+                      let index = publicListCards.firstIndex(of: listCard)
+                else {
                     return nil
                 }
 
@@ -71,7 +71,7 @@ class PublicCardsViewModel {
     }
 
     func resetCardSelected(forValue newValue: Bool) {
-        for index in 0..<publicListCards.count {
+        for index in 0 ..< publicListCards.count {
             publicListCards[index]?.isSelected = newValue
         }
     }
@@ -87,8 +87,8 @@ class PublicCardsViewModel {
         if publicCard.isSelected {
             let newCard = Card(kind: card.kind.next, number: card.number)
             publicListCards[cardIndex] = ListCard(card: newCard,
-                                              id: publicCard.id,
-                                              isSelected: publicCard.isSelected)
+                                                  id: publicCard.id,
+                                                  isSelected: publicCard.isSelected)
         } else {
             resetCardSelected(forValue: false)
             publicCard.isSelected = true
