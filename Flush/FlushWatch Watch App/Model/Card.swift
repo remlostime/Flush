@@ -1,10 +1,11 @@
 //
-//  CardView.swift
+//  Card.swift
 //  FlushWatch Watch App
 //
-//  Created by Kai Chen on 12/12/23.
+//  Created by Kai Chen on 12/13/23.
 //
 
+import Foundation
 import SwiftUI
 
 // MARK: - Kind
@@ -67,7 +68,7 @@ extension Int {
 
 // MARK: - Card
 
-struct Card: Equatable {
+struct Card: Equatable, Hashable {
     // MARK: Lifecycle
 
     init(kind: Kind, number: Int) {
@@ -82,6 +83,11 @@ struct Card: Equatable {
 
     let kind: Kind
     let number: Int
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(kind)
+        hasher.combine(number)
+    }
 }
 
 extension Card {
@@ -90,51 +96,4 @@ extension Card {
     static let dimond3 = Card(kind: .diamond, number: 3)
     static let clubQ = Card(kind: .club, number: 12)
     static let initialCard = heartA
-}
-
-// MARK: - CardView
-
-struct CardView: View {
-    // MARK: Lifecycle
-
-    init(card: Card, isSelected: Bool) {
-        self.card = card
-        self.isSelected = isSelected
-    }
-
-    // MARK: Internal
-
-    let isSelected: Bool
-
-    let card: Card
-
-    var body: some View {
-        ZStack {
-            VStack {
-                Text(card.number.cardNumber)
-                Image(systemName: card.kind.imageName)
-            }
-            .foregroundStyle(card.kind.color)
-
-            RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
-                             style: .circular)
-                .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
-        }
-    }
-}
-
-#Preview("Heart-A") {
-    CardView(card: .heartA, isSelected: false)
-}
-
-#Preview("Spade-K") {
-    CardView(card: .spadeK, isSelected: true)
-}
-
-#Preview("Dimond-3") {
-    CardView(card: .dimond3, isSelected: false)
-}
-
-#Preview("Club-Q") {
-    CardView(card: .clubQ, isSelected: false)
 }
