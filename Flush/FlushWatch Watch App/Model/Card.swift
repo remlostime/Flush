@@ -47,6 +47,11 @@ enum Kind: Int, CaseIterable {
 
         return allCases[nextIndex]
     }
+
+    static var random: Kind {
+        let value = Int.random(in: 0..<Kind.allCases.count)
+        return Kind(rawValue: value) ?? .heart
+    }
 }
 
 extension Int {
@@ -87,6 +92,13 @@ struct Card: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
         hasher.combine(number)
+    }
+
+    static var random: Card {
+        let kind = Kind.random
+        let number = Int.random(in: 1...13)
+
+        return Card(kind: kind, number: number)
     }
 }
 

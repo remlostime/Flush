@@ -9,24 +9,24 @@ import SwiftUI
 
 extension Double {
     var percentage: String {
-        String(format: "%.2f%%", self)
+        let percentage = Int(self * 100.0)
+        return "\(percentage)%"
     }
 }
 
 // MARK: - RankRateView
 
 struct RankRateView: View {
-    let rank: Rank
-    let rate: Double
+    let rankRate: RankRate
 
     var body: some View {
         HStack {
-            Text(rank.description)
-            Text(rate.percentage)
+            Text(rankRate.rank.description)
+            Text(rankRate.rate.percentage)
         }
     }
 }
 
 #Preview {
-    RankRateView(rank: .flush, rate: 0.123)
+    RankRateView(rankRate: RankRate(rank: .flush, rate: 0.123))
 }

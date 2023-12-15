@@ -70,7 +70,7 @@ struct PrivateCardsDetailsView: View {
             }
 
             List(viewModel.rankRate) { rankRate in
-                RankRateView(rank: rankRate.rank, rate: rankRate.rate)
+                RankRateView(rankRate: rankRate)
                     .font(.system(size: 12, weight: .bold, design: .rounded))
             }
         }
@@ -81,6 +81,10 @@ struct PrivateCardsDetailsView: View {
     }
 }
 
-#Preview {
+#Preview ("initial") {
     PrivateCardsDetailsView(board: Binding<Board>.constant(.initial))
+}
+
+#Preview ("Heart-A and Club-A") {
+    PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1)], publicCards: [Card(kind: .heart, number: 1)])))
 }
