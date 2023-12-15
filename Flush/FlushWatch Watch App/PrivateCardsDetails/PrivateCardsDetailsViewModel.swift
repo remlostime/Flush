@@ -13,11 +13,13 @@ import Foundation
 class PrivateCardsDetailsViewModel {
     // MARK: Lifecycle
 
-    init(cards: [Card?] = [nil, nil],
+    init(rankManager: RankManager = DefaultRankManager(),
+         cards: [Card?] = [nil, nil],
          isCardSelected: [Bool] = [false, false],
          firstCardValue: Double = 1.0,
          secondCardValue: Double = 1.0)
     {
+        self.rankManager = rankManager
         self.cards = cards
         self.isCardSelected = isCardSelected
         self.firstCardValue = firstCardValue
@@ -26,7 +28,7 @@ class PrivateCardsDetailsViewModel {
 
     // MARK: Internal
 
-    var rankManager: RankManager?
+    let rankManager: RankManager
 
     var cards: [Card?]
     var isCardSelected: [Bool]
@@ -101,7 +103,7 @@ class PrivateCardsDetailsViewModel {
     }
 
     var rankRate: [RankRate] {
-        rankManager?.calculateRankRate() ?? []
+        rankManager.calculateRankRate(privateCards: cards, publicCards: [])
     }
 
     func resetCardSelected(forValue newValue: Bool) {
@@ -131,12 +133,5 @@ class PrivateCardsDetailsViewModel {
 }
 
 extension PrivateCardsDetailsViewModel {
-    static var empty: PrivateCardsDetailsViewModel {
-        let viewModel = PrivateCardsDetailsViewModel()
-        let publicCards: [Card?] = (0 ..< 5).map { _ in nil }
-        let rankManager = DefaultRankManager(privateCards: viewModel.cards, publicCards: publicCards)
-        viewModel.rankManager = rankManager
-
-        return viewModel
-    }
+    static let empty = PrivateCardsDetailsViewModel()
 }
