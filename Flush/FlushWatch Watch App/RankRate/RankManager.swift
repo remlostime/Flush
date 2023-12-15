@@ -27,7 +27,6 @@ protocol RankManager {
 // MARK: - DefaultRankManager
 
 class DefaultRankManager: RankManager {
-
     // MARK: Internal
 
     func rankChecker(for rank: Rank) -> RankChecker {
@@ -55,32 +54,6 @@ class DefaultRankManager: RankManager {
         }
     }
 
-    private func simulatePossibleCards(privateCards: [Card?], publicCards: [Card?]) -> (privateCards: [Card], publicCards: [Card]) {
-        var cards = (privateCards + publicCards).compactMap { $0 }
-        let needCardsNumber = 5 - cards.count
-
-        var simulatedPrivateCards = privateCards.compactMap { $0 }
-        var simulatedPublicCards = publicCards.compactMap { $0 }
-
-        for _ in 0..<needCardsNumber {
-            var card = Card.random
-            while cards.contains(card) {
-                card = Card.random
-            }
-            cards.append(card)
-
-            if simulatedPrivateCards.count < 2 {
-                simulatedPrivateCards.append(card)
-            } else if simulatedPublicCards.count < 3 {
-                simulatedPublicCards.append(card)
-            }
-        }
-
-        return (privateCards: simulatedPrivateCards, publicCards: simulatedPublicCards)
-    }
-
-    private let simulateTimes = 10000
-
     func calculateRankRate(privateCards: [Card?], publicCards: [Card?]) -> [RankRate] {
         let ranks = Rank.allCases
         var rankRateCount: [Rank: Int] = [:]
@@ -89,7 +62,7 @@ class DefaultRankManager: RankManager {
             rankRateCount[rank] = 0
         }
 
-        for _ in 0..<simulateTimes {
+        for _ in 0 ..< simulateTimes {
             let (privateCards, publicCards) = simulatePossibleCards(privateCards: privateCards, publicCards: publicCards)
 
             for rank in ranks {
@@ -107,5 +80,33 @@ class DefaultRankManager: RankManager {
         }
 
         return rankRate
+    }
+
+    // MARK: Private
+
+    private let simulateTimes = 10000
+
+    private func simulatePossibleCards(privateCards: [Card?], publicCards: [Card?]) -> (privateCards: [Card], publicCards: [Card]) {
+        var cards = (privateCards + publicCards).compactMap { $0 }
+        let needCardsNumber = 5 - cards.count
+
+        var simulatedPrivateCards = privateCards.compactMap { $0 }
+        var simulatedPublicCards = publicCards.compactMap { $0 }
+
+        for _ in 0 ..< needCardsNumber {
+            var card = Card.random
+            while cards.contains(card) {
+                card = Card.random
+            }
+            cards.append(card)
+
+            if simulatedPrivateCards.count < 2 {
+                simulatedPrivateCards.append(card)
+            } else if simulatedPublicCards.count < 3 {
+                simulatedPublicCards.append(card)
+            }
+        }
+
+        return (privateCards: simulatedPrivateCards, publicCards: simulatedPublicCards)
     }
 }

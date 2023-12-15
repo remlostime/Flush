@@ -81,10 +81,10 @@ struct PrivateCardsDetailsView: View {
     }
 }
 
-#Preview ("initial") {
+#Preview("initial") {
     PrivateCardsDetailsView(board: Binding<Board>.constant(.initial))
 }
 
-#Preview ("Heart-A and Club-A") {
+#Preview("Heart-A and Club-A") {
     PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1)], publicCards: [Card(kind: .heart, number: 1)])))
 }

@@ -18,6 +18,11 @@ enum Kind: Int, CaseIterable {
 
     // MARK: Internal
 
+    static var random: Kind {
+        let value = Int.random(in: 0 ..< Kind.allCases.count)
+        return Kind(rawValue: value) ?? .heart
+    }
+
     var imageName: String {
         switch self {
             case .spade:
@@ -46,11 +51,6 @@ enum Kind: Int, CaseIterable {
         let nextIndex = (index + 1) % allCases.count
 
         return allCases[nextIndex]
-    }
-
-    static var random: Kind {
-        let value = Int.random(in: 0..<Kind.allCases.count)
-        return Kind(rawValue: value) ?? .heart
     }
 }
 
@@ -86,19 +86,19 @@ struct Card: Equatable, Hashable {
 
     // MARK: Internal
 
+    static var random: Card {
+        let kind = Kind.random
+        let number = Int.random(in: 1 ... 13)
+
+        return Card(kind: kind, number: number)
+    }
+
     let kind: Kind
     let number: Int
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
         hasher.combine(number)
-    }
-
-    static var random: Card {
-        let kind = Kind.random
-        let number = Int.random(in: 1...13)
-
-        return Card(kind: kind, number: number)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  RankRateCalculator.swift
+//  RankChecker.swift
 //  FlushWatch Watch App
 //
 //  Created by Kai Chen on 12/14/23.
@@ -7,11 +7,13 @@
 
 import Foundation
 
-// MARK: - RankRateCalculator
+// MARK: - RankChecker
 
 protocol RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool
 }
+
+// MARK: - RoyalFlushChecker
 
 struct RoyalFlushChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -29,6 +31,8 @@ struct RoyalFlushChecker: RankChecker {
         return true
     }
 }
+
+// MARK: - StraightFlushChecker
 
 struct StraightFlushChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -50,6 +54,8 @@ struct StraightFlushChecker: RankChecker {
         return true
     }
 }
+
+// MARK: - FourKindChecker
 
 struct FourKindChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -73,6 +79,8 @@ struct FourKindChecker: RankChecker {
         return false
     }
 }
+
+// MARK: - FullHouseChecker
 
 struct FullHouseChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -101,6 +109,8 @@ struct FullHouseChecker: RankChecker {
     }
 }
 
+// MARK: - FlushChecker
+
 struct FlushChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
@@ -110,12 +120,14 @@ struct FlushChecker: RankChecker {
 
         let kind = cards.first?.kind
         let isSameKind = cards.reduce(true) { partialResult, card in
-            return partialResult && (card.kind == kind)
+            partialResult && (card.kind == kind)
         }
 
         return isSameKind
     }
 }
+
+// MARK: - StraightChecker
 
 struct StraightChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -126,7 +138,7 @@ struct StraightChecker: RankChecker {
 
         let sortedCards = cards.sorted { $0.number < $1.number }
 
-        for index in 1..<sortedCards.count {
+        for index in 1 ..< sortedCards.count {
             let preCard = sortedCards[index - 1]
             let currentCard = sortedCards[index]
 
@@ -140,6 +152,8 @@ struct StraightChecker: RankChecker {
         return true
     }
 }
+
+// MARK: - ThreeKindChecker
 
 class ThreeKindChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -163,6 +177,8 @@ class ThreeKindChecker: RankChecker {
         return false
     }
 }
+
+// MARK: - TwoPairsChecker
 
 struct TwoPairsChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -193,6 +209,8 @@ struct TwoPairsChecker: RankChecker {
     }
 }
 
+// MARK: - PairChecker
+
 struct PairChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
@@ -216,6 +234,8 @@ struct PairChecker: RankChecker {
     }
 }
 
+// MARK: - HighCardChecker
+
 // High cards is defined as J, Q, K, A
 struct HighCardChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
@@ -234,4 +254,3 @@ struct HighCardChecker: RankChecker {
         return false
     }
 }
-
