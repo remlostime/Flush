@@ -34,6 +34,8 @@
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		475D33162B2BBB5700EAC209 /* RankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33152B2BBB5700EAC209 /* RankChecker.swift */; };
 		475D33192B2BBB9600EAC209 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33182B2BBB9600EAC209 /* RankManager.swift */; };
+		475D331B2B2CF27B00EAC209 /* RankCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */; };
+		475D331D2B2D2EA300EAC209 /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331C2B2D2EA300EAC209 /* NumberTests.swift */; };
 		477F73772B298C020055DFF8 /* PrivateCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */; };
 		47A0FCC02B2927F500F00760 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCBF2B2927F500F00760 /* CardView.swift */; };
 		47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCC12B29351700F00760 /* PlaceholderView.swift */; };
@@ -124,6 +126,8 @@
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		475D33152B2BBB5700EAC209 /* RankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankChecker.swift; sourceTree = "<group>"; };
 		475D33182B2BBB9600EAC209 /* RankManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
+		475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCheckerTests.swift; sourceTree = "<group>"; };
+		475D331C2B2D2EA300EAC209 /* NumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTests.swift; sourceTree = "<group>"; };
 		477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCardsViewModel.swift; sourceTree = "<group>"; };
 		47A0FCBF2B2927F500F00760 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		47A0FCC12B29351700F00760 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				470806D62B290945006F37E2 /* FlushWatch_Watch_AppTests.swift */,
+				475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */,
+				475D331C2B2D2EA300EAC209 /* NumberTests.swift */,
 			);
 			path = "FlushWatch Watch AppTests";
 			sourceTree = "<group>";
@@ -628,7 +634,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475D331D2B2D2EA300EAC209 /* NumberTests.swift in Sources */,
 				470806D72B290945006F37E2 /* FlushWatch_Watch_AppTests.swift in Sources */,
+				475D331B2B2CF27B00EAC209 /* RankCheckerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

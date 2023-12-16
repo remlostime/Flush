@@ -13,9 +13,11 @@ import Foundation
 class PublicCardsDetailsViewModel {
     // MARK: Lifecycle
 
-    init(privateCards: [Card?] = [nil, nil],
+    init(rankManager: RankManager = DefaultRankManager(),
+         privateCards: [Card?] = [nil, nil],
          publicListCards: [ListCard?] = [nil, nil, nil, nil, nil])
     {
+        self.rankManager = rankManager
         self.privateCards = privateCards
         self.publicListCards = publicListCards
     }
@@ -34,6 +36,8 @@ class PublicCardsDetailsViewModel {
     }
 
     // MARK: Internal
+
+    let rankManager: RankManager
 
     var privateCards: [Card?]
     var publicListCards: [ListCard?]
@@ -55,6 +59,10 @@ class PublicCardsDetailsViewModel {
     var winRatePercent: String {
         let rate = Int(winRate * 100.0)
         return "\(rate)%"
+    }
+
+    var rankRate: [RankRate] {
+        rankManager.calculateRankRate(privateCards: privateCards, publicCards: publicCards)
     }
 
     func resetCardSelected(forValue newValue: Bool) {

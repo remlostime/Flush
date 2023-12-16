@@ -55,8 +55,8 @@ struct PublicCardsDetailsView: View {
                 Text(viewModel.winRatePercent)
             }
 
-            List(Rank.allCases) { rank in
-                RankRateView(rankRate: RankRate(rank: rank, rate: 0.12))
+            List(viewModel.rankRate) { rankRate in
+                RankRateView(rankRate: rankRate)
                     .font(.system(size: 12, weight: .bold, design: .rounded))
             }
         }

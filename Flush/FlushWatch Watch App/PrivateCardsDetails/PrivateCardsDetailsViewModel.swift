@@ -90,11 +90,7 @@ class PrivateCardsDetailsViewModel {
     }
 
     var winRate: Double {
-        guard let firstCard = firstCard, let secondCard = secondCard else {
-            return 0.0
-        }
-
-        return Double(firstCard.number + secondCard.number + firstCard.kind.rawValue + secondCard.kind.rawValue)
+        return 1.0
     }
 
     var winRatePercent: String {

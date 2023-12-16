@@ -77,6 +77,8 @@ class DefaultRankManager: RankManager {
             let rate = Double(val) / Double(simulateTimes)
 
             return RankRate(rank: rank, rate: rate)
+        }.sorted { rank1, rank2 in
+            rank1.rank.rawValue < rank2.rank.rawValue
         }
 
         return rankRate
@@ -88,7 +90,7 @@ class DefaultRankManager: RankManager {
 
     private func simulatePossibleCards(privateCards: [Card?], publicCards: [Card?]) -> (privateCards: [Card], publicCards: [Card]) {
         var cards = (privateCards + publicCards).compactMap { $0 }
-        let needCardsNumber = 5 - cards.count
+        let needCardsNumber = Card.AllCardsTotalNumber - cards.count
 
         var simulatedPrivateCards = privateCards.compactMap { $0 }
         var simulatedPublicCards = publicCards.compactMap { $0 }
@@ -100,9 +102,9 @@ class DefaultRankManager: RankManager {
             }
             cards.append(card)
 
-            if simulatedPrivateCards.count < 2 {
+            if simulatedPrivateCards.count < Card.PrivateCardsTotalNumber {
                 simulatedPrivateCards.append(card)
-            } else if simulatedPublicCards.count < 3 {
+            } else if simulatedPublicCards.count < Card.PublicCardsTotalNumber {
                 simulatedPublicCards.append(card)
             }
         }
