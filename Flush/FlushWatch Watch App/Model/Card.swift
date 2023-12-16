@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Number
+
 enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
     case ace = 1
     case two
@@ -23,34 +25,42 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
     case queen
     case king
 
+    // MARK: Internal
+
+    static var random: Number {
+        let val = Int.random(in: 1 ... Number.allCases.count)
+        let number = Number(rawValue: val) ?? .ace
+        return number
+    }
+
     var description: String {
         switch self {
-        case .ace:
-            return "A"
-        case .two:
-            return "2"
-        case .three:
-            return "3"
-        case .four:
-            return "4"
-        case .five:
-            return "5"
-        case .six:
-            return "6"
-        case .seven:
-            return "7"
-        case .eight:
-            return "8"
-        case .nine:
-            return "9"
-        case .ten:
-            return "10"
-        case .jack:
-            return "J"
-        case .queen:
-            return "Q"
-        case .king:
-            return "K"
+            case .ace:
+                return "A"
+            case .two:
+                return "2"
+            case .three:
+                return "3"
+            case .four:
+                return "4"
+            case .five:
+                return "5"
+            case .six:
+                return "6"
+            case .seven:
+                return "7"
+            case .eight:
+                return "8"
+            case .nine:
+                return "9"
+            case .ten:
+                return "10"
+            case .jack:
+                return "J"
+            case .queen:
+                return "Q"
+            case .king:
+                return "K"
         }
     }
 
@@ -58,10 +68,12 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         description
     }
 
-    static var random: Number {
-        let val = Int.random(in: 1...Number.allCases.count)
-        let number = Number(rawValue: val) ?? .ace
-        return number
+    var next: Number {
+        if self == .king {
+            return .ace
+        }
+
+        return Number(rawValue: rawValue + 1) ?? .ace
     }
 
     static func < (lhs: Number, rhs: Number) -> Bool {
@@ -74,14 +86,6 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         }
 
         return lhs.rawValue < rhs.rawValue
-    }
-
-    var next: Number {
-        if self == .king {
-            return .ace
-        }
-
-        return Number(rawValue: self.rawValue + 1) ?? .ace
     }
 }
 
@@ -148,8 +152,16 @@ struct Card: Equatable, Hashable {
 
     // MARK: Internal
 
+    static let PrivateCardsTotalNumber = 2
+    static let PublicCardsTotalNumber = 5
+    static let HandCardsNumber = 5
+
     static var random: Card {
         Card(kind: Kind.random, number: Number.random)
+    }
+
+    static var AllCardsTotalNumber: Int {
+        PrivateCardsTotalNumber + PublicCardsTotalNumber
     }
 
     let kind: Kind
@@ -158,13 +170,6 @@ struct Card: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
         hasher.combine(number)
-    }
-
-    static let PrivateCardsTotalNumber = 2
-    static let PublicCardsTotalNumber = 5
-    static let HandCardsNumber = 5
-    static var AllCardsTotalNumber: Int {
-        PrivateCardsTotalNumber + PublicCardsTotalNumber
     }
 }
 

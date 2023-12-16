@@ -61,6 +61,8 @@ struct RoyalFlushChecker: RankChecker {
 // MARK: - StraightFlushChecker
 
 struct StraightFlushChecker: RankChecker {
+    // MARK: Internal
+
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
         guard cards.count == Card.AllCardsTotalNumber else {
@@ -93,19 +95,21 @@ struct StraightFlushChecker: RankChecker {
         guard cardsNumbers.count >= Card.HandCardsNumber else {
             return false
         }
-        
+
         return isValid(for: cardsNumbers.sorted()) || isValid(for: cardsNumbers.sorted { $0.rawValue < $1.rawValue })
     }
 
+    // MARK: Private
+
     private func isValid(for numbers: [Number]) -> Bool {
-        for i in 0..<numbers.count {
+        for i in 0 ..< numbers.count {
             guard i + 1 <= numbers.count else {
                 break
             }
-            
+
             var count = 1
-            for j in i+1..<numbers.count {
-                if numbers[j] == numbers[j-1].next {
+            for j in i + 1 ..< numbers.count {
+                if numbers[j] == numbers[j - 1].next {
                     count += 1
                 } else {
                     break
@@ -202,6 +206,8 @@ struct FlushChecker: RankChecker {
 // MARK: - StraightChecker
 
 struct StraightChecker: RankChecker {
+    // MARK: Internal
+
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
         guard cards.count == Card.AllCardsTotalNumber else {
@@ -217,15 +223,17 @@ struct StraightChecker: RankChecker {
         return isValid(for: cardsNumbers.sorted()) || isValid(for: cardsNumbers.sorted { $0.rawValue < $1.rawValue })
     }
 
+    // MARK: Private
+
     private func isValid(for numbers: [Number]) -> Bool {
-        for i in 0..<numbers.count {
+        for i in 0 ..< numbers.count {
             guard i + 1 <= numbers.count else {
                 break
             }
 
             var count = 1
-            for j in i+1..<numbers.count {
-                if numbers[j] == numbers[j-1].next {
+            for j in i + 1 ..< numbers.count {
+                if numbers[j] == numbers[j - 1].next {
                     count += 1
                 } else {
                     break

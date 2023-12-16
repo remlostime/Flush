@@ -90,7 +90,7 @@ class PrivateCardsDetailsViewModel {
     }
 
     var winRate: Double {
-        return 1.0
+        1.0
     }
 
     var winRatePercent: String {

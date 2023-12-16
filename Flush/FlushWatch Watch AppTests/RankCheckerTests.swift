@@ -9,7 +9,6 @@ import XCTest
 @testable import FlushWatch_Watch_App
 
 final class RankCheckerTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -21,7 +20,7 @@ final class RankCheckerTests: XCTestCase {
     func testRoyalFlushChcker() {
         let privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         let publicCards = [
@@ -29,7 +28,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let royalFlushChecker = RoyalFlushChecker()
@@ -40,21 +39,21 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 3),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertFalse(royalFlushChecker.isValid(privateCards: privateCards, publicCards: publicCards2), "Should not be royal flush")
 
         let privateCards2 = [
             Card(kind: .club, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         XCTAssertFalse(royalFlushChecker.isValid(privateCards: privateCards2, publicCards: publicCards), "Should not be royal flush")
 
         let clubPrivateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 9)
+            Card(kind: .heart, number: 9),
         ]
 
         let clubPublicCards = [
@@ -62,7 +61,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: 13),
             Card(kind: .club, number: 10),
             Card(kind: .club, number: 1),
-            Card(kind: .club, number: 11)
+            Card(kind: .club, number: 11),
         ]
 
         XCTAssertTrue(royalFlushChecker.isValid(privateCards: clubPrivateCards, publicCards: clubPublicCards), "Club 10 J Q K A should be royal flush")
@@ -71,7 +70,7 @@ final class RankCheckerTests: XCTestCase {
     func testStraightFlushChecker() {
         let privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         let publicCards = [
@@ -79,7 +78,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let straightFlushChecker = StraightFlushChecker()
@@ -90,21 +89,21 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 3),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertFalse(straightFlushChecker.isValid(privateCards: privateCards, publicCards: publicCards2), "Should not be straight flush")
 
         let privateCards2 = [
             Card(kind: .club, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         XCTAssertFalse(straightFlushChecker.isValid(privateCards: privateCards2, publicCards: publicCards), "Should not be straight flush")
 
         let clubPrivateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 9)
+            Card(kind: .heart, number: 9),
         ]
 
         let clubPublicCards = [
@@ -112,14 +111,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: 13),
             Card(kind: .club, number: 10),
             Card(kind: .club, number: 1),
-            Card(kind: .club, number: 11)
+            Card(kind: .club, number: 11),
         ]
 
         XCTAssertTrue(straightFlushChecker.isValid(privateCards: clubPrivateCards, publicCards: clubPublicCards), "Club 10 J Q K A should be straight flush")
 
         let smallPrivateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .heart, number: .two)
+            Card(kind: .heart, number: .two),
         ]
 
         let smallPublicCards = [
@@ -127,14 +126,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: .four),
             Card(kind: .heart, number: .five),
             Card(kind: .heart, number: .ten),
-            Card(kind: .heart, number: .jack)
+            Card(kind: .heart, number: .jack),
         ]
 
         XCTAssertTrue(straightFlushChecker.isValid(privateCards: clubPrivateCards, publicCards: clubPublicCards), "Heart A 2 3 4 5 should be straight flush")
 
         let smallPrivateCards1 = [
             Card(kind: .heart, number: .six),
-            Card(kind: .heart, number: .two)
+            Card(kind: .heart, number: .two),
         ]
 
         let smallPublicCards1 = [
@@ -142,7 +141,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: .four),
             Card(kind: .heart, number: .five),
             Card(kind: .heart, number: .ten),
-            Card(kind: .heart, number: .jack)
+            Card(kind: .heart, number: .jack),
         ]
 
         XCTAssertTrue(straightFlushChecker.isValid(privateCards: clubPrivateCards, publicCards: clubPublicCards), "Heart 2 3 4 5 6 should be straight flush")
@@ -151,7 +150,7 @@ final class RankCheckerTests: XCTestCase {
     func testFourKindChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -159,7 +158,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let fourKindChecker = FourKindChecker()
@@ -167,7 +166,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -175,14 +174,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .heart, number: .eight),
             Card(kind: .club, number: .king),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         XCTAssertTrue(fourKindChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Four kinds of ace")
 
         privateCards = [
             Card(kind: .heart, number: .king),
-            Card(kind: .spade, number: .king)
+            Card(kind: .spade, number: .king),
         ]
 
         publicCards = [
@@ -190,14 +189,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .king),
             Card(kind: .heart, number: .eight),
             Card(kind: .club, number: .nine),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         XCTAssertTrue(fourKindChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Four kinds of king")
 
         privateCards = [
             Card(kind: .heart, number: .king),
-            Card(kind: .spade, number: .king)
+            Card(kind: .spade, number: .king),
         ]
 
         publicCards = [
@@ -205,7 +204,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .queen),
             Card(kind: .heart, number: .eight),
             Card(kind: .club, number: .queen),
-            Card(kind: .spade, number: .queen)
+            Card(kind: .spade, number: .queen),
         ]
 
         XCTAssertTrue(fourKindChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Four kinds of queen")
@@ -214,7 +213,7 @@ final class RankCheckerTests: XCTestCase {
     func testFullHouseChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -222,7 +221,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let fullHouseChecker = FullHouseChecker()
@@ -230,7 +229,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -238,14 +237,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .heart, number: .eight),
             Card(kind: .club, number: .king),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         XCTAssertFalse(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Not full house")
 
         privateCards = [
             Card(kind: .heart, number: .king),
-            Card(kind: .spade, number: .king)
+            Card(kind: .spade, number: .king),
         ]
 
         publicCards = [
@@ -253,14 +252,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .king),
             Card(kind: .heart, number: .eight),
             Card(kind: .club, number: .nine),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         XCTAssertFalse(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Not full house")
 
         privateCards = [
             Card(kind: .heart, number: .king),
-            Card(kind: .spade, number: .eight)
+            Card(kind: .spade, number: .eight),
         ]
 
         publicCards = [
@@ -268,14 +267,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .queen),
             Card(kind: .heart, number: .eight),
             Card(kind: .heart, number: .queen),
-            Card(kind: .spade, number: .queen)
+            Card(kind: .spade, number: .queen),
         ]
 
         XCTAssertFalse(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "QQQ 88 should be full house")
 
         privateCards = [
             Card(kind: .heart, number: .king),
-            Card(kind: .spade, number: .eight)
+            Card(kind: .spade, number: .eight),
         ]
 
         publicCards = [
@@ -283,7 +282,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .heart, number: .eight),
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .queen)
+            Card(kind: .spade, number: .queen),
         ]
 
         XCTAssertTrue(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "AAA 88 should be full house")
@@ -292,7 +291,7 @@ final class RankCheckerTests: XCTestCase {
     func testFlushChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -300,7 +299,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let flushChecker = FlushChecker()
@@ -308,7 +307,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         publicCards = [
@@ -316,14 +315,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(flushChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Heart 10 J Q K 5 should be flush")
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         publicCards = [
@@ -331,7 +330,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertFalse(flushChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Heart 10 J Q K should not be flush")
@@ -340,7 +339,7 @@ final class RankCheckerTests: XCTestCase {
     func testStraightChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -348,7 +347,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let straightChecker = StraightChecker()
@@ -359,14 +358,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 3),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Heart 10 J Q K, Club A should be straight")
 
         privateCards = [
             Card(kind: .club, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         publicCards = [
@@ -374,14 +373,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Club 10, Heart J Q K A should be straight")
 
         let clubPrivateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 9)
+            Card(kind: .heart, number: 9),
         ]
 
         let clubPublicCards = [
@@ -389,14 +388,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: 13),
             Card(kind: .club, number: 10),
             Card(kind: .club, number: 1),
-            Card(kind: .club, number: 11)
+            Card(kind: .club, number: 11),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: clubPrivateCards, publicCards: clubPublicCards), "Club 10 J Q K A should be straight")
 
         let smallPrivateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .heart, number: .two)
+            Card(kind: .heart, number: .two),
         ]
 
         let smallPublicCards = [
@@ -404,14 +403,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: .four),
             Card(kind: .heart, number: .five),
             Card(kind: .heart, number: .ten),
-            Card(kind: .heart, number: .jack)
+            Card(kind: .heart, number: .jack),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: smallPrivateCards, publicCards: smallPublicCards), "Heart A 2 3 4 5 should be straight")
 
         let smallPrivateCards1 = [
             Card(kind: .heart, number: .six),
-            Card(kind: .heart, number: .two)
+            Card(kind: .heart, number: .two),
         ]
 
         let smallPublicCards1 = [
@@ -419,14 +418,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: .four),
             Card(kind: .heart, number: .five),
             Card(kind: .heart, number: .ten),
-            Card(kind: .heart, number: .jack)
+            Card(kind: .heart, number: .jack),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: smallPrivateCards1, publicCards: smallPublicCards1), "Heart 2 3 4 5 6 should be straight")
 
         let smallPrivateCards2 = [
             Card(kind: .club, number: .six),
-            Card(kind: .heart, number: .two)
+            Card(kind: .heart, number: .two),
         ]
 
         let smallPublicCards2 = [
@@ -434,7 +433,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .spade, number: .four),
             Card(kind: .diamond, number: .five),
             Card(kind: .heart, number: .ten),
-            Card(kind: .heart, number: .jack)
+            Card(kind: .heart, number: .jack),
         ]
 
         XCTAssertTrue(straightChecker.isValid(privateCards: smallPrivateCards2, publicCards: smallPublicCards2), "Mix 2 3 4 5 6 should be straight")
@@ -443,7 +442,7 @@ final class RankCheckerTests: XCTestCase {
     func testThreeKindChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -451,7 +450,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let threeKindChecker = ThreeKindChecker()
@@ -459,7 +458,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .spade, number: 10)
+            Card(kind: .spade, number: 10),
         ]
 
         publicCards = [
@@ -467,14 +466,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(threeKindChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix 10 should be three kind")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -482,7 +481,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(threeKindChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix A should be three kind")
@@ -491,7 +490,7 @@ final class RankCheckerTests: XCTestCase {
     func testTwoPairsChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -499,7 +498,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let twoPairsChecker = TwoPairsChecker()
@@ -507,7 +506,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .spade, number: 10)
+            Card(kind: .spade, number: 10),
         ]
 
         publicCards = [
@@ -515,14 +514,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertFalse(twoPairsChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix 10 should not be two pairs")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -530,14 +529,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(twoPairsChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix A should be two pairs")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -545,7 +544,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .spade, number: .eight),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(twoPairsChecker.isValid(privateCards: privateCards, publicCards: publicCards), "1 pair A, 1 pair 8 should be two pairs")
@@ -554,7 +553,7 @@ final class RankCheckerTests: XCTestCase {
     func testPairChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -562,7 +561,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let pairChecker = PairChecker()
@@ -570,7 +569,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .spade, number: 10)
+            Card(kind: .spade, number: 10),
         ]
 
         publicCards = [
@@ -578,14 +577,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(pairChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix 10 should be pairs")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -593,14 +592,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ace),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(pairChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Mix A should be pairs")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ace)
+            Card(kind: .spade, number: .ace),
         ]
 
         publicCards = [
@@ -608,14 +607,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .spade, number: .eight),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(pairChecker.isValid(privateCards: privateCards, publicCards: publicCards), "1 pair A, 1 pair 8 should be pairs")
 
         privateCards = [
             Card(kind: .heart, number: .ace),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         publicCards = [
@@ -623,7 +622,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .spade, number: .six),
             Card(kind: .club, number: .five),
             Card(kind: .club, number: .four),
-            Card(kind: .spade, number: .two)
+            Card(kind: .spade, number: .two),
         ]
 
         XCTAssertFalse(pairChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Should not be pair")
@@ -632,7 +631,7 @@ final class RankCheckerTests: XCTestCase {
     func testHighCardChecker() {
         var privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .heart, number: 11)
+            Card(kind: .heart, number: 11),
         ]
 
         var publicCards = [
@@ -640,7 +639,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .heart, number: 1),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         let highCardChecker = HighCardChecker()
@@ -648,7 +647,7 @@ final class RankCheckerTests: XCTestCase {
 
         privateCards = [
             Card(kind: .heart, number: 10),
-            Card(kind: .spade, number: 10)
+            Card(kind: .spade, number: 10),
         ]
 
         publicCards = [
@@ -656,14 +655,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .heart, number: 13),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: 1),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(highCardChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Heart K should be high card")
 
         privateCards = [
             Card(kind: .heart, number: .jack),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         publicCards = [
@@ -671,14 +670,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ten),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(highCardChecker.isValid(privateCards: privateCards, publicCards: publicCards), "J should be high card")
 
         privateCards = [
             Card(kind: .heart, number: .ten),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         publicCards = [
@@ -686,14 +685,14 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .spade, number: .six),
             Card(kind: .club, number: .five),
             Card(kind: .club, number: .four),
-            Card(kind: .spade, number: .two)
+            Card(kind: .spade, number: .two),
         ]
 
         XCTAssertFalse(highCardChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Should not have high cards.")
 
         privateCards = [
             Card(kind: .heart, number: .queen),
-            Card(kind: .spade, number: .ten)
+            Card(kind: .spade, number: .ten),
         ]
 
         publicCards = [
@@ -701,7 +700,7 @@ final class RankCheckerTests: XCTestCase {
             Card(kind: .club, number: .ten),
             Card(kind: .club, number: 5),
             Card(kind: .club, number: .eight),
-            Card(kind: .spade, number: 2)
+            Card(kind: .spade, number: 2),
         ]
 
         XCTAssertTrue(highCardChecker.isValid(privateCards: privateCards, publicCards: publicCards), "Q is high cards.")
