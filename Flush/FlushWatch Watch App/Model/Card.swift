@@ -8,6 +8,87 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Number
+
+enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
+    case ace = 1
+    case two
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    case nine
+    case ten
+    case jack
+    case queen
+    case king
+
+    // MARK: Internal
+
+    static var random: Number {
+        let val = Int.random(in: 1 ... Number.allCases.count)
+        let number = Number(rawValue: val) ?? .ace
+        return number
+    }
+
+    var description: String {
+        switch self {
+            case .ace:
+                return "A"
+            case .two:
+                return "2"
+            case .three:
+                return "3"
+            case .four:
+                return "4"
+            case .five:
+                return "5"
+            case .six:
+                return "6"
+            case .seven:
+                return "7"
+            case .eight:
+                return "8"
+            case .nine:
+                return "9"
+            case .ten:
+                return "10"
+            case .jack:
+                return "J"
+            case .queen:
+                return "Q"
+            case .king:
+                return "K"
+        }
+    }
+
+    var cardNumber: String {
+        description
+    }
+
+    var next: Number {
+        if self == .king {
+            return .ace
+        }
+
+        return Number(rawValue: rawValue + 1) ?? .ace
+    }
+
+    static func < (lhs: Number, rhs: Number) -> Bool {
+        if lhs == .ace {
+            return false
+        }
+
+        if rhs == .ace {
+            return true
+        }
+
+        return lhs.rawValue < rhs.rawValue
+    }
+}
+
 // MARK: - Kind
 
 enum Kind: Int, CaseIterable {
@@ -54,47 +135,37 @@ enum Kind: Int, CaseIterable {
     }
 }
 
-extension Int {
-    var cardNumber: String {
-        switch self {
-            case 1:
-                return "A"
-            case 11:
-                return "J"
-            case 12:
-                return "Q"
-            case 13:
-                return "K"
-            default:
-                return String(self)
-        }
-    }
-}
-
 // MARK: - Card
 
 struct Card: Equatable, Hashable {
     // MARK: Lifecycle
 
+    init(kind: Kind, number: Number) {
+        self.kind = kind
+        self.number = number
+    }
+
     init(kind: Kind, number: Int) {
         self.kind = kind
-
-        // number must be in 1...13
-        let validCardNumber = max(min(13, number), 1)
-        self.number = validCardNumber
+        self.number = Number(rawValue: number) ?? .ace
     }
 
     // MARK: Internal
 
-    static var random: Card {
-        let kind = Kind.random
-        let number = Int.random(in: 1 ... 13)
+    static let PrivateCardsTotalNumber = 2
+    static let PublicCardsTotalNumber = 5
+    static let HandCardsNumber = 5
 
-        return Card(kind: kind, number: number)
+    static var random: Card {
+        Card(kind: Kind.random, number: Number.random)
+    }
+
+    static var AllCardsTotalNumber: Int {
+        PrivateCardsTotalNumber + PublicCardsTotalNumber
     }
 
     let kind: Kind
-    let number: Int
+    let number: Number
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
@@ -103,9 +174,9 @@ struct Card: Equatable, Hashable {
 }
 
 extension Card {
-    static let heartA = Card(kind: .heart, number: 1)
-    static let spadeK = Card(kind: .spade, number: 13)
-    static let dimond3 = Card(kind: .diamond, number: 3)
-    static let clubQ = Card(kind: .club, number: 12)
+    static let heartA = Card(kind: .heart, number: .ace)
+    static let spadeK = Card(kind: .spade, number: .king)
+    static let dimond3 = Card(kind: .diamond, number: .three)
+    static let clubQ = Card(kind: .club, number: .queen)
     static let initialCard = heartA
 }

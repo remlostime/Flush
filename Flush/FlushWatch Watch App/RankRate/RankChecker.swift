@@ -18,16 +18,42 @@ protocol RankChecker {
 struct RoyalFlushChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        let straightFlushChecker = StraightFlushChecker()
-        guard straightFlushChecker.isValid(privateCards: privateCards, publicCards: publicCards) else {
+        var kindsCount: [Kind: Int] = [:]
+        for card in cards {
+            let count = kindsCount[card.kind] ?? 0
+            kindsCount[card.kind] = count + 1
+        }
+
+        let kind = kindsCount.reduce(Kind.club) { partialResult, kindCount in
+            let count = kindsCount[partialResult] ?? 0
+            if kindCount.value > count {
+                return kindCount.key
+            } else {
+                return partialResult
+            }
+        }
+
+        let filteredCards = cards.filter { $0.kind == kind }
+
+        guard filteredCards.count >= Card.HandCardsNumber else {
             return false
         }
 
-        // TODO(kai) - check 10...A
+        let cardsNumbers = Set(filteredCards.map { $0.number })
+        let straightNumbers: [Number] = [.ten, .jack, .queen, .king, .ace]
+
+        for number in straightNumbers {
+            if cardsNumbers.contains(number) {
+                continue
+            } else {
+                return false
+            }
+        }
+
         return true
     }
 }
@@ -35,23 +61,66 @@ struct RoyalFlushChecker: RankChecker {
 // MARK: - StraightFlushChecker
 
 struct StraightFlushChecker: RankChecker {
+    // MARK: Internal
+
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        let flushChecker = FlushChecker()
-        guard flushChecker.isValid(privateCards: privateCards, publicCards: publicCards) else {
+        var kindsCount: [Kind: Int] = [:]
+        for card in cards {
+            let count = kindsCount[card.kind] ?? 0
+            kindsCount[card.kind] = count + 1
+        }
+
+        let kind = kindsCount.reduce(Kind.club) { partialResult, kindCount in
+            let count = kindsCount[partialResult] ?? 0
+            if kindCount.value > count {
+                return kindCount.key
+            } else {
+                return partialResult
+            }
+        }
+
+        let filteredCards = cards.filter { $0.kind == kind }
+
+        guard filteredCards.count >= Card.HandCardsNumber else {
             return false
         }
 
-        let straightChecker = StraightChecker()
-        guard straightChecker.isValid(privateCards: privateCards, publicCards: publicCards) else {
+        let cardsNumbers = Set(filteredCards.map { $0.number })
+
+        guard cardsNumbers.count >= Card.HandCardsNumber else {
             return false
         }
 
-        return true
+        return isValid(for: cardsNumbers.sorted()) || isValid(for: cardsNumbers.sorted { $0.rawValue < $1.rawValue })
+    }
+
+    // MARK: Private
+
+    private func isValid(for numbers: [Number]) -> Bool {
+        for i in 0 ..< numbers.count {
+            guard i + 1 <= numbers.count else {
+                break
+            }
+
+            var count = 1
+            for j in i + 1 ..< numbers.count {
+                if numbers[j] == numbers[j - 1].next {
+                    count += 1
+                } else {
+                    break
+                }
+            }
+            if count == Card.HandCardsNumber {
+                return true
+            }
+        }
+
+        return false
     }
 }
 
@@ -60,11 +129,11 @@ struct StraightFlushChecker: RankChecker {
 struct FourKindChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        var numbersCount: [Int: Int] = [:]
+        var numbersCount: [Number: Int] = [:]
         for card in cards {
             let count = numbersCount[card.number] ?? 0
             numbersCount[card.number] = count + 1
@@ -85,27 +154,26 @@ struct FourKindChecker: RankChecker {
 struct FullHouseChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        var numbersCount: [Int: Int] = [:]
+        var numbersCount: [Number: Int] = [:]
         for card in cards {
             let count = numbersCount[card.number] ?? 0
             numbersCount[card.number] = count + 1
         }
 
-        guard numbersCount.values.count == 2 else {
-            return false
+        var counts: [Int: Int] = [:]
+        for value in numbersCount.values {
+            let count = counts[value] ?? 0
+            counts[value] = count + 1
         }
 
-        for val in numbersCount.values {
-            if val == 2 || val == 3 {
-                return true
-            }
-        }
+        let threeKindCount = counts[3] ?? 0
+        let twoKindCount = counts[2] ?? 0
 
-        return false
+        return threeKindCount > 0 && twoKindCount > 0
     }
 }
 
@@ -114,42 +182,69 @@ struct FullHouseChecker: RankChecker {
 struct FlushChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        let kind = cards.first?.kind
-        let isSameKind = cards.reduce(true) { partialResult, card in
-            partialResult && (card.kind == kind)
+        var kindsCount: [Kind: Int] = [:]
+        for card in cards {
+            let count = kindsCount[card.kind] ?? 0
+            kindsCount[card.kind] = count + 1
         }
 
-        return isSameKind
+        for kind in Kind.allCases {
+            let count = kindsCount[kind] ?? 0
+            if count == Card.HandCardsNumber {
+                return true
+            }
+        }
+
+        return false
     }
 }
 
 // MARK: - StraightChecker
 
 struct StraightChecker: RankChecker {
+    // MARK: Internal
+
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        let sortedCards = cards.sorted { $0.number < $1.number }
+        let cardsNumbers = Set(cards.map { $0.number })
 
-        for index in 1 ..< sortedCards.count {
-            let preCard = sortedCards[index - 1]
-            let currentCard = sortedCards[index]
+        guard cardsNumbers.count >= Card.HandCardsNumber else {
+            return false
+        }
 
-            if currentCard.number == preCard.number + 1 {
-                continue
-            } else {
-                return false
+        return isValid(for: cardsNumbers.sorted()) || isValid(for: cardsNumbers.sorted { $0.rawValue < $1.rawValue })
+    }
+
+    // MARK: Private
+
+    private func isValid(for numbers: [Number]) -> Bool {
+        for i in 0 ..< numbers.count {
+            guard i + 1 <= numbers.count else {
+                break
+            }
+
+            var count = 1
+            for j in i + 1 ..< numbers.count {
+                if numbers[j] == numbers[j - 1].next {
+                    count += 1
+                } else {
+                    break
+                }
+            }
+            if count == Card.HandCardsNumber {
+                return true
             }
         }
 
-        return true
+        return false
     }
 }
 
@@ -158,18 +253,18 @@ struct StraightChecker: RankChecker {
 class ThreeKindChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        var numbersCount: [Kind: Int] = [:]
+        var numbersCount: [Number: Int] = [:]
         for card in cards {
-            let count = numbersCount[card.kind] ?? 0
-            numbersCount[card.kind] = count + 1
+            let count = numbersCount[card.number] ?? 0
+            numbersCount[card.number] = count + 1
         }
 
         for val in numbersCount.values {
-            if val == 3 {
+            if val >= 3 {
                 return true
             }
         }
@@ -183,29 +278,22 @@ class ThreeKindChecker: RankChecker {
 struct TwoPairsChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        var numbersCount: [Kind: Int] = [:]
+        var numbersCount: [Number: Int] = [:]
         for card in cards {
-            let count = numbersCount[card.kind] ?? 0
-            numbersCount[card.kind] = count + 1
+            let count = numbersCount[card.number] ?? 0
+            numbersCount[card.number] = count + 1
         }
 
-        guard numbersCount.values.count == 3 else {
-            return false
-        }
-
+        var count = 0
         for val in numbersCount.values {
-            if val == 2 || val == 1 {
-                continue
-            } else {
-                return false
-            }
+            count += val / 2
         }
 
-        return true
+        return count >= 2
     }
 }
 
@@ -214,11 +302,11 @@ struct TwoPairsChecker: RankChecker {
 struct PairChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        var numbersCount: [Int: Int] = [:]
+        var numbersCount: [Number: Int] = [:]
         for card in cards {
             let count = numbersCount[card.number] ?? 0
             numbersCount[card.number] = count + 1
@@ -240,11 +328,11 @@ struct PairChecker: RankChecker {
 struct HighCardChecker: RankChecker {
     func isValid(privateCards: [Card], publicCards: [Card]) -> Bool {
         let cards = privateCards + publicCards
-        guard cards.count == 5 else {
+        guard cards.count == Card.AllCardsTotalNumber else {
             return false
         }
 
-        let highCardNumbers = Set([11, 12, 13, 1])
+        let highCardNumbers: Set<Number> = Set([.jack, .queen, .king, .ace])
         for card in cards {
             if highCardNumbers.contains(card.number) {
                 return true
