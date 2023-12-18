@@ -286,6 +286,21 @@ final class RankCheckerTests: XCTestCase {
         ]
 
         XCTAssertTrue(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "AAA 88 should be full house")
+
+        privateCards = [
+            Card(kind: .heart, number: .king),
+            Card(kind: .heart, number: .king),
+        ]
+
+        publicCards = [
+            Card(kind: .diamond, number: .king),
+            Card(kind: .club, number: .ace),
+            Card(kind: .heart, number: .ace),
+            Card(kind: .diamond, number: .ace),
+            Card(kind: .spade, number: .queen),
+        ]
+
+        XCTAssertTrue(fullHouseChecker.isValid(privateCards: privateCards, publicCards: publicCards), "AAA KKK should be full house")
     }
 
     func testFlushChecker() {

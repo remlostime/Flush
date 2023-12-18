@@ -12,10 +12,13 @@ class PublicCardsViewModel {
     // MARK: Lifecycle
 
     init(privateCards: [Card?] = [nil, nil],
-         publicCards: [ListCard?] = [nil, nil, nil, nil, nil])
+         publicCards: [ListCard?] = [nil, nil, nil, nil, nil],
+         playersNumber: Int = 1)
     {
         self.privateCards = privateCards
         publicListCards = publicCards
+        self.playersNumberDouble = Double(playersNumber)
+        self.playersNumber = playersNumber
     }
 
     convenience init(board: Board) {
@@ -33,6 +36,12 @@ class PublicCardsViewModel {
 
     // MARK: Internal
 
+    var playersNumberDouble: Double {
+        didSet {
+            playersNumber = Int(playersNumberDouble)
+        }
+    }
+    var playersNumber: Int
     var privateCards: [Card?]
     var publicListCards: [ListCard?]
 

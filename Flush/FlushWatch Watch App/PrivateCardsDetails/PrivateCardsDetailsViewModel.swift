@@ -17,19 +17,29 @@ class PrivateCardsDetailsViewModel {
          cards: [Card?] = [nil, nil],
          isCardSelected: [Bool] = [false, false],
          firstCardValue: Double = 1.0,
-         secondCardValue: Double = 1.0)
+         secondCardValue: Double = 1.0,
+         playersNumber: Int = 1)
     {
         self.rankManager = rankManager
         self.cards = cards
         self.isCardSelected = isCardSelected
         self.firstCardValue = firstCardValue
         self.secondCardValue = secondCardValue
+        self.playersNumber = playersNumber
+        self.playersNumberDigitalCrown = Double(playersNumber)
     }
 
     // MARK: Internal
 
     let rankManager: RankManager
 
+    var playersNumberDigitalCrown: Double {
+        didSet {
+            playersNumber = Int(playersNumberDigitalCrown)
+        }
+    }
+
+    var playersNumber: Int
     var cards: [Card?]
     var isCardSelected: [Bool]
 

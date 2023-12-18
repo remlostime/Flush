@@ -32,10 +32,13 @@
 		470806E12B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */; };
 		470806E32B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */; };
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		475B6B7A2B2F88840094B4C0 /* CompareCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B6B792B2F88840094B4C0 /* CompareCards.swift */; };
 		475D33162B2BBB5700EAC209 /* RankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33152B2BBB5700EAC209 /* RankChecker.swift */; };
 		475D33192B2BBB9600EAC209 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33182B2BBB9600EAC209 /* RankManager.swift */; };
 		475D331B2B2CF27B00EAC209 /* RankCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */; };
 		475D331D2B2D2EA300EAC209 /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331C2B2D2EA300EAC209 /* NumberTests.swift */; };
+		475D331F2B2E3B8400EAC209 /* PlayersNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */; };
+		475D33212B2E759B00EAC209 /* RankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33202B2E759B00EAC209 /* RankBuilder.swift */; };
 		477F73772B298C020055DFF8 /* PrivateCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */; };
 		47A0FCC02B2927F500F00760 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCBF2B2927F500F00760 /* CardView.swift */; };
 		47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCC12B29351700F00760 /* PlaceholderView.swift */; };
@@ -124,10 +127,13 @@
 		470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlushWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		475B6B792B2F88840094B4C0 /* CompareCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCards.swift; sourceTree = "<group>"; };
 		475D33152B2BBB5700EAC209 /* RankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankChecker.swift; sourceTree = "<group>"; };
 		475D33182B2BBB9600EAC209 /* RankManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
 		475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCheckerTests.swift; sourceTree = "<group>"; };
 		475D331C2B2D2EA300EAC209 /* NumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTests.swift; sourceTree = "<group>"; };
+		475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersNumberView.swift; sourceTree = "<group>"; };
+		475D33202B2E759B00EAC209 /* RankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankBuilder.swift; sourceTree = "<group>"; };
 		477F73762B298C020055DFF8 /* PrivateCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCardsViewModel.swift; sourceTree = "<group>"; };
 		47A0FCBF2B2927F500F00760 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		47A0FCC12B29351700F00760 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				47A0FCC12B29351700F00760 /* PlaceholderView.swift */,
 				47A0FCBF2B2927F500F00760 /* CardView.swift */,
 				470440422B2A6FFA00DF853A /* RankRateView.swift */,
+				475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,6 +361,8 @@
 			children = (
 				475D33182B2BBB9600EAC209 /* RankManager.swift */,
 				475D33152B2BBB5700EAC209 /* RankChecker.swift */,
+				475D33202B2E759B00EAC209 /* RankBuilder.swift */,
+				475B6B792B2F88840094B4C0 /* CompareCards.swift */,
 			);
 			path = RankRate;
 			sourceTree = "<group>";
@@ -610,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475D331F2B2E3B8400EAC209 /* PlayersNumberView.swift in Sources */,
 				470440472B2A819800DF853A /* PublicCardsDetailsView.swift in Sources */,
 				4704405B2B2AB17600DF853A /* Rank.swift in Sources */,
 				470806C82B290944006F37E2 /* PrivateCardsView.swift in Sources */,
@@ -618,12 +628,14 @@
 				470440492B2A828200DF853A /* PublicCardsViewModel.swift in Sources */,
 				47A0FCC02B2927F500F00760 /* CardView.swift in Sources */,
 				470440412B2A6B1E00DF853A /* PrivateCardsDetailsView.swift in Sources */,
+				475B6B7A2B2F88840094B4C0 /* CompareCards.swift in Sources */,
 				4704404D2B2A82B800DF853A /* Card.swift in Sources */,
 				47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */,
 				470440512B2A831500DF853A /* PrivateCardsDetailsViewModel.swift in Sources */,
 				470440432B2A6FFA00DF853A /* RankRateView.swift in Sources */,
 				475D33192B2BBB9600EAC209 /* RankManager.swift in Sources */,
 				4704404F2B2A82F200DF853A /* PublicCardsDetailsViewModel.swift in Sources */,
+				475D33212B2E759B00EAC209 /* RankBuilder.swift in Sources */,
 				475D33162B2BBB5700EAC209 /* RankChecker.swift in Sources */,
 				470806C62B290944006F37E2 /* FlushWatchApp.swift in Sources */,
 				470440452B2A72E100DF853A /* PublicCardsView.swift in Sources */,
