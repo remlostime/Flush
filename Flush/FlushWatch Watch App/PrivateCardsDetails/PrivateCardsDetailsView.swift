@@ -62,8 +62,7 @@ struct PrivateCardsDetailsView: View {
                                                   from: 1,
                                                   through: 14,
                                                   by: 1,
-                                                  sensitivity: .low,
-                                                  isContinuous: true)
+                                                  sensitivity: .medium)
                     } else {
                         PlaceholderView(isSelected: viewModel.isSecondCardSelected)
                             .onTapGesture {
@@ -82,6 +81,7 @@ struct PrivateCardsDetailsView: View {
                 RankRateView(rankRate: rankRate)
                     .font(.system(size: 12, weight: .bold, design: .rounded))
             }
+            .listStyle(.carousel)
         }
         .padding()
         .onDisappear {
@@ -97,7 +97,7 @@ struct PrivateCardsDetailsView: View {
 }
 
 #Preview("Heart-A and Club-A") {
-    PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1)],
-                                                                 publicCards: [Card(kind: .heart, number: 1)],
-                                                                 playersNumber: 1)))
+    PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1), Card(kind: .heart, number: 1)],
+                                                                 publicCards: [],
+                                                                 playersNumber: 2)))
 }

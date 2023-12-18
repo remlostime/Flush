@@ -22,6 +22,7 @@ struct RankRateView: View {
     var body: some View {
         HStack {
             Text(rankRate.rank.description)
+            Spacer()
             Text(rankRate.rate.percentage)
         }
     }

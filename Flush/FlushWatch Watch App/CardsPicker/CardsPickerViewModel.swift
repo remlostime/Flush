@@ -1,5 +1,5 @@
 //
-//  PublicCardsViewModel.swift
+//  CardsPickerViewModel.swift
 //  FlushWatch Watch App
 //
 //  Created by Kai Chen on 12/13/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class PublicCardsViewModel {
+class CardsPickerViewModel {
     // MARK: Lifecycle
 
     init(privateCards: [Card?] = [nil, nil],
@@ -17,7 +17,7 @@ class PublicCardsViewModel {
     {
         self.privateCards = privateCards
         publicListCards = publicCards
-        playersNumberDouble = Double(playersNumber)
+        playersNumberDigitalCrown = Double(playersNumber)
         self.playersNumber = playersNumber
     }
 
@@ -40,9 +40,9 @@ class PublicCardsViewModel {
     var privateCards: [Card?]
     var publicListCards: [ListCard?]
 
-    var playersNumberDouble: Double {
+    var playersNumberDigitalCrown: Double {
         didSet {
-            playersNumber = Int(playersNumberDouble)
+            playersNumber = Int(playersNumberDigitalCrown)
         }
     }
 

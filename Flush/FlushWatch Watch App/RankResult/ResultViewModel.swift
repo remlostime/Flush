@@ -1,5 +1,5 @@
 //
-//  PublicCardsDetailsViewModel.swift
+//  ResultViewModel.swift
 //  FlushWatch Watch App
 //
 //  Created by Kai Chen on 12/13/23.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-// MARK: - PublicCardsDetailsViewModel
+// MARK: - ResultViewModel
 
 @Observable
-class PublicCardsDetailsViewModel {
+class ResultViewModel {
     // MARK: Lifecycle
 
     init(rankManager: RankManager = DefaultRankManager(),
@@ -108,6 +108,6 @@ class PublicCardsDetailsViewModel {
     }
 }
 
-extension PublicCardsDetailsViewModel {
-    static let empty = PublicCardsDetailsViewModel()
+extension ResultViewModel {
+    static let empty = ResultViewModel()
 }

@@ -63,8 +63,7 @@ struct PrivateCardsView: View {
                                               from: 1,
                                               through: 14,
                                               by: 1,
-                                              sensitivity: .low,
-                                              isContinuous: true)
+                                              sensitivity: .medium)
                 } else {
                     PlaceholderView(isSelected: viewModel.isSecondCardSelected)
                         .onTapGesture {

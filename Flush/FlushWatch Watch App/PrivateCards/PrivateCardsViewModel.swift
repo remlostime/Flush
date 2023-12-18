@@ -93,7 +93,8 @@ class PrivateCardsViewModel {
     }
 
     var winRate: Double {
-        rankManager.calculateWinRate(board: .init(privateCards: cards, publicCards: [], playersNumber: playersNumber))
+        1.0
+//        rankManager.calculateWinRate(board: .init(privateCards: cards, publicCards: [], playersNumber: playersNumber))
     }
 
     var winRatePercent: String {

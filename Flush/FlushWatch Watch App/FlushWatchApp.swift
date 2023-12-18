@@ -32,19 +32,7 @@ struct FlushWatch_Watch_AppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                TabView {
-                    PrivateCardsView(board: $board)
-                    PrivateCardsDetailsView(board: $board)
-                }
-                .tabViewStyle(.carousel)
-
-                TabView {
-                    PublicCardsView(board: $board)
-                    PublicCardsDetailsView(board: $board)
-                }
-                .tabViewStyle(.carousel)
-            }
+            CardsPickerView(board: $board)
         }
     }
 }
