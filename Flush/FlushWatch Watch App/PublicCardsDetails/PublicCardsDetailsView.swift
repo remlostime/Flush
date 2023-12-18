@@ -62,7 +62,7 @@ struct PublicCardsDetailsView: View {
         }
         .padding()
         .onDisappear {
-            board = Board(privateCards: viewModel.privateCards, 
+            board = Board(privateCards: viewModel.privateCards,
                           publicCards: viewModel.publicCards,
                           playersNumber: viewModel.playersNumber)
         }

@@ -80,7 +80,7 @@ struct PrivateCardsView: View {
         }
         .padding()
         .onDisappear {
-            board = Board(privateCards: viewModel.cards, 
+            board = Board(privateCards: viewModel.cards,
                           publicCards: board.publicCards,
                           playersNumber: viewModel.playersNumber)
         }

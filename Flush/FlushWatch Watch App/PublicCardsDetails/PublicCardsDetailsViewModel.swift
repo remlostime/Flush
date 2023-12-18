@@ -22,7 +22,7 @@ class PublicCardsDetailsViewModel {
         self.privateCards = privateCards
         self.publicListCards = publicListCards
         self.playersNumber = playersNumber
-        self.playersNumberDouble = Double(playersNumber)
+        playersNumberDouble = Double(playersNumber)
     }
 
     convenience init(board: Board) {
@@ -42,14 +42,15 @@ class PublicCardsDetailsViewModel {
 
     let rankManager: RankManager
 
+    var playersNumber: Int
+    var privateCards: [Card?]
+    var publicListCards: [ListCard?]
+
     var playersNumberDouble: Double {
         didSet {
             playersNumber = Int(playersNumberDouble)
         }
     }
-    var playersNumber: Int
-    var privateCards: [Card?]
-    var publicListCards: [ListCard?]
 
     var publicCards: [Card?] {
         publicListCards.map { listCard in

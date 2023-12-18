@@ -110,28 +110,51 @@ class DefaultRankManager: RankManager {
         return rankRate
     }
 
+    func calculateWinRate(board: Board) -> Double {
+        var count = 0
+        for _ in 0 ..< simulateTimes {
+            let (privateCards, publicCards, otherPlayersCards) = simulatePossibleCards(board: board)
+            var win = true
+            for otherPlayersCard in otherPlayersCards {
+                let result = compareCards(myCards: privateCards, otherPlayerCards: otherPlayersCard, publicCards: publicCards)
+                if result != .win {
+                    win = false
+                    break
+                }
+            }
+
+            count += win ? 1 : 0
+        }
+
+        return Double(count) / Double(simulateTimes)
+    }
+
+    // MARK: Private
+
+    private let simulateTimes = 10000
+
     private func compareCards(for rank: Rank) -> CompareCards {
         switch rank {
-        case .royalFlush:
-            return RoyalFlushComparer()
-        case .straightFlush:
-            return StraightComparer()
-        case .fourKind:
-            return FourKindComparer()
-        case .fullHouse:
-            return FullHouseComparer()
-        case .flush:
-            return FlushComparer()
-        case .straight:
-            return StraightComparer()
-        case .threeKind:
-            return ThreeKindComparer()
-        case .twoPairs:
-            return TwoPairsComparer()
-        case .pair:
-            return PairComparer()
-        case .highCard:
-            return HighCardComparer()
+            case .royalFlush:
+                return RoyalFlushComparer()
+            case .straightFlush:
+                return StraightComparer()
+            case .fourKind:
+                return FourKindComparer()
+            case .fullHouse:
+                return FullHouseComparer()
+            case .flush:
+                return FlushComparer()
+            case .straight:
+                return StraightComparer()
+            case .threeKind:
+                return ThreeKindComparer()
+            case .twoPairs:
+                return TwoPairsComparer()
+            case .pair:
+                return PairComparer()
+            case .highCard:
+                return HighCardComparer()
         }
     }
 
@@ -170,10 +193,10 @@ class DefaultRankManager: RankManager {
             }
         }
 
-        let sortedMyCards = (myCards + publicCards).sorted()[0..<Card.HandCardsNumber]
-        let sortedOtherPlayerCards = (otherPlayerCards + publicCards).sorted()[0..<Card.HandCardsNumber]
+        let sortedMyCards = (myCards + publicCards).sorted()[0 ..< Card.HandCardsNumber]
+        let sortedOtherPlayerCards = (otherPlayerCards + publicCards).sorted()[0 ..< Card.HandCardsNumber]
 
-        for i in 0..<Card.HandCardsNumber {
+        for i in 0 ..< Card.HandCardsNumber {
             if sortedMyCards[i].number == sortedOtherPlayerCards[i].number {
                 continue
             } else if sortedMyCards[i].number < sortedOtherPlayerCards[i].number {
@@ -186,29 +209,6 @@ class DefaultRankManager: RankManager {
         return .tie
     }
 
-    func calculateWinRate(board: Board) -> Double {
-        var count = 0
-        for _ in 0..<simulateTimes {
-            let (privateCards, publicCards, otherPlayersCards) = simulatePossibleCards(board: board)
-            var win = true
-            for otherPlayersCard in otherPlayersCards {
-                let result = compareCards(myCards: privateCards, otherPlayerCards: otherPlayersCard, publicCards: publicCards)
-                if result != .win {
-                    win = false
-                    break
-                }
-            }
-
-            count += win ? 1 : 0
-        }
-
-        return Double(count) / Double(simulateTimes)
-    }
-
-    // MARK: Private
-
-    private let simulateTimes = 10000
-
     private func simulatePossibleCards(board: Board) -> (privateCards: [Card], publicCards: [Card], otherPlayersCards: [[Card]]) {
         let (privateCards, publicCards) = simulatePossibleCards(privateCards: board.privateCards, publicCards: board.publicCards)
 
@@ -218,7 +218,7 @@ class DefaultRankManager: RankManager {
 
         for index in 0 ..< (board.playersNumber - 1) {
             otherPlayersCards.append([])
-            for _ in 0..<2 {
+            for _ in 0 ..< 2 {
                 var card = Card.random
                 while cards.contains(card) {
                     card = Card.random

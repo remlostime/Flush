@@ -17,7 +17,7 @@ class PublicCardsViewModel {
     {
         self.privateCards = privateCards
         publicListCards = publicCards
-        self.playersNumberDouble = Double(playersNumber)
+        playersNumberDouble = Double(playersNumber)
         self.playersNumber = playersNumber
     }
 
@@ -36,14 +36,15 @@ class PublicCardsViewModel {
 
     // MARK: Internal
 
+    var playersNumber: Int
+    var privateCards: [Card?]
+    var publicListCards: [ListCard?]
+
     var playersNumberDouble: Double {
         didSet {
             playersNumber = Int(playersNumberDouble)
         }
     }
-    var playersNumber: Int
-    var privateCards: [Card?]
-    var publicListCards: [ListCard?]
 
     var publicCards: [Card?] {
         publicListCards.map { listCard in

@@ -21,22 +21,20 @@ class PrivateCardsViewModel {
         self.rankManager = rankManager
         self.cards = cards
         self.playersNumber = playersNumber
-        self.playersNumberDigitalCrown = Double(playersNumber)
+        playersNumberDigitalCrown = Double(playersNumber)
     }
 
     // MARK: Internal
 
-    private let rankManager: RankManager
+    var playersNumber: Int
+    var cards: [Card?]
+    var isCardSelected: [Bool] = [false, false]
 
     var playersNumberDigitalCrown: Double {
         didSet {
             playersNumber = Int(playersNumberDigitalCrown)
         }
     }
-
-    var playersNumber: Int
-    var cards: [Card?]
-    var isCardSelected: [Bool] = [false, false]
 
     var firstCardValue: Double = 1 {
         didSet {
@@ -127,4 +125,8 @@ class PrivateCardsViewModel {
         resetCardSelected(forValue: false)
         isCardSelected[placeholderIndex] = true
     }
+
+    // MARK: Private
+
+    private let rankManager: RankManager
 }

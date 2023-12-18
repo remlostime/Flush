@@ -7,21 +7,29 @@
 
 import Foundation
 
+// MARK: - CompareResult
+
 enum CompareResult {
     case win
     case lose
     case tie
 }
 
+// MARK: - CompareCards
+
 protocol CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult
 }
+
+// MARK: - RoyalFlushComparer
 
 class RoyalFlushComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         .tie
     }
 }
+
+// MARK: - StraightFlushComparer
 
 class StraightFlushComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
@@ -41,7 +49,11 @@ class StraightFlushComparer: CompareCards {
     }
 }
 
+// MARK: - FourKindComparer
+
 class FourKindComparer: CompareCards {
+    // MARK: Internal
+
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         guard let number1 = findNumber(cards: myCards), let number2 = findNumber(cards: otherCards) else {
             return .tie
@@ -69,6 +81,8 @@ class FourKindComparer: CompareCards {
         }
     }
 
+    // MARK: Private
+
     private func findNumber(cards: [Card]) -> Number? {
         var numberCount: [Number: Int] = [:]
         for card in cards {
@@ -86,18 +100,22 @@ class FourKindComparer: CompareCards {
     }
 }
 
+// MARK: - FullHouseComparer
+
 class FullHouseComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         .tie
     }
 }
 
+// MARK: - FlushComparer
+
 class FlushComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         let sortedMyCards = myCards.sorted(by: >)
         let sortedOtherCards = otherCards.sorted(by: >)
 
-        for i in 0..<sortedMyCards.count {
+        for i in 0 ..< sortedMyCards.count {
             let myCard = sortedMyCards[i]
             let otherCard = sortedOtherCards[i]
             if myCard.number == otherCard.number {
@@ -112,6 +130,8 @@ class FlushComparer: CompareCards {
         return .tie
     }
 }
+
+// MARK: - StraightComparer
 
 class StraightComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
@@ -132,7 +152,11 @@ class StraightComparer: CompareCards {
     }
 }
 
+// MARK: - ThreeKindComparer
+
 class ThreeKindComparer: CompareCards {
+    // MARK: Internal
+
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         guard let number1 = findNumber(cards: myCards), let number2 = findNumber(cards: otherCards) else {
             return .tie
@@ -147,8 +171,7 @@ class ThreeKindComparer: CompareCards {
         let leftCards1 = myCards.filter { $0.number != number1 }.sorted(by: >)
         let leftCards2 = otherCards.filter { $0.number != number2 }.sorted(by: >)
 
-
-        for i in 0..<leftCards1.count {
+        for i in 0 ..< leftCards1.count {
             let myCard = leftCards1[i]
             let otherCard = leftCards2[i]
             if myCard.number == otherCard.number {
@@ -162,6 +185,8 @@ class ThreeKindComparer: CompareCards {
 
         return .tie
     }
+
+    // MARK: Private
 
     private func findNumber(cards: [Card]) -> Number? {
         var numberCount: [Number: Int] = [:]
@@ -180,8 +205,30 @@ class ThreeKindComparer: CompareCards {
     }
 }
 
+// MARK: - TwoPairsComparer
+
 class TwoPairsComparer: CompareCards {
-    private func numbersCount(cards: [Card]) -> [Number : Int] {
+    // MARK: Internal
+
+    func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
+        let myNumbersCount = numbersCount(cards: myCards)
+        let otherNumbersCount = numbersCount(cards: otherCards)
+
+        let result = compare(myNumbersCount, to: otherNumbersCount, count: 2)
+
+        switch result {
+            case .lose:
+                return .lose
+            case .win:
+                return .win
+            case .tie:
+                return compare(myNumbersCount, to: otherNumbersCount, count: 1)
+        }
+    }
+
+    // MARK: Private
+
+    private func numbersCount(cards: [Card]) -> [Number: Int] {
         var numbersCount: [Number: Int] = [:]
         for card in cards {
             let count = numbersCount[card.number] ?? 0
@@ -191,7 +238,7 @@ class TwoPairsComparer: CompareCards {
         return numbersCount
     }
 
-    private func compare(_ myNumbersCount: [Number: Int], to otherNumbersCount: [Number : Int], count: Int) -> CompareResult {
+    private func compare(_ myNumbersCount: [Number: Int], to otherNumbersCount: [Number: Int], count: Int) -> CompareResult {
         for number in Number.allCases.sorted(by: >) {
             let myCount = myNumbersCount[number] ?? 0
             let otherCount = otherNumbersCount[number] ?? 0
@@ -211,26 +258,32 @@ class TwoPairsComparer: CompareCards {
 
         return .tie
     }
-
-    func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
-        let myNumbersCount = numbersCount(cards: myCards)
-        let otherNumbersCount = numbersCount(cards: otherCards)
-
-        let result = compare(myNumbersCount, to: otherNumbersCount, count: 2)
-
-        switch result {
-        case .lose:
-            return .lose
-        case .win:
-            return .win
-        case .tie:
-            return compare(myNumbersCount, to: otherNumbersCount, count: 1)
-        }
-    }
 }
+
+// MARK: - PairComparer
 
 class PairComparer: CompareCards {
-    private func numbersCount(cards: [Card]) -> [Number : Int] {
+    // MARK: Internal
+
+    func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
+        let myNumbersCount = numbersCount(cards: myCards)
+        let otherNumbersCount = numbersCount(cards: otherCards)
+
+        let result = compare(myNumbersCount, to: otherNumbersCount, count: 2)
+
+        switch result {
+            case .lose:
+                return .lose
+            case .win:
+                return .win
+            case .tie:
+                return compare(myNumbersCount, to: otherNumbersCount, count: 1)
+        }
+    }
+
+    // MARK: Private
+
+    private func numbersCount(cards: [Card]) -> [Number: Int] {
         var numbersCount: [Number: Int] = [:]
         for card in cards {
             let count = numbersCount[card.number] ?? 0
@@ -240,7 +293,7 @@ class PairComparer: CompareCards {
         return numbersCount
     }
 
-    private func compare(_ myNumbersCount: [Number: Int], to otherNumbersCount: [Number : Int], count: Int) -> CompareResult {
+    private func compare(_ myNumbersCount: [Number: Int], to otherNumbersCount: [Number: Int], count: Int) -> CompareResult {
         for number in Number.allCases.sorted(by: >) {
             let myCount = myNumbersCount[number] ?? 0
             let otherCount = otherNumbersCount[number] ?? 0
@@ -260,30 +313,16 @@ class PairComparer: CompareCards {
 
         return .tie
     }
-
-    func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
-        let myNumbersCount = numbersCount(cards: myCards)
-        let otherNumbersCount = numbersCount(cards: otherCards)
-
-        let result = compare(myNumbersCount, to: otherNumbersCount, count: 2)
-
-        switch result {
-        case .lose:
-            return .lose
-        case .win:
-            return .win
-        case .tie:
-            return compare(myNumbersCount, to: otherNumbersCount, count: 1)
-        }
-    }
 }
+
+// MARK: - HighCardComparer
 
 class HighCardComparer: CompareCards {
     func compare(myCards: [Card], to otherCards: [Card]) -> CompareResult {
         let sortedMyCards = myCards.sorted(by: >)
         let sortedOtherCards = otherCards.sorted(by: >)
 
-        for i in 0..<sortedMyCards.count {
+        for i in 0 ..< sortedMyCards.count {
             let last1 = sortedMyCards[i]
             let last2 = sortedOtherCards[i]
             if last1 == last2 {
@@ -298,5 +337,3 @@ class HighCardComparer: CompareCards {
         return .tie
     }
 }
-
-

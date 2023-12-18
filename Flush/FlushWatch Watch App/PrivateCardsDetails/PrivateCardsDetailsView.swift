@@ -85,7 +85,7 @@ struct PrivateCardsDetailsView: View {
         }
         .padding()
         .onDisappear {
-            board = Board(privateCards: viewModel.cards, 
+            board = Board(privateCards: viewModel.cards,
                           publicCards: board.publicCards,
                           playersNumber: viewModel.playersNumber)
         }
@@ -97,7 +97,7 @@ struct PrivateCardsDetailsView: View {
 }
 
 #Preview("Heart-A and Club-A") {
-    PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1)], 
+    PrivateCardsDetailsView(board: Binding<Board>.constant(.init(privateCards: [Card(kind: .club, number: 1)],
                                                                  publicCards: [Card(kind: .heart, number: 1)],
                                                                  playersNumber: 1)))
 }

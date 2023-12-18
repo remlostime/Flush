@@ -26,22 +26,22 @@ class PrivateCardsDetailsViewModel {
         self.firstCardValue = firstCardValue
         self.secondCardValue = secondCardValue
         self.playersNumber = playersNumber
-        self.playersNumberDigitalCrown = Double(playersNumber)
+        playersNumberDigitalCrown = Double(playersNumber)
     }
 
     // MARK: Internal
 
     let rankManager: RankManager
 
+    var playersNumber: Int
+    var cards: [Card?]
+    var isCardSelected: [Bool]
+
     var playersNumberDigitalCrown: Double {
         didSet {
             playersNumber = Int(playersNumberDigitalCrown)
         }
     }
-
-    var playersNumber: Int
-    var cards: [Card?]
-    var isCardSelected: [Bool]
 
     var firstCardValue: Double {
         didSet {

@@ -7,9 +7,13 @@
 
 import Foundation
 
+// MARK: - RankBuilder
+
 protocol RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card]
 }
+
+// MARK: - RoyalFlushBuilder
 
 class RoyalFlushBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -44,7 +48,11 @@ class RoyalFlushBuilder: RankBuilder {
     }
 }
 
+// MARK: - StraightFlushBuilder
+
 class StraightFlushBuilder: RankBuilder {
+    // MARK: Internal
+
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
         let cards = privateCards + publicCards
         guard cards.count == Card.AllCardsTotalNumber else {
@@ -89,6 +97,8 @@ class StraightFlushBuilder: RankBuilder {
         return []
     }
 
+    // MARK: Private
+
     private func build(for cards: [Card]) -> [Card] {
         var result: [Card] = []
         for i in 0 ..< cards.count {
@@ -99,7 +109,7 @@ class StraightFlushBuilder: RankBuilder {
             var count = 1
             for j in i + 1 ..< cards.count {
                 let number1 = cards[j].number
-                let number2 = cards[j-1].number
+                let number2 = cards[j - 1].number
                 if number1 == number2.next {
                     count += 1
                 } else {
@@ -108,13 +118,15 @@ class StraightFlushBuilder: RankBuilder {
             }
 
             if count == Card.HandCardsNumber {
-                result = Array(cards[i..<(count + i)])
+                result = Array(cards[i ..< (count + i)])
             }
         }
 
         return result
     }
 }
+
+// MARK: - FourKindBuilder
 
 class FourKindBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -146,6 +158,8 @@ class FourKindBuilder: RankBuilder {
         return []
     }
 }
+
+// MARK: - FullHouseBuilder
 
 class FullHouseBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -185,7 +199,7 @@ class FullHouseBuilder: RankBuilder {
         var _twoCards: [Card] = []
 
         if let _threeCards = threeCards.last {
-            _twoCards = Array(_threeCards[0..<2])
+            _twoCards = Array(_threeCards[0 ..< 2])
         }
 
         if let _lastTwoCards = twoCards.last {
@@ -199,6 +213,8 @@ class FullHouseBuilder: RankBuilder {
         return result.count == Card.HandCardsNumber ? result : []
     }
 }
+
+// MARK: - FlushBuilder
 
 class FlushBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -225,13 +241,17 @@ class FlushBuilder: RankBuilder {
             return []
         }
 
-        let result = Array(cards.filter { $0.kind == targetKind }.sorted().reversed()[0..<Card.HandCardsNumber])
+        let result = Array(cards.filter { $0.kind == targetKind }.sorted().reversed()[0 ..< Card.HandCardsNumber])
 
         return result
     }
 }
 
+// MARK: - StraightBuilder
+
 class StraightBuilder: RankBuilder {
+    // MARK: Internal
+
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
         let cards = privateCards + publicCards
         guard cards.count == Card.AllCardsTotalNumber else {
@@ -266,6 +286,8 @@ class StraightBuilder: RankBuilder {
         return []
     }
 
+    // MARK: Private
+
     private func build(for cards: [Card]) -> [Card] {
         var result: [Card] = []
         for i in 0 ..< cards.count {
@@ -295,6 +317,8 @@ class StraightBuilder: RankBuilder {
     }
 }
 
+// MARK: - ThreeKindBuilder
+
 class ThreeKindBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
         let cards = privateCards + publicCards
@@ -312,7 +336,7 @@ class ThreeKindBuilder: RankBuilder {
         for (key, val) in numbersCount {
             if val >= 3 {
                 number = key
-           }
+            }
         }
 
         guard let number else {
@@ -325,7 +349,7 @@ class ThreeKindBuilder: RankBuilder {
 
         var candidates = Array(cards.filter { $0.number != number }.sorted().reversed())
 
-        for _ in 0..<leftCount {
+        for _ in 0 ..< leftCount {
             if let first = candidates.first {
                 result.append(first)
                 candidates.removeFirst()
@@ -335,6 +359,8 @@ class ThreeKindBuilder: RankBuilder {
         return result
     }
 }
+
+// MARK: - TwoPairsBuilder
 
 class TwoPairsBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -379,6 +405,8 @@ class TwoPairsBuilder: RankBuilder {
     }
 }
 
+// MARK: - PairBuilder
+
 class PairBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
         let cards = privateCards + publicCards
@@ -416,11 +444,13 @@ class PairBuilder: RankBuilder {
 
         let leftCount = Card.HandCardsNumber - result.count
 
-        result.append(contentsOf: candidates[0..<leftCount])
+        result.append(contentsOf: candidates[0 ..< leftCount])
 
         return result
     }
 }
+
+// MARK: - HighCardBuilder
 
 class HighCardBuilder: RankBuilder {
     func build(privateCards: [Card], publicCards: [Card]) -> [Card] {
@@ -429,7 +459,7 @@ class HighCardBuilder: RankBuilder {
             return []
         }
 
-        let result = Array(cards.sorted().reversed()[0..<Card.HandCardsNumber])
+        let result = Array(cards.sorted().reversed()[0 ..< Card.HandCardsNumber])
 
         return result
     }
