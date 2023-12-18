@@ -15,11 +15,14 @@ class PublicCardsDetailsViewModel {
 
     init(rankManager: RankManager = DefaultRankManager(),
          privateCards: [Card?] = [nil, nil],
-         publicListCards: [ListCard?] = [nil, nil, nil, nil, nil])
+         publicListCards: [ListCard?] = [nil, nil, nil, nil, nil],
+         playersNumber: Int = 1)
     {
         self.rankManager = rankManager
         self.privateCards = privateCards
         self.publicListCards = publicListCards
+        self.playersNumber = playersNumber
+        playersNumberDouble = Double(playersNumber)
     }
 
     convenience init(board: Board) {
@@ -39,8 +42,15 @@ class PublicCardsDetailsViewModel {
 
     let rankManager: RankManager
 
+    var playersNumber: Int
     var privateCards: [Card?]
     var publicListCards: [ListCard?]
+
+    var playersNumberDouble: Double {
+        didSet {
+            playersNumber = Int(playersNumberDouble)
+        }
+    }
 
     var publicCards: [Card?] {
         publicListCards.map { listCard in

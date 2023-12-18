@@ -14,14 +14,27 @@ import SwiftUI
 class PrivateCardsViewModel {
     // MARK: Lifecycle
 
-    init(cards: [Card?] = [nil, nil]) {
+    init(rankManager: RankManager = DefaultRankManager(),
+         cards: [Card?] = [nil, nil],
+         playersNumber: Int = Board.MinPlayerNumber)
+    {
+        self.rankManager = rankManager
         self.cards = cards
+        self.playersNumber = playersNumber
+        playersNumberDigitalCrown = Double(playersNumber)
     }
 
     // MARK: Internal
 
+    var playersNumber: Int
     var cards: [Card?]
     var isCardSelected: [Bool] = [false, false]
+
+    var playersNumberDigitalCrown: Double {
+        didSet {
+            playersNumber = Int(playersNumberDigitalCrown)
+        }
+    }
 
     var firstCardValue: Double = 1 {
         didSet {
@@ -80,12 +93,12 @@ class PrivateCardsViewModel {
     }
 
     var winRate: Double {
-        1.0
+        rankManager.calculateWinRate(board: .init(privateCards: cards, publicCards: [], playersNumber: playersNumber))
     }
 
     var winRatePercent: String {
         let rate = Int(winRate * 100.0)
-        return "\(rate)%"
+        return "\(rate)% Win"
     }
 
     func resetCardSelected(forValue newValue: Bool) {
@@ -112,4 +125,8 @@ class PrivateCardsViewModel {
         resetCardSelected(forValue: false)
         isCardSelected[placeholderIndex] = true
     }
+
+    // MARK: Private
+
+    private let rankManager: RankManager
 }

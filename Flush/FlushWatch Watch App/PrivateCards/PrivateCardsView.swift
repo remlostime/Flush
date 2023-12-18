@@ -25,6 +25,14 @@ struct PrivateCardsView: View {
 
     var body: some View {
         VStack {
+            PlayersNumberView(number: viewModel.playersNumber)
+                .focusable()
+                .digitalCrownRotation($viewModel.playersNumberDigitalCrown,
+                                      from: Double(Board.MinPlayerNumber),
+                                      through: Double(Board.MaxPlayerNumber),
+                                      by: 1,
+                                      sensitivity: .low)
+
             HStack {
                 if let card = viewModel.firstCard {
                     CardView(card: card, isSelected: viewModel.isFirstCardSelected)
@@ -72,7 +80,9 @@ struct PrivateCardsView: View {
         }
         .padding()
         .onDisappear {
-            board = Board(privateCards: viewModel.cards, publicCards: board.publicCards)
+            board = Board(privateCards: viewModel.cards,
+                          publicCards: board.publicCards,
+                          playersNumber: viewModel.playersNumber)
         }
     }
 }

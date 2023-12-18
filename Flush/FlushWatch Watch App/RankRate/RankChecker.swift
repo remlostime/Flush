@@ -173,7 +173,7 @@ struct FullHouseChecker: RankChecker {
         let threeKindCount = counts[3] ?? 0
         let twoKindCount = counts[2] ?? 0
 
-        return threeKindCount > 0 && twoKindCount > 0
+        return threeKindCount >= 2 || (threeKindCount > 0 && twoKindCount > 0)
     }
 }
 
@@ -194,7 +194,7 @@ struct FlushChecker: RankChecker {
 
         for kind in Kind.allCases {
             let count = kindsCount[kind] ?? 0
-            if count == Card.HandCardsNumber {
+            if count >= Card.HandCardsNumber {
                 return true
             }
         }

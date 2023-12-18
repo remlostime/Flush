@@ -137,7 +137,7 @@ enum Kind: Int, CaseIterable {
 
 // MARK: - Card
 
-struct Card: Equatable, Hashable {
+struct Card: Equatable, Hashable, Comparable {
     // MARK: Lifecycle
 
     init(kind: Kind, number: Number) {
@@ -166,6 +166,10 @@ struct Card: Equatable, Hashable {
 
     let kind: Kind
     let number: Number
+
+    static func < (lhs: Card, rhs: Card) -> Bool {
+        lhs.number < rhs.number
+    }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
