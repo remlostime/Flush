@@ -63,12 +63,14 @@ class ResultViewModel {
     }
 
     var winRate: Double {
-        0.30
+        rankManager.calculateWinRate(board: Board(privateCards: privateCards,
+                                                  publicCards: publicCards,
+                                                  playersNumber: playersNumber))
     }
 
     var winRatePercent: String {
         let rate = Int(winRate * 100.0)
-        return "\(rate)%"
+        return "\(rate)% Win"
     }
 
     var rankRate: [RankRate] {

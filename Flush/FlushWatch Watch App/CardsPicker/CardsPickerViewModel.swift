@@ -13,7 +13,7 @@ class CardsPickerViewModel {
 
     init(privateCards: [ListCard?] = [nil, nil],
          publicCards: [ListCard?] = [nil, nil, nil, nil, nil],
-         playersNumber: Int = 1)
+         playersNumber: Int = 2)
     {
         privateListCards = privateCards
         publicListCards = publicCards
@@ -39,7 +39,8 @@ class CardsPickerViewModel {
         }
 
         self.init(privateCards: privateCards,
-                  publicCards: publicCards)
+                  publicCards: publicCards,
+                  playersNumber: board.playersNumber)
     }
 
     // MARK: Internal

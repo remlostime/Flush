@@ -21,7 +21,7 @@ struct Board {
 extension Board {
     static let initial = Board(privateCards: [nil, nil],
                                publicCards: [nil, nil, nil, nil, nil],
-                               playersNumber: 1)
+                               playersNumber: 2)
 }
 
 // MARK: - FlushWatch_Watch_AppApp
@@ -32,7 +32,10 @@ struct FlushWatch_Watch_AppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CardsPickerView(board: $board)
+            TabView {
+                CardsPickerView(board: $board)
+                ResultView(board: $board)
+            }
         }
     }
 }

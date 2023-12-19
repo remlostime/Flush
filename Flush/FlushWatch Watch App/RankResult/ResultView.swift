@@ -21,12 +21,15 @@ struct ResultView: View {
     @Binding var board: Board
 
     var body: some View {
-        VStack {
-            Text(viewModel.winRatePercent)
+        ScrollView {
+            VStack {
+                Text(viewModel.winRatePercent)
 
-            List(viewModel.rankRate) { rankRate in
-                RankRateView(rankRate: rankRate)
-                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                ForEach(viewModel.rankRate) { rankRate in
+                    RankRateView(rankRate: rankRate)
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .background(rankRate.rank.rawValue % 2 == 1 ? .secondary : Color.black)
+                }
             }
         }
         .padding()
