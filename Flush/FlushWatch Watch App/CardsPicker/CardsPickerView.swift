@@ -21,8 +21,10 @@ struct CardsPickerView: View {
     @Binding var board: Board
 
     var body: some View {
-        NavigationStack {
-            VStack {
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Players")
+                    .font(.footnote)
                 PlayersNumberView(number: viewModel.playersNumber)
                     .focusable()
                     .digitalCrownRotation($viewModel.playersNumberDigitalCrown,
@@ -30,47 +32,60 @@ struct CardsPickerView: View {
                                           through: Double(Board.MaxPlayerNumber),
                                           by: 1,
                                           sensitivity: .medium)
+            }
 
-                HStack {
-                    if let card = viewModel.privateCards[0] {
-                        CardView(card: card, isSelected: false)
-                    } else {
-                        PlaceholderView(isSelected: false)
-                    }
+            Spacer()
 
-                    if let card = viewModel.privateCards[1] {
-                        CardView(card: card, isSelected: false)
+            Label("Your Cards", systemImage: "lock")
+                .font(.footnote)
+
+            HStack {
+                ForEach(0 ..< viewModel.privateListCards.count, id: \.self) { index in
+                    if let privateCard = viewModel.privateListCards[index] {
+                        CardView(card: privateCard.card, isSelected: privateCard.isSelected)
+                            .onTapGesture {
+                                viewModel.didTapCard(index, cardType: .private)
+                            }
+                            .focusable()
+                            .digitalCrownRotation($viewModel.privateCardValues[index],
+                                                  from: 1,
+                                                  through: 14,
+                                                  by: 1,
+                                                  sensitivity: .medium)
                     } else {
-                        PlaceholderView(isSelected: false)
+                        PlaceholderView(isSelected: false, iconSize: 16.0)
+                            .onTapGesture {
+                                viewModel.didTapPlaceholderView(placeholderIndex: index, type: .private)
+                            }
                     }
                 }
+            }
 
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(0 ..< viewModel.publicListCards.count, id: \.self) { index in
-                            if let publicCard = viewModel.publicListCards[index] {
-                                CardView(card: publicCard.card, isSelected: publicCard.isSelected)
-                                    .onTapGesture {
-                                        viewModel.didTapCard(index)
-                                    }
-                                    .focusable()
-                                    .digitalCrownRotation($viewModel.cardValues[index],
-                                                          from: 1,
-                                                          through: 14,
-                                                          by: 1,
-                                                          sensitivity: .medium)
-                            } else {
-                                PlaceholderView(isSelected: false, iconSize: 16.0)
-                                    .onTapGesture {
-                                        viewModel.didTapPlaceholderView(placeholderIndex: index)
-                                    }
-                            }
+            Spacer()
+
+            Label("Public Cards", systemImage: "lock.open")
+                .font(.footnote)
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(0 ..< viewModel.publicListCards.count, id: \.self) { index in
+                        if let publicCard = viewModel.publicListCards[index] {
+                            CardView(card: publicCard.card, isSelected: publicCard.isSelected)
+                                .onTapGesture {
+                                    viewModel.didTapCard(index, cardType: .public)
+                                }
+                                .focusable()
+                                .digitalCrownRotation($viewModel.publicCardValues[index],
+                                                      from: 1,
+                                                      through: 14,
+                                                      by: 1,
+                                                      sensitivity: .medium)
+                        } else {
+                            PlaceholderView(isSelected: false, iconSize: 16.0)
+                                .onTapGesture {
+                                    viewModel.didTapPlaceholderView(placeholderIndex: index, type: .public)
+                                }
                         }
                     }
-                }
-
-                NavigationLink("Calculate") {
-                    ResultView(board: $board)
                 }
             }
         }
