@@ -131,7 +131,7 @@ class DefaultRankManager: RankManager {
 
     // MARK: Private
 
-    private let simulateTimes = 10000
+    private let simulateTimes = 1000
 
     private func compareCards(for rank: Rank) -> CompareCards {
         switch rank {

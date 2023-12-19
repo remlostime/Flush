@@ -1,5 +1,5 @@
 //
-//  PublicCardsDetailsViewModel.swift
+//  ResultViewModel.swift
 //  FlushWatch Watch App
 //
 //  Created by Kai Chen on 12/13/23.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-// MARK: - PublicCardsDetailsViewModel
+// MARK: - ResultViewModel
 
 @Observable
-class PublicCardsDetailsViewModel {
+class ResultViewModel {
     // MARK: Lifecycle
 
     init(rankManager: RankManager = DefaultRankManager(),
@@ -63,12 +63,14 @@ class PublicCardsDetailsViewModel {
     }
 
     var winRate: Double {
-        0.30
+        rankManager.calculateWinRate(board: Board(privateCards: privateCards,
+                                                  publicCards: publicCards,
+                                                  playersNumber: playersNumber))
     }
 
     var winRatePercent: String {
         let rate = Int(winRate * 100.0)
-        return "\(rate)%"
+        return "\(rate)% Win"
     }
 
     var rankRate: [RankRate] {
@@ -108,6 +110,6 @@ class PublicCardsDetailsViewModel {
     }
 }
 
-extension PublicCardsDetailsViewModel {
-    static let empty = PublicCardsDetailsViewModel()
+extension ResultViewModel {
+    static let empty = ResultViewModel()
 }
