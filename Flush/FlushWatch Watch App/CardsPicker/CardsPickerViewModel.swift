@@ -119,22 +119,42 @@ class CardsPickerViewModel {
     }
 
     func resetCardSelected(forValue newValue: Bool) {
-        publicListCards = publicListCards.map({ listCard in
+        publicListCards = publicListCards.map { listCard in
             guard let listCard else {
                 return nil
             }
 
             return ListCard(card: listCard.card, id: UUID(), isSelected: newValue)
-        })
+        }
 
-        privateListCards = privateListCards.map({ listCard in
+        privateListCards = privateListCards.map { listCard in
             guard let listCard else {
                 return nil
             }
 
             return ListCard(card: listCard.card, id: UUID(), isSelected: newValue)
-        })
+        }
     }
+
+    func didTapCard(_ cardIndex: Int, cardType: CardType) {
+        switch cardType {
+            case .private:
+                didTapCard(cardIndex, cards: &privateListCards)
+            case .public:
+                didTapCard(cardIndex, cards: &publicListCards)
+        }
+    }
+
+    func didTapPlaceholderView(placeholderIndex: Int, type: CardType) {
+        switch type {
+            case .private:
+                didTapPlaceholderView(index: placeholderIndex, cards: &privateListCards)
+            case .public:
+                didTapPlaceholderView(index: placeholderIndex, cards: &publicListCards)
+        }
+    }
+
+    // MARK: Private
 
     private func didTapCard(_ cardIndex: Int, cards: inout [ListCard?]) {
         guard let listCard = cards[cardIndex] else {
@@ -157,28 +177,10 @@ class CardsPickerViewModel {
         }
     }
 
-    func didTapCard(_ cardIndex: Int, cardType: CardType) {
-        switch cardType {
-        case .private:
-            didTapCard(cardIndex, cards: &privateListCards)
-        case .public:
-            didTapCard(cardIndex, cards: &publicListCards)
-        }
-    }
-
     private func didTapPlaceholderView(index: Int, cards: inout [ListCard?]) {
         resetCardSelected(forValue: false)
         var listCard = ListCard.initial
         listCard.isSelected = true
         cards[index] = listCard
-    }
-
-    func didTapPlaceholderView(placeholderIndex: Int, type: CardType) {
-        switch type {
-        case .private:
-            didTapPlaceholderView(index: placeholderIndex, cards: &privateListCards)
-        case .public:
-            didTapPlaceholderView(index: placeholderIndex, cards: &publicListCards)
-        }
     }
 }
