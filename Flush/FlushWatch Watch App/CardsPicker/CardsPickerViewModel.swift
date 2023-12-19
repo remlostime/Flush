@@ -110,15 +110,6 @@ class CardsPickerViewModel {
         }
     }
 
-    var winRate: Double {
-        0.30
-    }
-
-    var winRatePercent: String {
-        let rate = Int(winRate * 100.0)
-        return "\(rate)%"
-    }
-
     func resetCardSelected(forValue newValue: Bool) {
         publicListCards = publicListCards.map { listCard in
             guard let listCard else {

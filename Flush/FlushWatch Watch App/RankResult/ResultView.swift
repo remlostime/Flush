@@ -12,13 +12,15 @@ struct ResultView: View {
 
     init(board: Binding<Board>) {
         _board = board
-        viewModel = ResultViewModel(board: board.wrappedValue)
     }
 
     // MARK: Internal
 
-    @Bindable var viewModel: ResultViewModel
     @Binding var board: Board
+
+    var viewModel: ResultViewModel {
+        ResultViewModel(board: board)
+    }
 
     var body: some View {
         ScrollView {
@@ -33,11 +35,6 @@ struct ResultView: View {
             }
         }
         .padding()
-        .onDisappear {
-            board = Board(privateCards: viewModel.privateCards,
-                          publicCards: viewModel.publicCards,
-                          playersNumber: viewModel.playersNumber)
-        }
     }
 }
 

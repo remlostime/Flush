@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - ResultViewModel
 
@@ -13,59 +14,27 @@ import Foundation
 class ResultViewModel {
     // MARK: Lifecycle
 
-    init(rankManager: RankManager = DefaultRankManager(),
-         privateCards: [Card?] = [nil, nil],
-         publicListCards: [ListCard?] = [nil, nil, nil, nil, nil],
-         playersNumber: Int = 1)
-    {
+    init(board: Board, rankManager: RankManager = DefaultRankManager()) {
         self.rankManager = rankManager
-        self.privateCards = privateCards
-        self.publicListCards = publicListCards
-        self.playersNumber = playersNumber
-        playersNumberDouble = Double(playersNumber)
-    }
-
-    convenience init(board: Board) {
-        let publicListCards: [ListCard?] = board.publicCards.map { card in
-            if let card = card {
-                return ListCard(card: card, id: UUID(), isSelected: false)
-            } else {
-                return nil
-            }
-        }
-
-        self.init(privateCards: board.privateCards,
-                  publicListCards: publicListCards)
+        self.board = board
     }
 
     // MARK: Internal
 
+    let board: Board
+
     let rankManager: RankManager
 
-    var playersNumber: Int
-    var privateCards: [Card?]
-    var publicListCards: [ListCard?]
-
-    var playersNumberDouble: Double {
-        didSet {
-            playersNumber = Int(playersNumberDouble)
-        }
+    var privateCards: [Card?] {
+        board.privateCards
     }
 
     var publicCards: [Card?] {
-        publicListCards.map { listCard in
-            if let listCard = listCard {
-                return listCard.card
-            } else {
-                return nil
-            }
-        }
+        board.publicCards
     }
 
     var winRate: Double {
-        rankManager.calculateWinRate(board: Board(privateCards: privateCards,
-                                                  publicCards: publicCards,
-                                                  playersNumber: playersNumber))
+        rankManager.calculateWinRate(board: board)
     }
 
     var winRatePercent: String {
@@ -76,40 +45,8 @@ class ResultViewModel {
     var rankRate: [RankRate] {
         rankManager.calculateRankRate(privateCards: privateCards, publicCards: publicCards)
     }
-
-    func resetCardSelected(forValue newValue: Bool) {
-        for index in 0 ..< publicListCards.count {
-            publicListCards[index]?.isSelected = newValue
-        }
-    }
-
-    func didTapCard(_ cardIndex: Int) {
-        guard var publicCard = publicListCards[cardIndex] else {
-            return
-        }
-
-        let card = publicCard.card
-
-        // if `selected` then we update the `kind`
-        if publicCard.isSelected {
-            let newCard = Card(kind: card.kind.next, number: card.number)
-            publicListCards[cardIndex] = ListCard(card: newCard,
-                                                  id: publicCard.id,
-                                                  isSelected: publicCard.isSelected)
-        } else {
-            resetCardSelected(forValue: false)
-            publicCard.isSelected = true
-            publicListCards[cardIndex] = publicCard
-        }
-    }
-
-    func didTapPlaceholderView(placeholderIndex: Int) {
-        publicListCards[placeholderIndex] = ListCard.initial
-        resetCardSelected(forValue: false)
-        publicListCards[placeholderIndex]?.isSelected = true
-    }
 }
 
 extension ResultViewModel {
-    static let empty = ResultViewModel()
+    static let empty = ResultViewModel(board: .initial)
 }
