@@ -24,13 +24,14 @@ struct ResultView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 Text(viewModel.winRatePercent)
 
                 ForEach(viewModel.rankRate) { rankRate in
                     RankRateView(rankRate: rankRate)
-                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .background(rankRate.rank.rawValue % 2 == 1 ? .secondary : Color.black)
+                        .containerShape(.rect(cornerRadius: 5))
                 }
             }
         }
