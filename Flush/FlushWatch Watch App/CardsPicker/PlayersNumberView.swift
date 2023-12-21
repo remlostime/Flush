@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct PlayersNumberView: View {
-    @Binding var number: Double
-
-    private let imageSize: CGSize
-    private let font: Font
+    // MARK: Lifecycle
 
     init(number: Binding<Double>,
          imageSize: CGSize = .init(width: 40, height: 40),
-         font: Font = .system(size: 45)
-    ) {
+         font: Font = .system(size: 45))
+    {
         _number = number
         self.imageSize = imageSize
         self.font = font
     }
+
+    // MARK: Internal
+
+    @Binding var number: Double
 
     var playerNumber: Int {
         Int(number)
@@ -41,6 +42,11 @@ struct PlayersNumberView: View {
                               by: 1,
                               sensitivity: .medium)
     }
+
+    // MARK: Private
+
+    private let imageSize: CGSize
+    private let font: Font
 }
 
 #Preview {

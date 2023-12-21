@@ -43,7 +43,6 @@ struct CardPickerDetailsView: View {
                 }
             }
 
-
             CardView(card: listCard.card)
                 .frame(height: 60)
                 // TODO: - focus does not work
