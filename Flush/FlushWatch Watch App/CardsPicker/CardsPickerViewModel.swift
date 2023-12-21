@@ -50,24 +50,22 @@ class CardsPickerViewModel {
         case `private`
     }
 
-    private var cardType: CardType = .private
-    private var cardIndex: Int = 0
-
-    var currentSelectedCard: ListCard = .initial {
-        didSet {
-            switch cardType {
-            case .public:
-                publicListCards[cardIndex] = currentSelectedCard
-            case .private:
-                privateListCards[cardIndex] = currentSelectedCard
-            }
-        }
-    }
     var isSelectedCardViewPresented: Bool = false
 
     var playersNumber: Int
     var privateListCards: [ListCard?]
     var publicListCards: [ListCard?]
+
+    var currentSelectedCard: ListCard = .initial {
+        didSet {
+            switch cardType {
+                case .public:
+                    publicListCards[cardIndex] = currentSelectedCard
+                case .private:
+                    privateListCards[cardIndex] = currentSelectedCard
+            }
+        }
+    }
 
     var playersNumberDigitalCrown: Double {
         didSet {
@@ -108,6 +106,9 @@ class CardsPickerViewModel {
     }
 
     // MARK: Private
+
+    private var cardType: CardType = .private
+    private var cardIndex: Int = 0
 
     private func didTapCard(_ cardIndex: Int, cards: inout [ListCard?]) {
         let listCard = cards[cardIndex] ?? ListCard.initial

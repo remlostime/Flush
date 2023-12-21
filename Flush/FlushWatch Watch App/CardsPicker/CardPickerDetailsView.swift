@@ -8,18 +8,23 @@
 import SwiftUI
 
 struct CardPickerDetailsView: View {
+    // MARK: Lifecycle
+
+    init(listCard: Binding<ListCard>) {
+        _listCard = listCard
+//        cardValues = Double(listCard.card.number.rawValue.wrappedValue)
+    }
+
+    // MARK: Internal
+
     @Binding var listCard: ListCard
+
     @State var cardValues: Double = 1 {
         didSet {
             print(cardValues)
             let card = Card(kind: listCard.card.kind, number: Int(cardValues))
             listCard = ListCard(card: card, id: UUID())
         }
-    }
-
-    init(listCard: Binding<ListCard>) {
-        _listCard = listCard
-//        cardValues = Double(listCard.card.number.rawValue.wrappedValue)
     }
 
     var body: some View {
@@ -39,7 +44,7 @@ struct CardPickerDetailsView: View {
 
             CardView(card: listCard.card)
                 .frame(height: 80)
-                // TODO - focus does not work
+                // TODO: - focus does not work
                 .focusable()
                 .digitalCrownRotation($cardValues,
                                       from: 1,
