@@ -26,13 +26,15 @@ struct CardsPickerView: View {
                 HStack {
                     Text("Players")
                         .font(.footnote)
-                    PlayersNumberView(number: viewModel.playersNumber)
-                        .focusable()
-                        .digitalCrownRotation($viewModel.playersNumberDigitalCrown,
-                                              from: Double(Board.MinPlayerNumber),
-                                              through: Double(Board.MaxPlayerNumber),
-                                              by: 1,
-                                              sensitivity: .medium)
+                    PlayersNumberView(number: $viewModel.playersNumberDigitalCrown,
+                                      imageSize: .init(width: 14, height: 14),
+                                      font: .caption)
+                        .onTapGesture {
+                            viewModel.isPlayerNumberViewPresented.toggle()
+                        }
+                        .sheet(isPresented: $viewModel.isPlayerNumberViewPresented, content: {
+                            PlayersNumberView(number: $viewModel.playersNumberDigitalCrown)
+                        })
                 }
 
                 Label("Your Cards", systemImage: "lock")
@@ -118,7 +120,7 @@ struct CardsPickerView: View {
 
     // MARK: Private
 
-    private let cardHeight: CGFloat = 50
+    private let cardHeight: CGFloat = 60
 }
 
 #Preview {

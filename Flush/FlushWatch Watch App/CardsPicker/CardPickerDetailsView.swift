@@ -28,8 +28,8 @@ struct CardPickerDetailsView: View {
     }
 
     var body: some View {
-        VStack {
-            HStack {
+        VStack(spacing: 16) {
+            HStack(spacing: 16) {
                 ForEach(Kind.allCases, id: \.self) { kind in
                     Button(action: {
                         let card = Card(kind: kind, number: listCard.card.number)
@@ -37,13 +37,15 @@ struct CardPickerDetailsView: View {
                     }, label: {
                         Image(systemName: kind.imageName)
                             .foregroundStyle(kind.color)
+                            .imageScale(.large)
                     })
-                    .buttonBorderShape(.automatic)
+                    .buttonStyle(.borderless)
                 }
             }
 
+
             CardView(card: listCard.card)
-                .frame(height: 80)
+                .frame(height: 60)
                 // TODO: - focus does not work
                 .focusable()
                 .digitalCrownRotation($cardValues,
@@ -53,15 +55,16 @@ struct CardPickerDetailsView: View {
                                       sensitivity: .medium)
 
             ScrollView(.horizontal) {
-                HStack {
+                HStack(spacing: 8) {
                     ForEach(Number.allCases, id: \.self) { number in
                         Button(action: {
                             let card = Card(kind: listCard.card.kind, number: number)
                             listCard = ListCard(card: card, id: UUID())
                         }, label: {
                             Image(systemName: number.imageName)
+                                .imageScale(.large)
                         })
-                        .buttonBorderShape(.automatic)
+                        .buttonStyle(.borderless)
                     }
                 }
             }

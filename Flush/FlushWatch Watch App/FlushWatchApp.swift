@@ -21,7 +21,7 @@ struct Board {
 extension Board {
     static let initial = Board(privateCards: [nil, nil],
                                publicCards: [nil, nil, nil, nil, nil],
-                               playersNumber: 2)
+                               playersNumber: 5)
 }
 
 // MARK: - FlushWatch_Watch_AppApp
