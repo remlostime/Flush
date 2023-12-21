@@ -8,16 +8,47 @@
 import SwiftUI
 
 struct PlayersNumberView: View {
-    var number: Int
+    // MARK: Lifecycle
+
+    init(number: Binding<Double>,
+         imageSize: CGSize = .init(width: 40, height: 40),
+         font: Font = .system(size: 45))
+    {
+        _number = number
+        self.imageSize = imageSize
+        self.font = font
+    }
+
+    // MARK: Internal
+
+    @Binding var number: Double
+
+    var playerNumber: Int {
+        Int(number)
+    }
 
     var body: some View {
         HStack {
             Image(systemName: "person.crop.circle")
-            Text("\(number)")
+                .resizable()
+                .frame(width: imageSize.width, height: imageSize.height)
+            Text("\(playerNumber)")
+                .font(font)
         }
+        .focusable()
+        .digitalCrownRotation($number,
+                              from: Double(Board.MinPlayerNumber),
+                              through: Double(Board.MaxPlayerNumber),
+                              by: 1,
+                              sensitivity: .medium)
     }
+
+    // MARK: Private
+
+    private let imageSize: CGSize
+    private let font: Font
 }
 
 #Preview {
-    PlayersNumberView(number: 2)
+    PlayersNumberView(number: Binding<Double>.constant(2.0))
 }

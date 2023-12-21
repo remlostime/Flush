@@ -13,7 +13,7 @@ class CardsPickerViewModel {
 
     init(privateCards: [ListCard?] = [nil, nil],
          publicCards: [ListCard?] = [nil, nil, nil, nil, nil],
-         playersNumber: Int = 2)
+         playersNumber: Int = 5)
     {
         privateListCards = privateCards
         publicListCards = publicCards
@@ -52,6 +52,7 @@ class CardsPickerViewModel {
 
     var isResultViewPresented: Bool = false
     var isSelectedCardViewPresented: Bool = false
+    var isPlayerNumberViewPresented: Bool = false
 
     var playersNumber: Int
     var privateListCards: [ListCard?]
