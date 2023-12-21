@@ -24,7 +24,7 @@ class CardsPickerViewModel {
     convenience init(board: Board) {
         let publicCards: [ListCard?] = board.publicCards.map { card in
             if let card = card {
-                return ListCard(card: card, id: UUID(), isSelected: false)
+                return ListCard(card: card, id: UUID())
             } else {
                 return nil
             }
@@ -32,7 +32,7 @@ class CardsPickerViewModel {
 
         let privateCards: [ListCard?] = board.privateCards.map { card in
             if let card = card {
-                return ListCard(card: card, id: UUID(), isSelected: false)
+                return ListCard(card: card, id: UUID())
             } else {
                 return nil
             }
@@ -49,6 +49,21 @@ class CardsPickerViewModel {
         case `public`
         case `private`
     }
+
+    private var cardType: CardType = .private
+    private var cardIndex: Int = 0
+
+    var currentSelectedCard: ListCard = .initial {
+        didSet {
+            switch cardType {
+            case .public:
+                publicListCards[cardIndex] = currentSelectedCard
+            case .private:
+                privateListCards[cardIndex] = currentSelectedCard
+            }
+        }
+    }
+    var isSelectedCardViewPresented: Bool = false
 
     var playersNumber: Int
     var privateListCards: [ListCard?]
@@ -80,55 +95,10 @@ class CardsPickerViewModel {
         }
     }
 
-    var privateCardValues: [Double] = [1, 1] {
-        didSet {
-            privateListCards = privateListCards.map { listCard in
-                guard let listCard = listCard,
-                      let index = privateListCards.firstIndex(of: listCard)
-                else {
-                    return nil
-                }
-
-                let card = Card(kind: listCard.card.kind, number: Int(privateCardValues[index]))
-                return ListCard(card: card, id: listCard.id, isSelected: listCard.isSelected)
-            }
-        }
-    }
-
-    var publicCardValues: [Double] = [1, 1, 1, 1, 1] {
-        didSet {
-            publicListCards = publicListCards.map { listCard in
-                guard let listCard = listCard,
-                      let index = publicListCards.firstIndex(of: listCard)
-                else {
-                    return nil
-                }
-
-                let card = Card(kind: listCard.card.kind, number: Int(publicCardValues[index]))
-                return ListCard(card: card, id: listCard.id, isSelected: listCard.isSelected)
-            }
-        }
-    }
-
-    func resetCardSelected(forValue newValue: Bool) {
-        publicListCards = publicListCards.map { listCard in
-            guard let listCard else {
-                return nil
-            }
-
-            return ListCard(card: listCard.card, id: UUID(), isSelected: newValue)
-        }
-
-        privateListCards = privateListCards.map { listCard in
-            guard let listCard else {
-                return nil
-            }
-
-            return ListCard(card: listCard.card, id: UUID(), isSelected: newValue)
-        }
-    }
-
     func didTapCard(_ cardIndex: Int, cardType: CardType) {
+        self.cardType = cardType
+        self.cardIndex = cardIndex
+
         switch cardType {
             case .private:
                 didTapCard(cardIndex, cards: &privateListCards)
@@ -137,42 +107,13 @@ class CardsPickerViewModel {
         }
     }
 
-    func didTapPlaceholderView(placeholderIndex: Int, type: CardType) {
-        switch type {
-            case .private:
-                didTapPlaceholderView(index: placeholderIndex, cards: &privateListCards)
-            case .public:
-                didTapPlaceholderView(index: placeholderIndex, cards: &publicListCards)
-        }
-    }
-
     // MARK: Private
 
     private func didTapCard(_ cardIndex: Int, cards: inout [ListCard?]) {
-        guard let listCard = cards[cardIndex] else {
-            return
-        }
+        let listCard = cards[cardIndex] ?? ListCard.initial
+        cards[cardIndex] = listCard
 
-        let card = listCard.card
-
-        // if `selected` then we update the `kind`
-        if listCard.isSelected {
-            resetCardSelected(forValue: false)
-            let newCard = Card(kind: card.kind.next, number: card.number)
-            cards[cardIndex] = ListCard(card: newCard,
-                                        id: listCard.id,
-                                        isSelected: true)
-        } else {
-            resetCardSelected(forValue: false)
-            let updatedListCard = ListCard(card: listCard.card, id: listCard.id, isSelected: true)
-            cards[cardIndex] = updatedListCard
-        }
-    }
-
-    private func didTapPlaceholderView(index: Int, cards: inout [ListCard?]) {
-        resetCardSelected(forValue: false)
-        var listCard = ListCard.initial
-        listCard.isSelected = true
-        cards[index] = listCard
+        currentSelectedCard = listCard
+        isSelectedCardViewPresented = true
     }
 }

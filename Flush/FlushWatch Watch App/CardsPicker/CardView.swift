@@ -12,14 +12,11 @@ import SwiftUI
 struct CardView: View {
     // MARK: Lifecycle
 
-    init(card: Card, isSelected: Bool) {
+    init(card: Card) {
         self.card = card
-        self.isSelected = isSelected
     }
 
     // MARK: Internal
-
-    let isSelected: Bool
 
     let card: Card
 
@@ -33,24 +30,16 @@ struct CardView: View {
 
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5),
                              style: .circular)
-                .strokeBorder(isSelected ? .cyan : .primary, lineWidth: 1)
+                .strokeBorder(.primary)
                 .aspectRatio(0.74, contentMode: .fit)
         }
     }
 }
 
 #Preview("Heart-A") {
-    CardView(card: .heartA, isSelected: false)
+    CardView(card: .heartA)
 }
 
 #Preview("Spade-K") {
-    CardView(card: .spadeK, isSelected: true)
-}
-
-#Preview("Dimond-3") {
-    CardView(card: .dimond3, isSelected: false)
-}
-
-#Preview("Club-Q") {
-    CardView(card: .clubQ, isSelected: false)
+    CardView(card: .spadeK)
 }

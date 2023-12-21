@@ -29,6 +29,7 @@
 		470806E12B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */; };
 		470806E32B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */; };
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		471E63AE2B33A9C40067C020 /* CardPickerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */; };
 		475B6B7A2B2F88840094B4C0 /* CompareCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B6B792B2F88840094B4C0 /* CompareCards.swift */; };
 		475D33162B2BBB5700EAC209 /* RankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33152B2BBB5700EAC209 /* RankChecker.swift */; };
 		475D33192B2BBB9600EAC209 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33182B2BBB9600EAC209 /* RankManager.swift */; };
@@ -120,6 +121,7 @@
 		470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlushWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerDetailsView.swift; sourceTree = "<group>"; };
 		475B6B792B2F88840094B4C0 /* CompareCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCards.swift; sourceTree = "<group>"; };
 		475D33152B2BBB5700EAC209 /* RankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankChecker.swift; sourceTree = "<group>"; };
 		475D33182B2BBB9600EAC209 /* RankManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
@@ -181,7 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				470440442B2A72E100DF853A /* CardsPickerView.swift */,
+				475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */,
+				47A0FCC12B29351700F00760 /* PlaceholderView.swift */,
+				47A0FCBF2B2927F500F00760 /* CardView.swift */,
 				470440482B2A828200DF853A /* CardsPickerViewModel.swift */,
+				471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */,
 			);
 			path = CardsPicker;
 			sourceTree = "<group>";
@@ -189,21 +195,11 @@
 		470440552B2A836800DF853A /* RankResult */ = {
 			isa = PBXGroup;
 			children = (
+				470440422B2A6FFA00DF853A /* RankRateView.swift */,
 				470440462B2A819800DF853A /* ResultView.swift */,
 				4704404E2B2A82F200DF853A /* ResultViewModel.swift */,
 			);
 			path = RankResult;
-			sourceTree = "<group>";
-		};
-		470440562B2A837800DF853A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				47A0FCC12B29351700F00760 /* PlaceholderView.swift */,
-				47A0FCBF2B2927F500F00760 /* CardView.swift */,
-				470440422B2A6FFA00DF853A /* RankRateView.swift */,
-				475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		470440572B2A838600DF853A /* Model */ = {
@@ -293,7 +289,6 @@
 				475D33172B2BBB6600EAC209 /* RankRate */,
 				470440522B2A833500DF853A /* CardsPicker */,
 				470440552B2A836800DF853A /* RankResult */,
-				470440562B2A837800DF853A /* View */,
 				470440572B2A838600DF853A /* Model */,
 				470806C92B290945006F37E2 /* Assets.xcassets */,
 				470806CB2B290945006F37E2 /* Preview Content */,
@@ -600,6 +595,7 @@
 				475B6B7A2B2F88840094B4C0 /* CompareCards.swift in Sources */,
 				4704404D2B2A82B800DF853A /* Card.swift in Sources */,
 				47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */,
+				471E63AE2B33A9C40067C020 /* CardPickerDetailsView.swift in Sources */,
 				470440432B2A6FFA00DF853A /* RankRateView.swift in Sources */,
 				475D33192B2BBB9600EAC209 /* RankManager.swift in Sources */,
 				4704404F2B2A82F200DF853A /* ResultViewModel.swift in Sources */,
