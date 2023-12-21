@@ -50,6 +50,7 @@ class CardsPickerViewModel {
         case `private`
     }
 
+    var isResultViewPresented: Bool = false
     var isSelectedCardViewPresented: Bool = false
 
     var playersNumber: Int
@@ -103,6 +104,11 @@ class CardsPickerViewModel {
             case .public:
                 didTapCard(cardIndex, cards: &publicListCards)
         }
+    }
+
+    func reset() {
+        privateListCards = privateListCards.map { _ in nil }
+        publicListCards = publicListCards.map { _ in nil }
     }
 
     // MARK: Private
