@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CardsPickerView: View {
-    private let cardHeight: CGFloat = 50
-
     // MARK: Lifecycle
 
     init(board: Binding<Board>) {
@@ -36,7 +34,6 @@ struct CardsPickerView: View {
                                               by: 1,
                                               sensitivity: .medium)
                 }
-
 
                 Label("Your Cards", systemImage: "lock")
                     .font(.footnote)
@@ -118,6 +115,10 @@ struct CardsPickerView: View {
                           playersNumber: viewModel.playersNumber)
         }
     }
+
+    // MARK: Private
+
+    private let cardHeight: CGFloat = 50
 }
 
 #Preview {
