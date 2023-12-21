@@ -11,19 +11,17 @@ import Foundation
 struct ListCard: Identifiable, Hashable {
     // MARK: Lifecycle
 
-    init(card: Card, id: UUID, isSelected: Bool) {
+    init(card: Card, id: UUID) {
         self.card = card
         self.id = id
-        self.isSelected = isSelected
     }
 
     // MARK: Internal
 
-    static let initial = ListCard(card: .initialCard, id: UUID(), isSelected: false)
+    static let initial = ListCard(card: .initialCard, id: UUID())
 
     let card: Card
     let id: UUID
-    var isSelected: Bool
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

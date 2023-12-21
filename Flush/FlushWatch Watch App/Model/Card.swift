@@ -33,6 +33,37 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         return number
     }
 
+    var imageName: String {
+        switch self {
+            case .ace:
+                return "a.circle"
+            case .two:
+                return "2.circle"
+            case .three:
+                return "3.circle"
+            case .four:
+                return "4.circle"
+            case .five:
+                return "5.circle"
+            case .six:
+                return "6.circle"
+            case .seven:
+                return "7.circle"
+            case .eight:
+                return "8.circle"
+            case .nine:
+                return "9.circle"
+            case .ten:
+                return "10.circle"
+            case .jack:
+                return "j.circle"
+            case .queen:
+                return "q.circle"
+            case .king:
+                return "k.circle"
+        }
+    }
+
     var description: String {
         switch self {
             case .ace:
@@ -91,7 +122,7 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
 
 // MARK: - Kind
 
-enum Kind: Int, CaseIterable {
+enum Kind: Int, CaseIterable, Identifiable {
     case heart // 􀊼
     case spade // 􀊾
     case diamond // 􀊿
@@ -102,6 +133,10 @@ enum Kind: Int, CaseIterable {
     static var random: Kind {
         let value = Int.random(in: 0 ..< Kind.allCases.count)
         return Kind(rawValue: value) ?? .heart
+    }
+
+    var id: Int {
+        rawValue
     }
 
     var imageName: String {

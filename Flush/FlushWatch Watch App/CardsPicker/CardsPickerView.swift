@@ -42,20 +42,20 @@ struct CardsPickerView: View {
             HStack {
                 ForEach(0 ..< viewModel.privateListCards.count, id: \.self) { index in
                     if let privateCard = viewModel.privateListCards[index] {
-                        CardView(card: privateCard.card, isSelected: privateCard.isSelected)
+                        CardView(card: privateCard.card)
                             .onTapGesture {
                                 viewModel.didTapCard(index, cardType: .private)
                             }
-                            .focusable()
-                            .digitalCrownRotation($viewModel.privateCardValues[index],
-                                                  from: 1,
-                                                  through: 14,
-                                                  by: 1,
-                                                  sensitivity: .medium)
+                            .sheet(isPresented: $viewModel.isSelectedCardViewPresented) {
+                                CardPickerDetailsView(listCard: $viewModel.currentSelectedCard)
+                            }
                     } else {
-                        PlaceholderView(isSelected: false, iconSize: 16.0)
+                        PlaceholderView(iconSize: 16.0)
                             .onTapGesture {
-                                viewModel.didTapPlaceholderView(placeholderIndex: index, type: .private)
+                                viewModel.didTapCard(index, cardType: .private)
+                            }
+                            .sheet(isPresented: $viewModel.isSelectedCardViewPresented) {
+                                CardPickerDetailsView(listCard: $viewModel.currentSelectedCard)
                             }
                     }
                 }
@@ -69,20 +69,20 @@ struct CardsPickerView: View {
                 HStack {
                     ForEach(0 ..< viewModel.publicListCards.count, id: \.self) { index in
                         if let publicCard = viewModel.publicListCards[index] {
-                            CardView(card: publicCard.card, isSelected: publicCard.isSelected)
+                            CardView(card: publicCard.card)
                                 .onTapGesture {
                                     viewModel.didTapCard(index, cardType: .public)
                                 }
-                                .focusable()
-                                .digitalCrownRotation($viewModel.publicCardValues[index],
-                                                      from: 1,
-                                                      through: 14,
-                                                      by: 1,
-                                                      sensitivity: .medium)
+                                .sheet(isPresented: $viewModel.isSelectedCardViewPresented) {
+                                    CardPickerDetailsView(listCard: $viewModel.currentSelectedCard)
+                                }
                         } else {
-                            PlaceholderView(isSelected: false, iconSize: 16.0)
+                            PlaceholderView(iconSize: 16.0)
                                 .onTapGesture {
-                                    viewModel.didTapPlaceholderView(placeholderIndex: index, type: .public)
+                                    viewModel.didTapCard(index, cardType: .public)
+                                }
+                                .sheet(isPresented: $viewModel.isSelectedCardViewPresented) {
+                                    CardPickerDetailsView(listCard: $viewModel.currentSelectedCard)
                                 }
                         }
                     }
