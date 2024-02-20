@@ -10,28 +10,36 @@ import FlushModel
 
 // MARK: - RankRate
 
-struct RankRate: Identifiable {
-    let rank: Rank
-    let rate: Double
+public struct RankRate: Identifiable {
+    public let rank: Rank
+    public let rate: Double
 
-    var id: Rank {
+    public var id: Rank {
         rank
+    }
+    
+    public init(rank: Rank, rate: Double) {
+        self.rank = rank
+        self.rate = rate
     }
 }
 
 // MARK: - RankManager
 
-protocol RankManager {
+public protocol RankManager {
     func calculateRankRate(privateCards: [Card?], publicCards: [Card?]) -> [RankRate]
     func calculateWinRate(board: Board) -> Double
 }
 
 // MARK: - DefaultRankManager
 
-class DefaultRankManager: RankManager {
+public class DefaultRankManager: RankManager {
+    public init() {
+    }
+    
     // MARK: Internal
 
-    func rankChecker(for rank: Rank) -> RankChecker {
+    private func rankChecker(for rank: Rank) -> RankChecker {
         switch rank {
             case .royalFlush:
                 return RoyalFlushChecker()
@@ -56,7 +64,7 @@ class DefaultRankManager: RankManager {
         }
     }
 
-    func rankBuilder(for rank: Rank) -> RankBuilder {
+    private func rankBuilder(for rank: Rank) -> RankBuilder {
         switch rank {
             case .royalFlush:
                 return RoyalFlushBuilder()
@@ -81,7 +89,7 @@ class DefaultRankManager: RankManager {
         }
     }
 
-    func calculateRankRate(privateCards: [Card?], publicCards: [Card?]) -> [RankRate] {
+    public func calculateRankRate(privateCards: [Card?], publicCards: [Card?]) -> [RankRate] {
         let ranks = Rank.allCases
         var rankRateCount: [Rank: Int] = [:]
 
@@ -111,7 +119,7 @@ class DefaultRankManager: RankManager {
         return rankRate
     }
 
-    func calculateWinRate(board: Board) -> Double {
+    public func calculateWinRate(board: Board) -> Double {
         var count = 0
         for _ in 0 ..< simulateTimes {
             let (privateCards, publicCards, otherPlayersCards) = simulatePossibleCards(board: board)

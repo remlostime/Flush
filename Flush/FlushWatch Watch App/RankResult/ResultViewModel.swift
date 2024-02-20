@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import FlushModel
+import RankRateService
 
 // MARK: - ResultViewModel
 
