@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Number
 
-enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
+public enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
     case ace = 1
     case two
     case three
@@ -33,7 +33,7 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         return number
     }
 
-    var imageName: String {
+    public var imageName: String {
         switch self {
             case .ace:
                 return "a.circle"
@@ -64,7 +64,7 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         }
     }
 
-    var description: String {
+    public var description: String {
         switch self {
             case .ace:
                 return "A"
@@ -95,11 +95,11 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         }
     }
 
-    var cardNumber: String {
+    public var cardNumber: String {
         description
     }
 
-    var next: Number {
+    public var next: Number {
         if self == .king {
             return .ace
         }
@@ -107,7 +107,7 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
         return Number(rawValue: rawValue + 1) ?? .ace
     }
 
-    static func < (lhs: Number, rhs: Number) -> Bool {
+    public static func < (lhs: Number, rhs: Number) -> Bool {
         if lhs == .ace {
             return false
         }
@@ -122,7 +122,7 @@ enum Number: Int, CustomStringConvertible, CaseIterable, Equatable, Comparable {
 
 // MARK: - Kind
 
-enum Kind: Int, CaseIterable, Identifiable {
+public enum Kind: Int, CaseIterable, Identifiable {
     case heart // 􀊼
     case spade // 􀊾
     case diamond // 􀊿
@@ -135,11 +135,11 @@ enum Kind: Int, CaseIterable, Identifiable {
         return Kind(rawValue: value) ?? .heart
     }
 
-    var id: Int {
+    public var id: Int {
         rawValue
     }
 
-    var imageName: String {
+    public var imageName: String {
         switch self {
             case .spade:
                 return "suit.spade.fill"
@@ -152,7 +152,7 @@ enum Kind: Int, CaseIterable, Identifiable {
         }
     }
 
-    var color: Color {
+    public var color: Color {
         switch self {
             case .spade, .club:
                 return .primary
@@ -172,50 +172,50 @@ enum Kind: Int, CaseIterable, Identifiable {
 
 // MARK: - Card
 
-struct Card: Equatable, Hashable, Comparable {
+public struct Card: Equatable, Hashable, Comparable {
     // MARK: Lifecycle
 
-    init(kind: Kind, number: Number) {
+    public init(kind: Kind, number: Number) {
         self.kind = kind
         self.number = number
     }
 
-    init(kind: Kind, number: Int) {
+    public init(kind: Kind, number: Int) {
         self.kind = kind
         self.number = Number(rawValue: number) ?? .ace
     }
 
     // MARK: Internal
 
-    static let PrivateCardsTotalNumber = 2
-    static let PublicCardsTotalNumber = 5
-    static let HandCardsNumber = 5
+    public static let PrivateCardsTotalNumber = 2
+    public static let PublicCardsTotalNumber = 5
+    public static let HandCardsNumber = 5
 
-    static var random: Card {
+    public static var random: Card {
         Card(kind: Kind.random, number: Number.random)
     }
 
-    static var AllCardsTotalNumber: Int {
+    public static var AllCardsTotalNumber: Int {
         PrivateCardsTotalNumber + PublicCardsTotalNumber
     }
 
-    let kind: Kind
-    let number: Number
+    public let kind: Kind
+    public let number: Number
 
-    static func < (lhs: Card, rhs: Card) -> Bool {
+    public static func < (lhs: Card, rhs: Card) -> Bool {
         lhs.number < rhs.number
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
         hasher.combine(number)
     }
 }
 
 extension Card {
-    static let heartA = Card(kind: .heart, number: .ace)
-    static let spadeK = Card(kind: .spade, number: .king)
-    static let dimond3 = Card(kind: .diamond, number: .three)
-    static let clubQ = Card(kind: .club, number: .queen)
-    static let initialCard = heartA
+    public static let heartA = Card(kind: .heart, number: .ace)
+    public static let spadeK = Card(kind: .spade, number: .king)
+    public static let dimond3 = Card(kind: .diamond, number: .three)
+    public static let clubQ = Card(kind: .club, number: .queen)
+    public static let initialCard = heartA
 }

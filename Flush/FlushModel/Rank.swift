@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Rank
 
-enum Rank: Int, CustomStringConvertible, Identifiable, CaseIterable {
+public enum Rank: Int, CustomStringConvertible, Identifiable, CaseIterable {
     case royalFlush
     case straightFlush
     case fourKind
@@ -23,11 +23,11 @@ enum Rank: Int, CustomStringConvertible, Identifiable, CaseIterable {
 
     // MARK: Internal
 
-    var id: Int {
+    public var id: Int {
         rawValue
     }
 
-    var description: String {
+    public var description: String {
         switch self {
             case .royalFlush:
                 return "Royal Flush"

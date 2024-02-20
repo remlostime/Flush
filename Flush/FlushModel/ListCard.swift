@@ -8,22 +8,22 @@
 import Foundation
 
 // wrapper for `Card` which can be used in List
-struct ListCard: Identifiable, Hashable {
+public struct ListCard: Identifiable, Hashable {
     // MARK: Lifecycle
 
-    init(card: Card, id: UUID) {
+    public init(card: Card, id: UUID) {
         self.card = card
         self.id = id
     }
 
     // MARK: Internal
 
-    static let initial = ListCard(card: .initialCard, id: UUID())
+    public static let initial = ListCard(card: .initialCard, id: UUID())
 
-    let card: Card
-    let id: UUID
+    public let card: Card
+    public let id: UUID
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
