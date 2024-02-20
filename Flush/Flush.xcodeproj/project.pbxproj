@@ -11,10 +11,7 @@
 		470440452B2A72E100DF853A /* CardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470440442B2A72E100DF853A /* CardsPickerView.swift */; };
 		470440472B2A819800DF853A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470440462B2A819800DF853A /* ResultView.swift */; };
 		470440492B2A828200DF853A /* CardsPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470440482B2A828200DF853A /* CardsPickerViewModel.swift */; };
-		4704404B2B2A82A800DF853A /* ListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704404A2B2A82A800DF853A /* ListCard.swift */; };
-		4704404D2B2A82B800DF853A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704404C2B2A82B800DF853A /* Card.swift */; };
 		4704404F2B2A82F200DF853A /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704404E2B2A82F200DF853A /* ResultViewModel.swift */; };
-		4704405B2B2AB17600DF853A /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704405A2B2AB17600DF853A /* Rank.swift */; };
 		470806952B290820006F37E2 /* FlushApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806942B290820006F37E2 /* FlushApp.swift */; };
 		470806972B290820006F37E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806962B290820006F37E2 /* ContentView.swift */; };
 		470806992B290821006F37E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 470806982B290821006F37E2 /* Assets.xcassets */; };
@@ -37,6 +34,16 @@
 		475D331D2B2D2EA300EAC209 /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331C2B2D2EA300EAC209 /* NumberTests.swift */; };
 		475D331F2B2E3B8400EAC209 /* PlayersNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */; };
 		475D33212B2E759B00EAC209 /* RankBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33202B2E759B00EAC209 /* RankBuilder.swift */; };
+		476253182B8434B90014D6C3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 476253172B8434B90014D6C3 /* ComposableArchitecture */; };
+		476253262B8435DC0014D6C3 /* FlushUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762531E2B8435DC0014D6C3 /* FlushUI.framework */; };
+		4762532B2B8435DC0014D6C3 /* FlushUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762532A2B8435DC0014D6C3 /* FlushUITests.swift */; };
+		4762532C2B8435DC0014D6C3 /* FlushUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 476253202B8435DC0014D6C3 /* FlushUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		476253442B84377D0014D6C3 /* FlushModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762533C2B84377D0014D6C3 /* FlushModel.framework */; };
+		476253492B84377D0014D6C3 /* FlushModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476253482B84377D0014D6C3 /* FlushModelTests.swift */; };
+		4762534A2B84377D0014D6C3 /* FlushModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4762533E2B84377D0014D6C3 /* FlushModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		476253512B8437C10014D6C3 /* ListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704404A2B2A82A800DF853A /* ListCard.swift */; };
+		476253522B8437C10014D6C3 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704405A2B2AB17600DF853A /* Rank.swift */; };
+		476253532B8437C10014D6C3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4704404C2B2A82B800DF853A /* Card.swift */; };
 		47A0FCC02B2927F500F00760 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCBF2B2927F500F00760 /* CardView.swift */; };
 		47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0FCC12B29351700F00760 /* PlaceholderView.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +83,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 470806C22B290944006F37E2;
 			remoteInfo = "FlushWatch Watch App";
+		};
+		476253272B8435DC0014D6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
+			remoteInfo = FlushUI;
+		};
+		476253332B8436260014D6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
+			remoteInfo = FlushUI;
+		};
+		476253352B84368D0014D6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
+			remoteInfo = FlushUI;
+		};
+		476253452B84377D0014D6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762533B2B84377D0014D6C3;
+			remoteInfo = FlushModel;
+		};
+		476253542B8437EB0014D6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762533B2B84377D0014D6C3;
+			remoteInfo = FlushModel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -129,6 +171,14 @@
 		475D331C2B2D2EA300EAC209 /* NumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTests.swift; sourceTree = "<group>"; };
 		475D331E2B2E3B8400EAC209 /* PlayersNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersNumberView.swift; sourceTree = "<group>"; };
 		475D33202B2E759B00EAC209 /* RankBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankBuilder.swift; sourceTree = "<group>"; };
+		4762531E2B8435DC0014D6C3 /* FlushUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlushUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		476253202B8435DC0014D6C3 /* FlushUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlushUI.h; sourceTree = "<group>"; };
+		476253252B8435DC0014D6C3 /* FlushUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlushUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4762532A2B8435DC0014D6C3 /* FlushUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushUITests.swift; sourceTree = "<group>"; };
+		4762533C2B84377D0014D6C3 /* FlushModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlushModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4762533E2B84377D0014D6C3 /* FlushModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlushModel.h; sourceTree = "<group>"; };
+		476253432B84377D0014D6C3 /* FlushModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlushModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		476253482B84377D0014D6C3 /* FlushModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushModelTests.swift; sourceTree = "<group>"; };
 		47A0FCBF2B2927F500F00760 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		47A0FCC12B29351700F00760 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				476253182B8434B90014D6C3 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +227,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4762531B2B8435DC0014D6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253222B8435DC0014D6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				476253262B8435DC0014D6C3 /* FlushUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253392B84377D0014D6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253402B84377D0014D6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				476253442B84377D0014D6C3 /* FlushModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -202,16 +283,6 @@
 			path = RankResult;
 			sourceTree = "<group>";
 		};
-		470440572B2A838600DF853A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4704404A2B2A82A800DF853A /* ListCard.swift */,
-				4704404C2B2A82B800DF853A /* Card.swift */,
-				4704405A2B2AB17600DF853A /* Rank.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		470806882B290820006F37E2 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +292,10 @@
 				470806C42B290944006F37E2 /* FlushWatch Watch App */,
 				470806D52B290945006F37E2 /* FlushWatch Watch AppTests */,
 				470806DF2B290945006F37E2 /* FlushWatch Watch AppUITests */,
+				4762531F2B8435DC0014D6C3 /* FlushUI */,
+				476253292B8435DC0014D6C3 /* FlushUITests */,
+				4762533D2B84377D0014D6C3 /* FlushModel */,
+				476253472B84377D0014D6C3 /* FlushModelTests */,
 				470806922B290820006F37E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -234,6 +309,10 @@
 				470806C32B290944006F37E2 /* FlushWatch Watch App.app */,
 				470806D22B290945006F37E2 /* FlushWatch Watch AppTests.xctest */,
 				470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */,
+				4762531E2B8435DC0014D6C3 /* FlushUI.framework */,
+				476253252B8435DC0014D6C3 /* FlushUITests.xctest */,
+				4762533C2B84377D0014D6C3 /* FlushModel.framework */,
+				476253432B84377D0014D6C3 /* FlushModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,7 +322,6 @@
 			children = (
 				470806942B290820006F37E2 /* FlushApp.swift */,
 				470806962B290820006F37E2 /* ContentView.swift */,
-				470806BE2B290841006F37E2 /* New Group */,
 				470806982B290821006F37E2 /* Assets.xcassets */,
 				4708069A2B290821006F37E2 /* Preview Content */,
 			);
@@ -275,13 +353,6 @@
 			path = FlushUITests;
 			sourceTree = "<group>";
 		};
-		470806BE2B290841006F37E2 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		470806C42B290944006F37E2 /* FlushWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +360,6 @@
 				475D33172B2BBB6600EAC209 /* RankRate */,
 				470440522B2A833500DF853A /* CardsPicker */,
 				470440552B2A836800DF853A /* RankResult */,
-				470440572B2A838600DF853A /* Model */,
 				470806C92B290945006F37E2 /* Assets.xcassets */,
 				470806CB2B290945006F37E2 /* Preview Content */,
 			);
@@ -334,7 +404,61 @@
 			path = RankRate;
 			sourceTree = "<group>";
 		};
+		4762531F2B8435DC0014D6C3 /* FlushUI */ = {
+			isa = PBXGroup;
+			children = (
+				476253202B8435DC0014D6C3 /* FlushUI.h */,
+			);
+			path = FlushUI;
+			sourceTree = "<group>";
+		};
+		476253292B8435DC0014D6C3 /* FlushUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4762532A2B8435DC0014D6C3 /* FlushUITests.swift */,
+			);
+			path = FlushUITests;
+			sourceTree = "<group>";
+		};
+		4762533D2B84377D0014D6C3 /* FlushModel */ = {
+			isa = PBXGroup;
+			children = (
+				4704404A2B2A82A800DF853A /* ListCard.swift */,
+				4704404C2B2A82B800DF853A /* Card.swift */,
+				4704405A2B2AB17600DF853A /* Rank.swift */,
+				4762533E2B84377D0014D6C3 /* FlushModel.h */,
+			);
+			path = FlushModel;
+			sourceTree = "<group>";
+		};
+		476253472B84377D0014D6C3 /* FlushModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				476253482B84377D0014D6C3 /* FlushModelTests.swift */,
+			);
+			path = FlushModelTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		476253192B8435DC0014D6C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4762532C2B8435DC0014D6C3 /* FlushUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253372B84377D0014D6C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4762534A2B84377D0014D6C3 /* FlushModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		470806902B290820006F37E2 /* Flush */ = {
@@ -349,9 +473,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				476253362B84368D0014D6C3 /* PBXTargetDependency */,
 				470806E52B290945006F37E2 /* PBXTargetDependency */,
 			);
 			name = Flush;
+			packageProductDependencies = (
+				476253172B8434B90014D6C3 /* ComposableArchitecture */,
+			);
 			productName = Flush;
 			productReference = 470806912B290820006F37E2 /* Flush.app */;
 			productType = "com.apple.product-type.application";
@@ -403,6 +531,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				476253552B8437EB0014D6C3 /* PBXTargetDependency */,
+				476253342B8436260014D6C3 /* PBXTargetDependency */,
 			);
 			name = "FlushWatch Watch App";
 			packageProductDependencies = (
@@ -447,6 +577,78 @@
 			productReference = 470806DC2B290945006F37E2 /* FlushWatch Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4762531D2B8435DC0014D6C3 /* FlushUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4762532D2B8435DC0014D6C3 /* Build configuration list for PBXNativeTarget "FlushUI" */;
+			buildPhases = (
+				476253192B8435DC0014D6C3 /* Headers */,
+				4762531A2B8435DC0014D6C3 /* Sources */,
+				4762531B2B8435DC0014D6C3 /* Frameworks */,
+				4762531C2B8435DC0014D6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlushUI;
+			productName = FlushUI;
+			productReference = 4762531E2B8435DC0014D6C3 /* FlushUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		476253242B8435DC0014D6C3 /* FlushUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 476253302B8435DC0014D6C3 /* Build configuration list for PBXNativeTarget "FlushUITests" */;
+			buildPhases = (
+				476253212B8435DC0014D6C3 /* Sources */,
+				476253222B8435DC0014D6C3 /* Frameworks */,
+				476253232B8435DC0014D6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				476253282B8435DC0014D6C3 /* PBXTargetDependency */,
+			);
+			name = FlushUITests;
+			productName = FlushUITests;
+			productReference = 476253252B8435DC0014D6C3 /* FlushUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4762533B2B84377D0014D6C3 /* FlushModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4762534B2B84377D0014D6C3 /* Build configuration list for PBXNativeTarget "FlushModel" */;
+			buildPhases = (
+				476253372B84377D0014D6C3 /* Headers */,
+				476253382B84377D0014D6C3 /* Sources */,
+				476253392B84377D0014D6C3 /* Frameworks */,
+				4762533A2B84377D0014D6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlushModel;
+			productName = FlushModel;
+			productReference = 4762533C2B84377D0014D6C3 /* FlushModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		476253422B84377D0014D6C3 /* FlushModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4762534E2B84377D0014D6C3 /* Build configuration list for PBXNativeTarget "FlushModelTests" */;
+			buildPhases = (
+				4762533F2B84377D0014D6C3 /* Sources */,
+				476253402B84377D0014D6C3 /* Frameworks */,
+				476253412B84377D0014D6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				476253462B84377D0014D6C3 /* PBXTargetDependency */,
+			);
+			name = FlushModelTests;
+			productName = FlushModelTests;
+			productReference = 476253432B84377D0014D6C3 /* FlushModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -479,6 +681,18 @@
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 470806C22B290944006F37E2;
 					};
+					4762531D2B8435DC0014D6C3 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					476253242B8435DC0014D6C3 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					4762533B2B84377D0014D6C3 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					476253422B84377D0014D6C3 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 				};
 			};
 			buildConfigurationList = 4708068C2B290820006F37E2 /* Build configuration list for PBXProject "Flush" */;
@@ -491,6 +705,7 @@
 			);
 			mainGroup = 470806882B290820006F37E2;
 			packageReferences = (
+				476253162B8434B90014D6C3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 470806922B290820006F37E2 /* Products */;
 			projectDirPath = "";
@@ -502,6 +717,10 @@
 				470806C22B290944006F37E2 /* FlushWatch Watch App */,
 				470806D12B290945006F37E2 /* FlushWatch Watch AppTests */,
 				470806DB2B290945006F37E2 /* FlushWatch Watch AppUITests */,
+				4762531D2B8435DC0014D6C3 /* FlushUI */,
+				476253242B8435DC0014D6C3 /* FlushUITests */,
+				4762533B2B84377D0014D6C3 /* FlushModel */,
+				476253422B84377D0014D6C3 /* FlushModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -553,6 +772,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4762531C2B8435DC0014D6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253232B8435DC0014D6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4762533A2B84377D0014D6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253412B84377D0014D6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -588,12 +835,9 @@
 			files = (
 				475D331F2B2E3B8400EAC209 /* PlayersNumberView.swift in Sources */,
 				470440472B2A819800DF853A /* ResultView.swift in Sources */,
-				4704405B2B2AB17600DF853A /* Rank.swift in Sources */,
-				4704404B2B2A82A800DF853A /* ListCard.swift in Sources */,
 				470440492B2A828200DF853A /* CardsPickerViewModel.swift in Sources */,
 				47A0FCC02B2927F500F00760 /* CardView.swift in Sources */,
 				475B6B7A2B2F88840094B4C0 /* CompareCards.swift in Sources */,
-				4704404D2B2A82B800DF853A /* Card.swift in Sources */,
 				47A0FCC22B29351700F00760 /* PlaceholderView.swift in Sources */,
 				471E63AE2B33A9C40067C020 /* CardPickerDetailsView.swift in Sources */,
 				470440432B2A6FFA00DF853A /* RankRateView.swift in Sources */,
@@ -625,6 +869,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4762531A2B8435DC0014D6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253212B8435DC0014D6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4762532B2B8435DC0014D6C3 /* FlushUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		476253382B84377D0014D6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				476253512B8437C10014D6C3 /* ListCard.swift in Sources */,
+				476253532B8437C10014D6C3 /* Card.swift in Sources */,
+				476253522B8437C10014D6C3 /* Rank.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4762533F2B84377D0014D6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				476253492B84377D0014D6C3 /* FlushModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -652,6 +929,31 @@
 			isa = PBXTargetDependency;
 			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
 			targetProxy = 470806E42B290945006F37E2 /* PBXContainerItemProxy */;
+		};
+		476253282B8435DC0014D6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
+			targetProxy = 476253272B8435DC0014D6C3 /* PBXContainerItemProxy */;
+		};
+		476253342B8436260014D6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
+			targetProxy = 476253332B8436260014D6C3 /* PBXContainerItemProxy */;
+		};
+		476253362B84368D0014D6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
+			targetProxy = 476253352B84368D0014D6C3 /* PBXContainerItemProxy */;
+		};
+		476253462B84377D0014D6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762533B2B84377D0014D6C3 /* FlushModel */;
+			targetProxy = 476253452B84377D0014D6C3 /* PBXContainerItemProxy */;
+		};
+		476253552B8437EB0014D6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762533B2B84377D0014D6C3 /* FlushModel */;
+			targetProxy = 476253542B8437EB0014D6C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1053,6 +1355,220 @@
 			};
 			name = Release;
 		};
+		4762532E2B8435DC0014D6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,4";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		4762532F2B8435DC0014D6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,4";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		476253312B8435DC0014D6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		476253322B8435DC0014D6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		4762534C2B84377D0014D6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		4762534D2B84377D0014D6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		4762534F2B84377D0014D6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		476253502B84377D0014D6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1119,7 +1635,62 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4762532D2B8435DC0014D6C3 /* Build configuration list for PBXNativeTarget "FlushUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4762532E2B8435DC0014D6C3 /* Debug */,
+				4762532F2B8435DC0014D6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		476253302B8435DC0014D6C3 /* Build configuration list for PBXNativeTarget "FlushUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				476253312B8435DC0014D6C3 /* Debug */,
+				476253322B8435DC0014D6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4762534B2B84377D0014D6C3 /* Build configuration list for PBXNativeTarget "FlushModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4762534C2B84377D0014D6C3 /* Debug */,
+				4762534D2B84377D0014D6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4762534E2B84377D0014D6C3 /* Build configuration list for PBXNativeTarget "FlushModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4762534F2B84377D0014D6C3 /* Debug */,
+				476253502B84377D0014D6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		476253162B8434B90014D6C3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		476253172B8434B90014D6C3 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 476253162B8434B90014D6C3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 470806892B290820006F37E2 /* Project object */;
 }
