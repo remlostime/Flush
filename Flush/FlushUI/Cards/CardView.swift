@@ -10,10 +10,10 @@ import FlushModel
 
 // MARK: - CardView
 
-struct CardView: View {
+public struct CardView: View {
     // MARK: Lifecycle
 
-    init(card: Card) {
+    public init(card: Card) {
         self.card = card
     }
 
@@ -21,7 +21,7 @@ struct CardView: View {
 
     let card: Card
 
-    var body: some View {
+    public var body: some View {
         ZStack {
             VStack {
                 Text(card.number.cardNumber)

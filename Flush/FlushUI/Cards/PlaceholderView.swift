@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct PlaceholderView: View {
+public struct PlaceholderView: View {
     // MARK: Lifecycle
 
-    init(iconSize: CGFloat = 32.0) {
+    public init(iconSize: CGFloat = 32.0) {
         self.iconSize = iconSize
     }
 
@@ -18,7 +18,7 @@ struct PlaceholderView: View {
 
     let iconSize: CGFloat
 
-    var body: some View {
+    public var body: some View {
         ZStack {
             Image(systemName: "plus.circle.fill")
                 .foregroundColor(.primary)

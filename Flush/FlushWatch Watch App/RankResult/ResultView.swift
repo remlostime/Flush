@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FlushUI
+import FlushModel
 
 struct ResultView: View {
     // MARK: Lifecycle

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RankRateService
 
 extension Double {
     var percentage: String {
@@ -16,10 +17,10 @@ extension Double {
 
 // MARK: - RankRateView
 
-struct RankRateView: View {
+public struct RankRateView: View {
     let rankRate: RankRate
 
-    var body: some View {
+    public var body: some View {
         HStack {
             Text(rankRate.rank.description)
             Spacer()

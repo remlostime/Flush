@@ -8,10 +8,27 @@
 import SwiftUI
 import FlushModel
 
-struct CardPickerDetailsView: View {
+extension View {
+    func digitalCrownRotation(value: Binding<Double>) -> some View {
+        /* Fix this func
+        if #available(watchOS 9.0, *) {
+            return self.digitalCrownRotation($value,
+                                             from: 1,
+                                             through: 14,
+                                             by: 1,
+                                             sensitivity: .medium)
+        } else {
+            return self
+        }
+         */
+        return self
+    }
+}
+
+public struct CardPickerDetailsView: View {
     // MARK: Lifecycle
 
-    init(listCard: Binding<ListCard>) {
+    public init(listCard: Binding<ListCard>) {
         _listCard = listCard
 //        cardValues = Double(listCard.card.number.rawValue.wrappedValue)
     }
@@ -28,7 +45,7 @@ struct CardPickerDetailsView: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
                 ForEach(Kind.allCases, id: \.self) { kind in
@@ -48,11 +65,7 @@ struct CardPickerDetailsView: View {
                 .frame(height: 60)
                 // TODO: - focus does not work
                 .focusable()
-                .digitalCrownRotation($cardValues,
-                                      from: 1,
-                                      through: 14,
-                                      by: 1,
-                                      sensitivity: .medium)
+                .digitalCrownRotation(value: $cardValues)
 
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {

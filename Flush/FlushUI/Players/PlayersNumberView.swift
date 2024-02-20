@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import FlushModel
 
-struct PlayersNumberView: View {
+public struct PlayersNumberView: View {
     // MARK: Lifecycle
 
     init(number: Binding<Double>,
@@ -27,7 +28,7 @@ struct PlayersNumberView: View {
         Int(number)
     }
 
-    var body: some View {
+    public var body: some View {
         HStack {
             Image(systemName: "person.crop.circle")
                 .resizable()
