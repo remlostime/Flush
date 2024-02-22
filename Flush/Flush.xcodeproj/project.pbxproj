@@ -50,6 +50,9 @@
 		4762537A2B8548700014D6C3 /* RankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33152B2BBB5700EAC209 /* RankChecker.swift */; };
 		476253822B8549630014D6C3 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476253812B8549630014D6C3 /* Board.swift */; };
 		476253862B855A9D0014D6C3 /* CardPickerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */; };
+		47870BEF2B86CE5000C4D2B0 /* FlushModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762533C2B84377D0014D6C3 /* FlushModel.framework */; };
+		47870BF42B86CE5500C4D2B0 /* FlushUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762531E2B8435DC0014D6C3 /* FlushUI.framework */; };
+		47870BF92B86CE5900C4D2B0 /* RankRateService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 476253622B85485A0014D6C3 /* RankRateService.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,13 +99,6 @@
 			remoteInfo = FlushUI;
 		};
 		476253332B8436260014D6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 470806892B290820006F37E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
-			remoteInfo = FlushUI;
-		};
-		476253352B84368D0014D6C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 470806892B290820006F37E2 /* Project object */;
 			proxyType = 1;
@@ -158,14 +154,21 @@
 			remoteGlobalIDString = 476253612B85485A0014D6C3;
 			remoteInfo = RankRateService;
 		};
-		476253872B855B720014D6C3 /* PBXContainerItemProxy */ = {
+		47870BF12B86CE5000C4D2B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 470806892B290820006F37E2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4762533B2B84377D0014D6C3;
 			remoteInfo = FlushModel;
 		};
-		476253892B855B760014D6C3 /* PBXContainerItemProxy */ = {
+		47870BF62B86CE5500C4D2B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
+			remoteInfo = FlushUI;
+		};
+		47870BFB2B86CE5900C4D2B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 470806892B290820006F37E2 /* Project object */;
 			proxyType = 1;
@@ -246,7 +249,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47870BF42B86CE5500C4D2B0 /* FlushUI.framework in Frameworks */,
 				476253182B8434B90014D6C3 /* ComposableArchitecture in Frameworks */,
+				47870BF92B86CE5900C4D2B0 /* RankRateService.framework in Frameworks */,
+				47870BEF2B86CE5000C4D2B0 /* FlushModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +373,7 @@
 				476253632B85485A0014D6C3 /* RankRateService */,
 				4762536D2B85485A0014D6C3 /* RankRateServiceTests */,
 				470806922B290820006F37E2 /* Products */,
+				47870BEE2B86CE5000C4D2B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -573,6 +580,13 @@
 			path = Board;
 			sourceTree = "<group>";
 		};
+		47870BEE2B86CE5000C4D2B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -615,10 +629,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				4762538A2B855B760014D6C3 /* PBXTargetDependency */,
-				476253882B855B720014D6C3 /* PBXTargetDependency */,
-				476253362B84368D0014D6C3 /* PBXTargetDependency */,
 				470806E52B290945006F37E2 /* PBXTargetDependency */,
+				47870BF22B86CE5000C4D2B0 /* PBXTargetDependency */,
+				47870BF72B86CE5500C4D2B0 /* PBXTargetDependency */,
+				47870BFC2B86CE5900C4D2B0 /* PBXTargetDependency */,
 			);
 			name = Flush;
 			packageProductDependencies = (
@@ -1162,11 +1176,6 @@
 			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
 			targetProxy = 476253332B8436260014D6C3 /* PBXContainerItemProxy */;
 		};
-		476253362B84368D0014D6C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
-			targetProxy = 476253352B84368D0014D6C3 /* PBXContainerItemProxy */;
-		};
 		476253462B84377D0014D6C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4762533B2B84377D0014D6C3 /* FlushModel */;
@@ -1202,15 +1211,20 @@
 			target = 476253612B85485A0014D6C3 /* RankRateService */;
 			targetProxy = 4762537F2B8548E70014D6C3 /* PBXContainerItemProxy */;
 		};
-		476253882B855B720014D6C3 /* PBXTargetDependency */ = {
+		47870BF22B86CE5000C4D2B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4762533B2B84377D0014D6C3 /* FlushModel */;
-			targetProxy = 476253872B855B720014D6C3 /* PBXContainerItemProxy */;
+			targetProxy = 47870BF12B86CE5000C4D2B0 /* PBXContainerItemProxy */;
 		};
-		4762538A2B855B760014D6C3 /* PBXTargetDependency */ = {
+		47870BF72B86CE5500C4D2B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
+			targetProxy = 47870BF62B86CE5500C4D2B0 /* PBXContainerItemProxy */;
+		};
+		47870BFC2B86CE5900C4D2B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 476253612B85485A0014D6C3 /* RankRateService */;
-			targetProxy = 476253892B855B760014D6C3 /* PBXContainerItemProxy */;
+			targetProxy = 47870BFB2B86CE5900C4D2B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1363,7 +1377,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1396,7 +1410,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1413,9 +1427,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flush.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flush";
 			};
 			name = Debug;
@@ -1433,9 +1450,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flush.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Flush";
 			};
 			name = Release;
@@ -1451,9 +1471,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Flush;
 			};
 			name = Debug;
@@ -1469,9 +1492,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Flush;
 			};
 			name = Release;

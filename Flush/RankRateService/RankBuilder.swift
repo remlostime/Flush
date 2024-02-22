@@ -259,8 +259,6 @@ class StraightBuilder: RankBuilder {
             return []
         }
 
-        let sortedCards = cards.sorted()
-
         let sortedCards1 = build(for: cards.sorted())
         let sortedCards2 = build(for: cards.sorted { $0.number.rawValue < $1.number.rawValue })
 
@@ -396,7 +394,7 @@ class TwoPairsBuilder: RankBuilder {
 
         var result = cards.filter { numbers.contains($0.number) }
 
-        var candidates = cards.filter { !numbers.contains($0.number) }.sorted().reversed()
+        let candidates = cards.filter { !numbers.contains($0.number) }.sorted().reversed()
 
         if let first = candidates.first {
             result.append(first)
@@ -441,7 +439,7 @@ class PairBuilder: RankBuilder {
 
         var result = cards.filter { numbers.contains($0.number) }
 
-        var candidates = Array(cards.filter { !numbers.contains($0.number) }.sorted().reversed())
+        let candidates = Array(cards.filter { !numbers.contains($0.number) }.sorted().reversed())
 
         let leftCount = Card.HandCardsNumber - result.count
 
