@@ -50,9 +50,6 @@
 		4762537A2B8548700014D6C3 /* RankChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33152B2BBB5700EAC209 /* RankChecker.swift */; };
 		476253822B8549630014D6C3 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476253812B8549630014D6C3 /* Board.swift */; };
 		476253862B855A9D0014D6C3 /* CardPickerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */; };
-		47870BEF2B86CE5000C4D2B0 /* FlushModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762533C2B84377D0014D6C3 /* FlushModel.framework */; };
-		47870BF42B86CE5500C4D2B0 /* FlushUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4762531E2B8435DC0014D6C3 /* FlushUI.framework */; };
-		47870BF92B86CE5900C4D2B0 /* RankRateService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 476253622B85485A0014D6C3 /* RankRateService.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,34 +151,6 @@
 			remoteGlobalIDString = 476253612B85485A0014D6C3;
 			remoteInfo = RankRateService;
 		};
-		47870BF12B86CE5000C4D2B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 470806892B290820006F37E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4762533B2B84377D0014D6C3;
-			remoteInfo = FlushModel;
-		};
-		47870BF62B86CE5500C4D2B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 470806892B290820006F37E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4762531D2B8435DC0014D6C3;
-			remoteInfo = FlushUI;
-		};
-		47870BFB2B86CE5900C4D2B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 470806892B290820006F37E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 476253612B85485A0014D6C3;
-			remoteInfo = RankRateService;
-		};
-		47D86F6E2B8D372E00615594 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 470806892B290820006F37E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 470806C22B290944006F37E2;
-			remoteInfo = "FlushWatch Watch App";
-		};
 		47D86F702B8D373700615594 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 470806892B290820006F37E2 /* Project object */;
@@ -189,7 +158,14 @@
 			remoteGlobalIDString = 470806C22B290944006F37E2;
 			remoteInfo = "FlushWatch Watch App";
 		};
-		47D86F722B8D373E00615594 /* PBXContainerItemProxy */ = {
+		47D86F7A2B8D3CEB00615594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 470806C22B290944006F37E2;
+			remoteInfo = "FlushWatch Watch App";
+		};
+		47D86F7C2B8D3CF200615594 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 470806892B290820006F37E2 /* Project object */;
 			proxyType = 1;
@@ -270,10 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47870BF42B86CE5500C4D2B0 /* FlushUI.framework in Frameworks */,
 				476253182B8434B90014D6C3 /* ComposableArchitecture in Frameworks */,
-				47870BF92B86CE5900C4D2B0 /* RankRateService.framework in Frameworks */,
-				47870BEF2B86CE5000C4D2B0 /* FlushModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,9 +624,6 @@
 			);
 			dependencies = (
 				470806E52B290945006F37E2 /* PBXTargetDependency */,
-				47870BF22B86CE5000C4D2B0 /* PBXTargetDependency */,
-				47870BF72B86CE5500C4D2B0 /* PBXTargetDependency */,
-				47870BFC2B86CE5900C4D2B0 /* PBXTargetDependency */,
 			);
 			name = Flush;
 			packageProductDependencies = (
@@ -789,7 +759,7 @@
 			);
 			dependencies = (
 				476253282B8435DC0014D6C3 /* PBXTargetDependency */,
-				47D86F6F2B8D372E00615594 /* PBXTargetDependency */,
+				47D86F7B2B8D3CEB00615594 /* PBXTargetDependency */,
 			);
 			name = FlushUITests;
 			productName = FlushUITests;
@@ -864,7 +834,7 @@
 			);
 			dependencies = (
 				4762536C2B85485A0014D6C3 /* PBXTargetDependency */,
-				47D86F732B8D373E00615594 /* PBXTargetDependency */,
+				47D86F7D2B8D3CF200615594 /* PBXTargetDependency */,
 			);
 			name = RankRateServiceTests;
 			productName = RankRateServiceTests;
@@ -1238,35 +1208,20 @@
 			target = 476253612B85485A0014D6C3 /* RankRateService */;
 			targetProxy = 4762537F2B8548E70014D6C3 /* PBXContainerItemProxy */;
 		};
-		47870BF22B86CE5000C4D2B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4762533B2B84377D0014D6C3 /* FlushModel */;
-			targetProxy = 47870BF12B86CE5000C4D2B0 /* PBXContainerItemProxy */;
-		};
-		47870BF72B86CE5500C4D2B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4762531D2B8435DC0014D6C3 /* FlushUI */;
-			targetProxy = 47870BF62B86CE5500C4D2B0 /* PBXContainerItemProxy */;
-		};
-		47870BFC2B86CE5900C4D2B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 476253612B85485A0014D6C3 /* RankRateService */;
-			targetProxy = 47870BFB2B86CE5900C4D2B0 /* PBXContainerItemProxy */;
-		};
-		47D86F6F2B8D372E00615594 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
-			targetProxy = 47D86F6E2B8D372E00615594 /* PBXContainerItemProxy */;
-		};
 		47D86F712B8D373700615594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
 			targetProxy = 47D86F702B8D373700615594 /* PBXContainerItemProxy */;
 		};
-		47D86F732B8D373E00615594 /* PBXTargetDependency */ = {
+		47D86F7B2B8D3CEB00615594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
-			targetProxy = 47D86F722B8D373E00615594 /* PBXContainerItemProxy */;
+			targetProxy = 47D86F7A2B8D3CEB00615594 /* PBXContainerItemProxy */;
+		};
+		47D86F7D2B8D3CF200615594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
+			targetProxy = 47D86F7C2B8D3CF200615594 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1713,11 +1668,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1751,11 +1706,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1766,6 +1721,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1773,6 +1729,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1785,6 +1743,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1792,6 +1751,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1827,11 +1788,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1865,11 +1826,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1880,6 +1841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1887,11 +1849,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -1901,6 +1863,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1908,11 +1871,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.FlushModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -1945,11 +1908,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1983,11 +1946,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,4";
+				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1998,6 +1961,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2005,6 +1969,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.RankRateServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2017,6 +1983,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2024,6 +1991,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flush.RankRateServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
