@@ -175,6 +175,27 @@
 			remoteGlobalIDString = 476253612B85485A0014D6C3;
 			remoteInfo = RankRateService;
 		};
+		47D86F6E2B8D372E00615594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 470806C22B290944006F37E2;
+			remoteInfo = "FlushWatch Watch App";
+		};
+		47D86F702B8D373700615594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 470806C22B290944006F37E2;
+			remoteInfo = "FlushWatch Watch App";
+		};
+		47D86F722B8D373E00615594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 470806892B290820006F37E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 470806C22B290944006F37E2;
+			remoteInfo = "FlushWatch Watch App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -768,6 +789,7 @@
 			);
 			dependencies = (
 				476253282B8435DC0014D6C3 /* PBXTargetDependency */,
+				47D86F6F2B8D372E00615594 /* PBXTargetDependency */,
 			);
 			name = FlushUITests;
 			productName = FlushUITests;
@@ -804,6 +826,7 @@
 			);
 			dependencies = (
 				476253462B84377D0014D6C3 /* PBXTargetDependency */,
+				47D86F712B8D373700615594 /* PBXTargetDependency */,
 			);
 			name = FlushModelTests;
 			productName = FlushModelTests;
@@ -841,6 +864,7 @@
 			);
 			dependencies = (
 				4762536C2B85485A0014D6C3 /* PBXTargetDependency */,
+				47D86F732B8D373E00615594 /* PBXTargetDependency */,
 			);
 			name = RankRateServiceTests;
 			productName = RankRateServiceTests;
@@ -884,18 +908,21 @@
 					};
 					476253242B8435DC0014D6C3 = {
 						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 470806C22B290944006F37E2;
 					};
 					4762533B2B84377D0014D6C3 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
 					476253422B84377D0014D6C3 = {
 						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 470806C22B290944006F37E2;
 					};
 					476253612B85485A0014D6C3 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
 					476253682B85485A0014D6C3 = {
 						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 470806C22B290944006F37E2;
 					};
 				};
 			};
@@ -1225,6 +1252,21 @@
 			isa = PBXTargetDependency;
 			target = 476253612B85485A0014D6C3 /* RankRateService */;
 			targetProxy = 47870BFB2B86CE5900C4D2B0 /* PBXContainerItemProxy */;
+		};
+		47D86F6F2B8D372E00615594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
+			targetProxy = 47D86F6E2B8D372E00615594 /* PBXContainerItemProxy */;
+		};
+		47D86F712B8D373700615594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
+			targetProxy = 47D86F702B8D373700615594 /* PBXContainerItemProxy */;
+		};
+		47D86F732B8D373E00615594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 470806C22B290944006F37E2 /* FlushWatch Watch App */;
+			targetProxy = 47D86F722B8D373E00615594 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1734,6 +1776,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
@@ -1752,6 +1795,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
@@ -1848,6 +1892,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,4";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
@@ -1868,6 +1913,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,4";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
@@ -1962,6 +2008,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
@@ -1980,6 +2027,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlushWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlushWatch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
