@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import FlushUI
-import FlushModel
 
 struct CardsPickerView: View {
     // MARK: Lifecycle

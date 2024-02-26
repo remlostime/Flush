@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FlushModel
 
 // MARK: - FlushWatch_Watch_AppApp
 

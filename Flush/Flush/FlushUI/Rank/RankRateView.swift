@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RankRateService
 
 extension Double {
     var percentage: String {

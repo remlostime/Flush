@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import FlushWatch_Watch_App
+@testable import Flush
 
 final class NumberTests: XCTestCase {
     func testSomeNumbers() {

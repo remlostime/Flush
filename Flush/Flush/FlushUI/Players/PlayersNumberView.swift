@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FlushModel
 
 public struct PlayersNumberView: View {
     // MARK: Lifecycle
@@ -37,11 +36,13 @@ public struct PlayersNumberView: View {
                 .font(font)
         }
         .focusable()
+        /*
         .digitalCrownRotation($number,
                               from: Double(Board.MinPlayerNumber),
                               through: Double(Board.MaxPlayerNumber),
                               by: 1,
                               sensitivity: .medium)
+         */
     }
 
     // MARK: Private
