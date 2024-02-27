@@ -13,6 +13,7 @@ struct CardPickerFeature {
     @ObservableState
     struct State: Equatable {
         var board: Board
+        @Presents var tappedCard: Card?
         
         init(board: Board) {
             self.board = board
@@ -20,14 +21,17 @@ struct CardPickerFeature {
     }
     
     enum Action {
-        case tapCard(Card?)
+        case tapCard(Card?, metadata: (cardType: CardType, index: Int))
+        case selectCard(PresentationAction<Card>)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-            case .tapCard(let card):
-                print(card)
+            case .tapCard(let card, let metadata):
+                print("Card", card)
+                print("metadata", metadata)
+                state.tappedCard = card ?? Card.initialCard
                 return .none
             }
         }
@@ -37,6 +41,8 @@ struct CardPickerFeature {
 struct ContentView: View {
     let store: StoreOf<CardPickerFeature>
     
+    @State var isPresented = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -44,14 +50,19 @@ struct ContentView: View {
                     if let card = store.board.publicCards[index] {
                         CardView(card: card)
                             .onTapGesture {
-                                store.send(.tapCard(card))
+                                store.send(.tapCard(card, metadata: (cardType: .public, index: index)))
                             }
+                            // TODO(kai) - fix this
+                            .sheet(item: ..., content: { _ in
+                                Text("TODO - Card select view")
+                            })
                     } else {
                         PlaceholderView(iconSize: 32.0)
                             .onTapGesture {
-                                store.send(.tapCard(nil))
+                                store.send(.tapCard(nil, metadata: (cardType: .public, index: index)))
                             }
                     }
+
                 }
             }
             

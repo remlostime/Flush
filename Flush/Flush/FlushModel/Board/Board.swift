@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum CardType {
+    case `public`
+    case `private`
+}
+
 // MARK: - Board
 
 public struct Board {
