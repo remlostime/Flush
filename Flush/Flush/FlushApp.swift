@@ -11,7 +11,9 @@ import SwiftUI
 struct FlushApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: .init(initialState: CardPickerFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
+                CardPickerFeature()
+            }))
         }
     }
 }

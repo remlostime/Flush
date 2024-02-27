@@ -24,6 +24,14 @@ public struct Board {
     }
 }
 
+extension Board: Equatable {
+    public static func == (lhs: Board, rhs: Board) -> Bool {
+        return lhs.privateCards == rhs.privateCards &&
+            lhs.publicCards == rhs.publicCards &&
+            lhs.playersNumber == rhs.playersNumber
+    }
+}
+
 extension Board {
     public static let initial = Board(privateCards: [nil, nil],
                                       publicCards: [nil, nil, nil, nil, nil],
