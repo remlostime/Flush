@@ -9,29 +9,33 @@ import SwiftUI
 import ComposableArchitecture
 
 @Reducer
-struct CardPickerFeature {
+struct MainScreenFeature {
+    struct SelectedCard: Equatable {
+        let card: Card
+        let type: CardType
+        let index: Int
+    }
+    
     @ObservableState
     struct State: Equatable {
         var board: Board
-        @Presents var tappedCard: Card?
+        var currentSelectedCard: SelectedCard?
         
         init(board: Board) {
             self.board = board
+            self.currentSelectedCard = nil
         }
     }
     
     enum Action {
         case tapCard(Card?, metadata: (cardType: CardType, index: Int))
-        case selectCard(PresentationAction<Card>)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .tapCard(let card, let metadata):
-                print("Card", card)
-                print("metadata", metadata)
-                state.tappedCard = card ?? Card.initialCard
+                state.currentSelectedCard = .init(card: card ?? .initialCard, type: metadata.cardType, index: metadata.index)
                 return .none
             }
         }
@@ -39,9 +43,12 @@ struct CardPickerFeature {
 }
 
 struct ContentView: View {
-    let store: StoreOf<CardPickerFeature>
+    let store: StoreOf<MainScreenFeature>
     
-    @State var isPresented = false
+    // TODO(Kai) - update to the TCA way
+    // case presentCardPickerView(PresentationAction<CardPickerFeature.Action>)
+    // .sheet(item:)
+    @State var isCardPickerSheetPresented = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -51,18 +58,16 @@ struct ContentView: View {
                         CardView(card: card)
                             .onTapGesture {
                                 store.send(.tapCard(card, metadata: (cardType: .public, index: index)))
+                                isCardPickerSheetPresented.toggle()
                             }
-                            // TODO(kai) - fix this
-                            .sheet(item: ..., content: { _ in
-                                Text("TODO - Card select view")
-                            })
                     } else {
                         PlaceholderView(iconSize: 32.0)
                             .onTapGesture {
                                 store.send(.tapCard(nil, metadata: (cardType: .public, index: index)))
+                                isCardPickerSheetPresented.toggle()
                             }
                     }
-
+                    
                 }
             }
             
@@ -71,22 +76,27 @@ struct ContentView: View {
                     if let card = store.board.privateCards[index] {
                         CardView(card: card)
                             .onTapGesture {
-                                store.send(.tapCard(card))
+                                store.send(.tapCard(card, metadata: (cardType: .private, index: index)))
+                                isCardPickerSheetPresented.toggle()
                             }
                     } else {
                         PlaceholderView(iconSize: 32.0)
                             .onTapGesture {
-                                store.send(.tapCard(nil))
+                                store.send(.tapCard(nil, metadata: (cardType: .private, index: index)))
+                                isCardPickerSheetPresented.toggle()
                             }
                     }
                 }
             }
         }
+        .sheet(isPresented: $isCardPickerSheetPresented) {
+            CardPickerView()
+        }
     }
 }
 
 #Preview {
-    ContentView(store: .init(initialState: CardPickerFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
-        CardPickerFeature()
+    ContentView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
+        MainScreenFeature()
     }))
 }
