@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum CardType {
+    case `public`
+    case `private`
+}
+
 // MARK: - Board
 
 public struct Board {
@@ -21,6 +26,14 @@ public struct Board {
         self.privateCards = privateCards
         self.publicCards = publicCards
         self.playersNumber = playersNumber
+    }
+}
+
+extension Board: Equatable {
+    public static func == (lhs: Board, rhs: Board) -> Bool {
+        return lhs.privateCards == rhs.privateCards &&
+            lhs.publicCards == rhs.publicCards &&
+            lhs.playersNumber == rhs.playersNumber
     }
 }
 

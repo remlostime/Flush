@@ -24,6 +24,9 @@
 		470806E12B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */; };
 		470806E32B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */; };
 		470806E62B290945006F37E2 /* FlushWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 470806C32B290944006F37E2 /* FlushWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4731677A2B8E9DE50022F8E7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 473167792B8E9DE50022F8E7 /* ComposableArchitecture */; };
+		4731677D2B8EDE7E0022F8E7 /* CardPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731677C2B8EDE7E0022F8E7 /* CardPickerView.swift */; };
+		4731677F2B8EDE890022F8E7 /* CardPickerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731677E2B8EDE890022F8E7 /* CardPickerFeature.swift */; };
 		47D86F8B2B8D4E7B00615594 /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331C2B2D2EA300EAC209 /* NumberTests.swift */; };
 		47D86F8C2B8D4E7B00615594 /* RankCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */; };
 		47D86F8D2B8D4EC000615594 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33182B2BBB9600EAC209 /* RankManager.swift */; };
@@ -134,6 +137,8 @@
 		470806E02B290945006F37E2 /* FlushWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		471E63AD2B33A9C40067C020 /* CardPickerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerDetailsView.swift; sourceTree = "<group>"; };
+		4731677C2B8EDE7E0022F8E7 /* CardPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerView.swift; sourceTree = "<group>"; };
+		4731677E2B8EDE890022F8E7 /* CardPickerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerFeature.swift; sourceTree = "<group>"; };
 		475B6B792B2F88840094B4C0 /* CompareCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCards.swift; sourceTree = "<group>"; };
 		475D33152B2BBB5700EAC209 /* RankChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankChecker.swift; sourceTree = "<group>"; };
 		475D33182B2BBB9600EAC209 /* RankManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4731677A2B8E9DE50022F8E7 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +246,7 @@
 		470806932B290820006F37E2 /* Flush */ = {
 			isa = PBXGroup;
 			children = (
+				4731677B2B8EDE420022F8E7 /* CardPickerFeature */,
 				476253632B85485A0014D6C3 /* RankRateService */,
 				4762533D2B84377D0014D6C3 /* FlushModel */,
 				4762531F2B8435DC0014D6C3 /* FlushUI */,
@@ -312,6 +319,15 @@
 				470806E22B290945006F37E2 /* FlushWatch_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "FlushWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		4731677B2B8EDE420022F8E7 /* CardPickerFeature */ = {
+			isa = PBXGroup;
+			children = (
+				4731677C2B8EDE7E0022F8E7 /* CardPickerView.swift */,
+				4731677E2B8EDE890022F8E7 /* CardPickerFeature.swift */,
+			);
+			path = CardPickerFeature;
 			sourceTree = "<group>";
 		};
 		4762531F2B8435DC0014D6C3 /* FlushUI */ = {
@@ -422,6 +438,7 @@
 			);
 			name = Flush;
 			packageProductDependencies = (
+				473167792B8E9DE50022F8E7 /* ComposableArchitecture */,
 			);
 			productName = Flush;
 			productReference = 470806912B290820006F37E2 /* Flush.app */;
@@ -562,6 +579,7 @@
 			);
 			mainGroup = 470806882B290820006F37E2;
 			packageReferences = (
+				473167782B8E9DE50022F8E7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 470806922B290820006F37E2 /* Products */;
 			projectDirPath = "";
@@ -633,6 +651,8 @@
 			files = (
 				47D86FA02B8D4F0000615594 /* PlayersNumberView.swift in Sources */,
 				47D86F9F2B8D4F0000615594 /* PlaceholderView.swift in Sources */,
+				4731677F2B8EDE890022F8E7 /* CardPickerFeature.swift in Sources */,
+				4731677D2B8EDE7E0022F8E7 /* CardPickerView.swift in Sources */,
 				47D86F9D2B8D4F0000615594 /* RankRateView.swift in Sources */,
 				470806972B290820006F37E2 /* ContentView.swift in Sources */,
 				47D86FA12B8D4F0000615594 /* CardView.swift in Sources */,
@@ -1222,6 +1242,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		473167782B8E9DE50022F8E7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		473167792B8E9DE50022F8E7 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 473167782B8E9DE50022F8E7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 470806892B290820006F37E2 /* Project object */;
 }
