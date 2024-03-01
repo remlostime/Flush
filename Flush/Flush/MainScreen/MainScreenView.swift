@@ -18,6 +18,10 @@ struct MainScreenView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Text("Public Cards")
+                .font(.title)
+                .foregroundColor(.secondary)
+                .padding(.bottom, 4)
             HStack {
                 ForEach(0..<store.board.publicCards.count, id:\.self) { index in
                     if let card = store.board.publicCards[index] {
@@ -37,6 +41,11 @@ struct MainScreenView: View {
                 }
             }
             
+            
+            Text("Private Cards")
+                .font(.title)
+                .foregroundColor(.secondary)
+                .padding(.bottom, 4)
             HStack {
                 ForEach(0..<store.board.privateCards.count, id:\.self) { index in
                     if let card = store.board.privateCards[index] {
@@ -53,6 +62,14 @@ struct MainScreenView: View {
                             }
                     }
                 }
+                
+                VStack {
+                    Text("Win Rate")
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 4)
+                    Text(store.winRateFormated)
+                }
             }
         }
         .sheet(isPresented: $isCardPickerSheetPresented) {
@@ -67,6 +84,6 @@ struct MainScreenView: View {
 
 #Preview {
     MainScreenView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
-        MainScreenFeature()
+        MainScreenFeature(environment: .init(rankService: DefaultRankManager()))
     }))
 }
