@@ -11,7 +11,7 @@ import SwiftUI
 struct FlushApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
+            MainScreenView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
                 MainScreenFeature()
             }))
         }

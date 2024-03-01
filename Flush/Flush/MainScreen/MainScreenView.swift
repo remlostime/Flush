@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainSreenView.swift
 //  Flush
 //
 //  Created by Kai Chen on 12/12/23.
@@ -8,41 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-@Reducer
-struct MainScreenFeature {
-    struct SelectedCard: Equatable {
-        let card: Card
-        let type: CardType
-        let index: Int
-    }
-    
-    @ObservableState
-    struct State: Equatable {
-        var board: Board
-        var currentSelectedCard: SelectedCard?
-        
-        init(board: Board) {
-            self.board = board
-            self.currentSelectedCard = nil
-        }
-    }
-    
-    enum Action {
-        case tapCard(Card?, metadata: (cardType: CardType, index: Int))
-    }
-    
-    var body: some Reducer<State, Action> {
-        Reduce { state, action in
-            switch action {
-            case .tapCard(let card, let metadata):
-                state.currentSelectedCard = .init(card: card ?? .initialCard, type: metadata.cardType, index: metadata.index)
-                return .none
-            }
-        }
-    }
-}
-
-struct ContentView: View {
+struct MainScreenView: View {
     let store: StoreOf<MainScreenFeature>
     
     // TODO(Kai) - update to the TCA way
@@ -90,13 +56,17 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $isCardPickerSheetPresented) {
-            CardPickerView()
+            CardPickerView(store: .init(initialState: CardPickerFeature.State(card: store.currentSelectedCard.card), reducer: {
+                CardPickerFeature {
+                    store.send(.selectCard($0))
+                }
+            }))
         }
     }
 }
 
 #Preview {
-    ContentView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
+    MainScreenView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
         MainScreenFeature()
     }))
 }
