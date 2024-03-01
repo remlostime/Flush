@@ -7,29 +7,11 @@
 
 import SwiftUI
 
-extension View {
-    func digitalCrownRotation(value: Binding<Double>) -> some View {
-        /* Fix this func
-        if #available(watchOS 9.0, *) {
-            return self.digitalCrownRotation($value,
-                                             from: 1,
-                                             through: 14,
-                                             by: 1,
-                                             sensitivity: .medium)
-        } else {
-            return self
-        }
-         */
-        return self
-    }
-}
-
 public struct CardPickerDetailsView: View {
     // MARK: Lifecycle
 
     public init(listCard: Binding<ListCard>) {
         _listCard = listCard
-//        cardValues = Double(listCard.card.number.rawValue.wrappedValue)
     }
 
     // MARK: Internal
@@ -64,7 +46,11 @@ public struct CardPickerDetailsView: View {
                 .frame(height: 60)
                 // TODO: - focus does not work
                 .focusable()
-                .digitalCrownRotation(value: $cardValues)
+                .digitalCrownRotation($cardValues,
+                                      from: 1,
+                                      through: 14,
+                                      by: 1,
+                                      sensitivity: .medium)
 
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
