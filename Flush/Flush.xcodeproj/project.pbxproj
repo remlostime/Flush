@@ -27,7 +27,6 @@
 		4731677A2B8E9DE50022F8E7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 473167792B8E9DE50022F8E7 /* ComposableArchitecture */; };
 		4731677D2B8EDE7E0022F8E7 /* CardPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731677C2B8EDE7E0022F8E7 /* CardPickerView.swift */; };
 		4731677F2B8EDE890022F8E7 /* CardPickerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4731677E2B8EDE890022F8E7 /* CardPickerFeature.swift */; };
-		476648A32B928E480086E641 /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = 476648A22B928E480086E641 /* SwiftSyntax */; };
 		47D86F8B2B8D4E7B00615594 /* NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331C2B2D2EA300EAC209 /* NumberTests.swift */; };
 		47D86F8C2B8D4E7B00615594 /* RankCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D331A2B2CF27B00EAC209 /* RankCheckerTests.swift */; };
 		47D86F8D2B8D4EC000615594 /* RankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D33182B2BBB9600EAC209 /* RankManager.swift */; };
@@ -159,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4731677A2B8E9DE50022F8E7 /* ComposableArchitecture in Frameworks */,
-				476648A32B928E480086E641 /* SwiftSyntax in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +449,6 @@
 			name = Flush;
 			packageProductDependencies = (
 				473167792B8E9DE50022F8E7 /* ComposableArchitecture */,
-				476648A22B928E480086E641 /* SwiftSyntax */,
 			);
 			productName = Flush;
 			productReference = 470806912B290820006F37E2 /* Flush.app */;
@@ -593,7 +590,6 @@
 			mainGroup = 470806882B290820006F37E2;
 			packageReferences = (
 				473167782B8E9DE50022F8E7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				476648A12B928E480086E641 /* XCRemoteSwiftPackageReference "swift-syntax" */,
 			);
 			productRefGroup = 470806922B290820006F37E2 /* Products */;
 			projectDirPath = "";
@@ -1266,14 +1262,6 @@
 				minimumVersion = 1.8.2;
 			};
 		};
-		476648A12B928E480086E641 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-syntax.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 509.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1281,11 +1269,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 473167782B8E9DE50022F8E7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
-		};
-		476648A22B928E480086E641 /* SwiftSyntax */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 476648A12B928E480086E641 /* XCRemoteSwiftPackageReference "swift-syntax" */;
-			productName = SwiftSyntax;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
