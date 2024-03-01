@@ -12,7 +12,7 @@ struct FlushApp: App {
     var body: some Scene {
         WindowGroup {
             MainScreenView(store: .init(initialState: MainScreenFeature.State(board: .init(privateCards: [nil, nil], publicCards: [nil, nil, nil, nil, nil], playersNumber: 1)), reducer: {
-                MainScreenFeature()
+                MainScreenFeature(environment: .init(rankService: DefaultRankManager()))
             }))
         }
     }
